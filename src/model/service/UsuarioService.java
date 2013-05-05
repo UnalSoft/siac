@@ -1,7 +1,11 @@
 package model.service;
 
+import java.util.Collection;
 import java.util.List;
-import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import model.dao.DAOFactory;
+import model.dao.exceptions.NonexistentEntityException;
+import model.dao.exceptions.PreexistingEntityException;
 import model.entity.Empresa;
 import model.entity.Usuario;
 import model.vo.UsuarioVO;
@@ -10,7 +14,7 @@ import model.vo.UsuarioVO;
  *
  * @author Zergio
  */
-public class UsuarioService implements IService<UsuarioVO> {
+public class UsuarioService implements IService<UsuarioVO, Long> {
 
     private static UsuarioService instance;
 
@@ -25,7 +29,7 @@ public class UsuarioService implements IService<UsuarioVO> {
     }
 
     @Override
-    public void create(UsuarioVO vo, EntityManager em) {
+    public void create(UsuarioVO vo) throws PreexistingEntityException{
         Usuario entity = new Usuario();
         entity.setClave(vo.getClave());
         entity.setCorreo(vo.getCorreo());
@@ -34,53 +38,52 @@ public class UsuarioService implements IService<UsuarioVO> {
         entity.setNombreDeUsuario(vo.getNombreDeUsuario());
         entity.setRol(vo.getRol());
 
-        entity.setErrorList(vo.getErrorList());
+        entity.setErrorCollection((Collection)vo.getErrorList());
 
-        Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT(), em);
-        empresa.getEmpresaList().add(entity);
+        Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
+        empresa.getUsuarioCollection().add(entity);
         entity.setEmpresasNIT(empresa);
 
-        DAOFactory.getInstance().getUsuarioDAO().persist(entity, em)
+        DAOFactory.getInstance().getUsuarioDAO().create(entity);
         
     }
 
     @Override
-    public UsuarioVO find(Object id, EntityManager em) {
-        Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().find(id, em);
+    public UsuarioVO find(Long id) throws EntityNotFoundException{
+        Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().find(id);
         if (usuario != null) {
             return usuario.toVO();
-
         } else {
             return null;
         }
     }
 
     @Override
-    public void update(UsuarioVO vo, EntityManager em) {
-        Usuario entity = DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni(), em);
+    public void update(UsuarioVO vo) throws NonexistentEntityException {
+        Usuario entity = DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni());
         entity.setClave(vo.getClave());
         entity.setCorreo(vo.getCorreo());
         entity.setNombre(vo.getNombre());
         entity.setRol(vo.getRol());
-        DAOFactory.getInstance().getUsuarioDAO().update(entity, em);
+        DAOFactory.getInstance().getUsuarioDAO().update(entity);
     }
 
     @Override
-    public void delete(Object id, EntityManager em) {
+    public void delete(Long id) throws NonexistentEntityException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public List<UsuarioVO> getList(EntityManager em) {
+    public List<UsuarioVO> getList() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public UsuarioVO login(UsuarioVO vo, EntityManager em) {
+    public UsuarioVO login(UsuarioVO vo) {
         Usuario entity = new Usuario();
         entity.setNombreDeUsuario(vo.getNombreDeUsuario());
         entity.setClave(vo.getClave());
 
-        Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().login(entity, em);
+        Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().login(entity);
         return usuario != null ? usuario.toVo() : null;
 
     }

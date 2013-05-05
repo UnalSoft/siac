@@ -4,22 +4,25 @@
  */
 package model.service;
 
+import java.io.Serializable;
 import java.util.List;
-import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import model.dao.exceptions.NonexistentEntityException;
+import model.dao.exceptions.PreexistingEntityException;
 
 /**
  *
  * @author Zergio
  */
-public interface IService<VO> {
+public interface IService<VO, ID extends Serializable> {
 
-    void create(VO vo, EntityManager em);
+    void create(VO vo) throws PreexistingEntityException;
 
-    VO find(Object id, EntityManager em);
+    VO find(ID id)  throws EntityNotFoundException;
 
-    void update(VO vo, EntityManager em);
+    void update(VO vo) throws NonexistentEntityException;
 
-    void delete(Object id, EntityManager em);
+    void delete(ID id) throws NonexistentEntityException;
 
-    List<VO> getList(EntityManager em);
+    List<VO> getList();
 }
