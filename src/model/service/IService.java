@@ -11,15 +11,15 @@ import javax.persistence.EntityManager;
  *
  * @author Zergio
  */
-public interface IService<Entity> {
+public interface IService<VO> {
 
-    void create(Entity vo, EntityManager em);
+    void create(VO vo, EntityManager em);
 
-    Entity find(Object id, EntityManager em);
+    VO find(Object id, EntityManager em);
 
-    void update(Entity vo, EntityManager em);
+    void update(VO vo, EntityManager em);
 
     void delete(Object id, EntityManager em);
 
-    List<Entity> getList(EntityManager em);
+    List<VO> getList(EntityManager em);
 }
