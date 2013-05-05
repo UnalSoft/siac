@@ -11,19 +11,16 @@ import java.util.List;
  * @author Zergio
  */
 public class UsuarioVO implements IValueObject {
-    
+
     //Atributos Nativos
-    
     private Long dni;
     private String nombre;
     private String nombreDeUsuario;
     private String clave;
     private String correo;
     private String rol;
-    
     //Atributo Externo
     private Integer empresasNIT;
-    
     //Colecciones de VOS
     private List<ErrorVO> errorList;
 
@@ -138,6 +135,4 @@ public class UsuarioVO implements IValueObject {
     public void setErrorList(List<ErrorVO> errorList) {
         this.errorList = errorList;
     }
-    
-    
 }
