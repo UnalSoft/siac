@@ -116,7 +116,7 @@ public class Error implements Serializable {
         return "model.entity.Error[ id=" + id + " ]";
     }
 
-    ErrorVO toVO() {
+    public ErrorVO toVO() {
         //TODO
 
         ErrorVO error = new ErrorVO();
