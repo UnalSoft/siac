@@ -10,7 +10,6 @@ import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
 import view.Login;
 import view.Principal;
-import view.ProveedorTIPrincipal;
 import view.RecuperarContrasena;
 import view.Secundario;
 
@@ -26,7 +25,7 @@ public class LoginController {
 
     public static void mostrarLogin() {
         principal = new Principal();
-        principal.setLocationRelativeTo(null);
+//        principal.setLocationRelativeTo(null);
         login = new Login();
         principal.setSize(login.getPreferredSize());
         principal.setVisible(true);
