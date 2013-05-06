@@ -10,7 +10,7 @@ import controller.LoginController;
  *
  * @author Felipe
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JPanel {
 
     /**
      * Creates new form Login
@@ -28,156 +28,160 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        usuarioL = new javax.swing.JLabel();
+        panelInfP = new javax.swing.JPanel();
+        contrasenaOlvidadaB = new javax.swing.JButton();
+        usuarioTF = new javax.swing.JTextField();
+        contrasenaPF = new javax.swing.JPasswordField();
+        iniciarSesionB = new javax.swing.JButton();
+        logoL = new javax.swing.JLabel();
+        contrasenaL = new javax.swing.JLabel();
+        panelSupP = new javax.swing.JPanel();
+        siacL = new javax.swing.JLabel();
+        cerrarB = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        usuarioL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        usuarioL.setText("Usuario:");
+        usuarioL.setToolTipText("");
 
-        jPanel2.setBackground(new java.awt.Color(181, 181, 181));
+        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 0, Short.MAX_VALUE)
+        org.jdesktop.layout.GroupLayout panelInfPLayout = new org.jdesktop.layout.GroupLayout(panelInfP);
+        panelInfP.setLayout(panelInfPLayout);
+        panelInfPLayout.setHorizontalGroup(
+            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 361, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+        panelInfPLayout.setVerticalGroup(
+            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 20, Short.MAX_VALUE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(181, 181, 181));
-
-        jLabel3.setText("SIAC");
-
-        jButton3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton3.setText("X");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel3)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 55, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel1.setText("Usuario:");
-        jLabel1.setToolTipText("");
-
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel2.setText("Contraseña:");
-        jLabel2.setToolTipText("");
-
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        jPasswordField1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton1.setText("Iniciar Sesión");
-
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
-        jButton2.setText("¿Has olvidado tu contraseña?");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setOpaque(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        contrasenaOlvidadaB.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
+        contrasenaOlvidadaB.setText("¿Has olvidado tu contraseña?");
+        contrasenaOlvidadaB.setBorderPainted(false);
+        contrasenaOlvidadaB.setContentAreaFilled(false);
+        contrasenaOlvidadaB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        contrasenaOlvidadaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                contrasenaOlvidadaBActionPerformed(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        usuarioTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        usuarioTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioTFActionPerformed(evt);
+            }
+        });
+
+        contrasenaPF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+
+        iniciarSesionB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        iniciarSesionB.setText("Iniciar Sesión");
+
+        logoL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Logo.png"))); // NOI18N
+
+        contrasenaL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        contrasenaL.setText("Contraseña:");
+        contrasenaL.setToolTipText("");
+
+        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
+        panelSupP.setLayout(null);
+
+        siacL.setText("SIAC");
+        panelSupP.add(siacL);
+        siacL.setBounds(6, 7, 29, 16);
+
+        cerrarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        cerrarB.setText("X");
+        cerrarB.setBorderPainted(false);
+        cerrarB.setContentAreaFilled(false);
+        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cerrarB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        cerrarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarBActionPerformed(evt);
+            }
+        });
+        panelSupP.add(cerrarB);
+        cerrarB.setBounds(310, 0, 55, 30);
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(usuarioL)
+                    .add(contrasenaL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(contrasenaPF, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .add(usuarioTF))
+                .add(21, 21, 21))
             .add(layout.createSequentialGroup()
-                .add(12, 12, 12)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel2)
-                            .add(jLabel1))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                            .add(jPasswordField1)))
+                        .addContainerGap()
+                        .add(contrasenaOlvidadaB)
+                        .add(18, 18, 18)
+                        .add(iniciarSesionB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
-                        .add(jButton2)
-                        .add(17, 17, 17)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .add(118, 118, 118)
+                        .add(logoL)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 147, Short.MAX_VALUE)
+                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(38, 38, 38)
+                .add(logoL)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 38, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(usuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(usuarioL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(contrasenaPF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(contrasenaL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(iniciarSesionB)
+                    .add(contrasenaOlvidadaB))
                 .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(jPasswordField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(50, 50, 50)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton2))
-                .add(31, 31, 31)
-                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LoginController.mostrarRecuperarContrasena();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void cerrarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBActionPerformed
+        LoginController.cerrar();
+    }//GEN-LAST:event_cerrarBActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void contrasenaOlvidadaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaOlvidadaBActionPerformed
+        LoginController.mostrarRecuperarContrasena();
+    }//GEN-LAST:event_contrasenaOlvidadaBActionPerformed
+
+    private void usuarioTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioTFActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton cerrarB;
+    private javax.swing.JLabel contrasenaL;
+    private javax.swing.JButton contrasenaOlvidadaB;
+    private javax.swing.JPasswordField contrasenaPF;
+    private javax.swing.JButton iniciarSesionB;
+    private javax.swing.JLabel logoL;
+    private javax.swing.JPanel panelInfP;
+    private javax.swing.JPanel panelSupP;
+    private javax.swing.JLabel siacL;
+    private javax.swing.JLabel usuarioL;
+    private javax.swing.JTextField usuarioTF;
     // End of variables declaration//GEN-END:variables
 }
