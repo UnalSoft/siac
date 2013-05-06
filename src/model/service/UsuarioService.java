@@ -1,7 +1,6 @@
 package model.service;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
 import model.dao.exceptions.NonexistentEntityException;
@@ -29,7 +28,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void create(UsuarioVO vo) throws PreexistingEntityException{
+    public void create(UsuarioVO vo) throws PreexistingEntityException {
         Usuario entity = new Usuario();
         entity.setClave(vo.getClave());
         entity.setCorreo(vo.getCorreo());
@@ -38,18 +37,18 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         entity.setNombreDeUsuario(vo.getNombreDeUsuario());
         entity.setRol(vo.getRol());
 
-        entity.setErrorCollection((Collection)vo.getErrorList());
+        entity.setErrorCollection((Collection) vo.getErrorList());
 
         Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
         empresa.getUsuarioCollection().add(entity);
         entity.setEmpresasNIT(empresa);
 
         DAOFactory.getInstance().getUsuarioDAO().create(entity);
-        
+
     }
 
     @Override
-    public UsuarioVO find(Long id) throws EntityNotFoundException{
+    public UsuarioVO find(Long id) throws EntityNotFoundException {
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().find(id);
         if (usuario != null) {
             return usuario.toVO();
@@ -75,7 +74,20 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public List<UsuarioVO> getList() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<UsuarioVO> list = new ArrayList<UsuarioVO>();
+        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList(em)) {
+            list.add((usuario).toVO());
+        }
+        Collections.sort(list, new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                UsuarioVO p1 = (UsuarioVO) o1;
+                UsuarioVO p2 = (UsuarioVO) o2;
+                return p1.getDni().compareTo(p2.getDni());
+            }
+        });
+        return list;
     }
 
     public UsuarioVO login(UsuarioVO vo) {
@@ -84,7 +96,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         entity.setClave(vo.getClave());
 
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().login(entity);
-        return usuario != null ? usuario.toVo() : null;
+        return usuario != null ? usuario.toVO() : null;
 
     }
 }
