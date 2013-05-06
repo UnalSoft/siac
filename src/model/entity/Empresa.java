@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -49,7 +51,8 @@ public class Empresa implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @Column(name = "nivel")
-    private String nivel;
+    @Enumerated(EnumType.STRING)
+    private Nivel nivel;
     @Column(name = "direccion")
     private String direccion;
     @Column(name = "telefono")
@@ -69,7 +72,7 @@ public class Empresa implements Serializable {
         this.nit = nit;
     }
 
-    public Empresa(Integer nit, String nombre, String nivel) {
+    public Empresa(Integer nit, String nombre, Nivel nivel) {
         this.nit = nit;
         this.nombre = nombre;
         this.nivel = nivel;
@@ -91,11 +94,11 @@ public class Empresa implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getNivel() {
+    public Nivel getNivel() {
         return nivel;
     }
 
-    public void setNivel(String nivel) {
+    public void setNivel(Nivel nivel) {
         this.nivel = nivel;
     }
 

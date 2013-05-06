@@ -8,7 +8,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
+import view.AdministradorPrincipal;
+import view.ConsultarPrincipal;
 import view.Login;
+import view.OtroRolPrincipal;
+import view.PrimerAdministradorPrincipal;
 import view.Principal;
 import view.ProveedorTIPrincipal;
 import view.RecuperarContrasena;
@@ -63,11 +67,33 @@ public class LoginController {
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);
 
-        if (ServiceFactory.getInstance().getUsuarioService().login(usuario) != null) {
-            //TODO: Cambiar vista segun usuario
-            ProveedorTIPrincipal proveedorTIPrincipal = new ProveedorTIPrincipal();
-            principal.setSize(proveedorTIPrincipal.getPreferredSize());
-            cambiarPanel(Principal.getLayoutP(), proveedorTIPrincipal);
+        UsuarioVO usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
+
+        if (usuarioLogin != null) {
+            switch (usuarioLogin.getRol()) {
+                case PROVEEDOR_DE_TI:
+                    ProveedorTIPrincipal proveedorTIPrincipal = new ProveedorTIPrincipal();
+                    principal.setSize(proveedorTIPrincipal.getPreferredSize());
+                    cambiarPanel(Principal.getLayoutP(), proveedorTIPrincipal);
+                    break;
+                case PRIMER_ADMINISTRADOR:
+                    PrimerAdministradorPrincipal primerAdministradorPrincipal = new PrimerAdministradorPrincipal();
+                    principal.setSize(primerAdministradorPrincipal.getPreferredSize());
+                    cambiarPanel(Principal.getLayoutP(), primerAdministradorPrincipal);
+                case ADMINISTRADOR:
+                    AdministradorPrincipal administradorPrincipal = new AdministradorPrincipal();
+                    principal.setSize(administradorPrincipal.getPreferredSize());
+                    cambiarPanel(Principal.getLayoutP(), administradorPrincipal);
+                case CONSULTA:
+                    ConsultarPrincipal consultarPrincipal = new ConsultarPrincipal();
+                    principal.setSize(consultarPrincipal.getPreferredSize());
+                    cambiarPanel(Principal.getLayoutP(), consultarPrincipal);
+                case OTRO:
+                    OtroRolPrincipal otroRolPrincipal = new OtroRolPrincipal();
+                    principal.setSize(otroRolPrincipal.getPreferredSize());
+                    cambiarPanel(Principal.getLayoutP(), otroRolPrincipal);
+            }
+
         } else {
             JOptionPane.showMessageDialog(login, "El usuario o la contraseña son incorrectos", "Error", JOptionPane.ERROR_MESSAGE, null);
         }

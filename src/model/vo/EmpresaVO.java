@@ -5,6 +5,7 @@
 package model.vo;
 
 import java.util.List;
+import model.entity.Nivel;
 
 /**
  *
@@ -15,7 +16,7 @@ public class EmpresaVO implements IValueObject {
 
     private Integer nit;
     private String nombre;
-    private String nivel;
+    private Nivel nivel;
     private String direccion;
     private String telefono;
     //Atributo externo
@@ -55,14 +56,14 @@ public class EmpresaVO implements IValueObject {
     /**
      * @return the nivel
      */
-    public String getNivel() {
+    public Nivel getNivel() {
         return nivel;
     }
 
     /**
      * @param nivel the nivel to set
      */
-    public void setNivel(String nivel) {
+    public void setNivel(Nivel nivel) {
         this.nivel = nivel;
     }
 

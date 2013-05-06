@@ -5,6 +5,7 @@
 package model.vo;
 
 import java.util.List;
+import model.entity.Rol;
 
 /**
  *
@@ -18,7 +19,7 @@ public class UsuarioVO implements IValueObject {
     private String nombreDeUsuario;
     private String clave;
     private String correo;
-    private String rol;
+    private Rol rol;
     //Atributo Externo
     private Integer empresasNIT;
     //Colecciones de VOS
@@ -97,14 +98,14 @@ public class UsuarioVO implements IValueObject {
     /**
      * @return the rol
      */
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
     /**
      * @param rol the rol to set
      */
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 

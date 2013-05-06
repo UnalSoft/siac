@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -59,7 +61,8 @@ public class Usuario implements Serializable {
     private String correo;
     @Basic(optional = false)
     @Column(name = "rol")
-    private String rol;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
     @JoinColumn(name = "empresasNIT", referencedColumnName = "nit")
     @ManyToOne(optional = false)
     private Empresa empresasNIT;
@@ -73,7 +76,7 @@ public class Usuario implements Serializable {
         this.dni = dni;
     }
 
-    public Usuario(Long dni, String nombre, String nombreDeUsuario, String clave, String correo, String rol) {
+    public Usuario(Long dni, String nombre, String nombreDeUsuario, String clave, String correo, Rol rol) {
         this.dni = dni;
         this.nombre = nombre;
         this.nombreDeUsuario = nombreDeUsuario;
@@ -122,11 +125,11 @@ public class Usuario implements Serializable {
         this.correo = correo;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
