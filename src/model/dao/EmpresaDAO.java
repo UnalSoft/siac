@@ -60,7 +60,7 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
                 entityManager.getTransaction().rollback();
             }
             if (find(entity.getNit()) != null) {
-                throw new PreexistingEntityException("La Empresa " + entity + " ya existe.", ex);
+                throw new PreexistingEntityException("La Empresa " + entity.getNombre() + " ya existe.", ex);
             }
             throw ex;
         } finally {
@@ -71,7 +71,7 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
     }
 
     @Override
-    public Empresa find(Integer id) {
+    public Empresa find(Integer id) throws EntityNotFoundException {
         EntityManager entityManager = null;
         try {
             entityManager = getEntityManager();
@@ -121,7 +121,7 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
             }
             Integer id = entity.getNit();
             if (find(id) == null) {
-                throw new NonexistentEntityException("The empresa with id " + id + " no longer exists.");
+                throw new NonexistentEntityException("La empresa con nit " + id + " no existe.");
             }
             throw ex;
         } finally {
