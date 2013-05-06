@@ -61,7 +61,7 @@ public class Login extends javax.swing.JPanel {
         contrasenaOlvidadaB.setText("¿Has olvidado tu contraseña?");
         contrasenaOlvidadaB.setBorderPainted(false);
         contrasenaOlvidadaB.setContentAreaFilled(false);
-        contrasenaOlvidadaB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        contrasenaOlvidadaB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         contrasenaOlvidadaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contrasenaOlvidadaBActionPerformed(evt);
@@ -91,13 +91,13 @@ public class Login extends javax.swing.JPanel {
 
         siacL.setText("SIAC");
         panelSupP.add(siacL);
-        siacL.setBounds(6, 7, 29, 16);
+        siacL.setBounds(6, 7, 40, 14);
 
         cerrarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         cerrarB.setText("X");
         cerrarB.setBorderPainted(false);
         cerrarB.setContentAreaFilled(false);
-        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cerrarB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         cerrarB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         cerrarB.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class Login extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .add(118, 118, 118)
                         .add(logoL)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -175,13 +175,13 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JButton cerrarB;
     private javax.swing.JLabel contrasenaL;
     private javax.swing.JButton contrasenaOlvidadaB;
-    private javax.swing.JPasswordField contrasenaPF;
+    public javax.swing.JPasswordField contrasenaPF;
     private javax.swing.JButton iniciarSesionB;
     private javax.swing.JLabel logoL;
     private javax.swing.JPanel panelInfP;
     private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel siacL;
     private javax.swing.JLabel usuarioL;
-    private javax.swing.JTextField usuarioTF;
+    public javax.swing.JTextField usuarioTF;
     // End of variables declaration//GEN-END:variables
 }

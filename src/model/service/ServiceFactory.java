@@ -18,5 +18,9 @@ public class ServiceFactory {
     }
     
     //TODO Actualizar conforme se agreguen nuevos servicios al modelo
+
+    public UsuarioService getUsuarioService() {
+        return UsuarioService.getInstance();
+    }
     
 }
