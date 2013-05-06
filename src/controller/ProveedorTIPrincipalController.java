@@ -2,9 +2,12 @@ package controller;
 
 import javax.swing.JPanel;
 import view.ConsultarEmpresa;
+import view.ConsultarUsuario;
 import view.CrearEmpresa;
 import view.EliminarEmpresa;
+import view.EliminarUsuario;
 import view.ModificarEmpresa;
+import view.ModificarUsuario;
 import view.Principal;
 import view.Secundario;
 
@@ -13,10 +16,10 @@ import view.Secundario;
  * @author Alexander
  */
 public class ProveedorTIPrincipalController {
-    
+
     static Principal principal;
     static Secundario secundario;
-    
+
     public static void cambiarPanel(JPanel contenedor, JPanel panel) {
         contenedor.setVisible(false);
         contenedor.removeAll();
@@ -60,5 +63,31 @@ public class ProveedorTIPrincipalController {
         secundario.setVisible(true);
         cambiarPanel(Secundario.getLayoutP(), eliminarEmpresa);
     }
-    
+
+    public void consultarAdministrador() {
+        secundario = new Secundario();
+//        secundario.setLocationRelativeTo(null);
+        ConsultarUsuario consultarUsuario = new ConsultarUsuario();
+        secundario.setSize(consultarUsuario.getPreferredSize());
+        secundario.setVisible(true);
+        cambiarPanel(Secundario.getLayoutP(), consultarUsuario);
+    }
+
+    public void modificarAdministrador() {
+        secundario = new Secundario();
+//        secundario.setLocationRelativeTo(null);
+        ModificarUsuario modificarUsuario = new ModificarUsuario();
+        secundario.setSize(modificarUsuario.getPreferredSize());
+        secundario.setVisible(true);
+        cambiarPanel(Secundario.getLayoutP(), modificarUsuario);
+    }
+
+    public void eliminarAdministrador() {
+        secundario = new Secundario();
+//        secundario.setLocationRelativeTo(null);
+        EliminarUsuario eliminarUsuario = new EliminarUsuario();
+        secundario.setSize(eliminarUsuario.getPreferredSize());
+        secundario.setVisible(true);
+        cambiarPanel(Secundario.getLayoutP(), eliminarUsuario);
+    }
 }
