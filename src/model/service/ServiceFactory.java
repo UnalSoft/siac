@@ -16,11 +16,16 @@ public class ServiceFactory {
         }
         return instance;
     }
-    
-    //TODO Actualizar conforme se agreguen nuevos servicios al modelo
+
+    public EmpresaService getEmpresaService() {
+        return EmpresaService.getInstance();
+    }
 
     public UsuarioService getUsuarioService() {
         return UsuarioService.getInstance();
     }
-    
+
+    public ErrorService getErrorService() {
+        return ErrorService.getInstance();
+    }
 }

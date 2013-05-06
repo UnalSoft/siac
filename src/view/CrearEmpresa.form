@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="panelInfP" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="panelSupP" pref="442" max="32767" attributes="0"/>
+                  <Component id="separadorS" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="nombreDeUsuarioL" min="-2" max="-2" attributes="0"/>
+                          <Component id="nombreL" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dniL" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="contrasenaL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="confirmarContrasenaL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="correoL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rolL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nitL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nombreEmpresaL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nivelL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="direccionL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="telefonoL" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="nombreTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dniTF" alignment="0" pref="245" max="32767" attributes="0"/>
+                                  <Component id="nombreDeUsuarioTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="contrasenaPF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="confirmarContrasenaPF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="correoTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="rolTF" alignment="0" pref="245" max="32767" attributes="0"/>
+                                  <Component id="nitTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="nombreEmpresaTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="nivelTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="direccionTF" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="telefonoTF" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="cancelarB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="crearUsuarioB" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="primerAdministradorL" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="empresaL" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="panelSupP" min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+              <Component id="empresaL" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nitL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nitTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nombreEmpresaL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombreEmpresaTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nivelL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nivelTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="direccionL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="direccionTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="telefonoL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="telefonoTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Component id="separadorS" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="primerAdministradorL" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dniL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dniTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nombreL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombreTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nombreDeUsuarioL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombreDeUsuarioTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="contrasenaL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="contrasenaPF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="confirmarContrasenaL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmarContrasenaPF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="correoL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="correoTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="rolL" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rolTF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cancelarB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="crearUsuarioB" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <Component id="panelInfP" min="-2" pref="20" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="panelSupP">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="b5" green="b5" red="b5" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="crearEmpresaL">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SIAC - Crear Empresa"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="6" y="7" width="150" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="cerrarB">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Calibri" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="X"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Mano"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="400" y="0" width="55" height="30"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="panelInfP">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="b5" green="b5" red="b5" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+    </Container>
+    <Component class="javax.swing.JLabel" name="dniL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="DNI:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nombreL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nombreTF">
+    </Component>
+    <Component class="javax.swing.JTextField" name="dniTF">
+    </Component>
+    <Component class="javax.swing.JLabel" name="nombreDeUsuarioL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre de usuario:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nombreDeUsuarioTF">
+    </Component>
+    <Component class="javax.swing.JLabel" name="contrasenaL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="confirmarContrasenaL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Confirmar contrase&#xf1;a:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="correoL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Correo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rolL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Rol:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="contrasenaPF">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="confirmarContrasenaPF">
+    </Component>
+    <Component class="javax.swing.JTextField" name="correoTF">
+    </Component>
+    <Component class="javax.swing.JButton" name="cancelarB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="crearUsuarioB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crear usuario"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="rolTF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Primer Administrador"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nitL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="NIT: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nombreEmpresaL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nivelL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nivel:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="direccionL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="telefonoL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tel&#xe9;fono:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nitTF">
+    </Component>
+    <Component class="javax.swing.JTextField" name="nombreEmpresaTF">
+    </Component>
+    <Component class="javax.swing.JTextField" name="nivelTF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nivel"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="direccionTF">
+    </Component>
+    <Component class="javax.swing.JTextField" name="telefonoTF">
+    </Component>
+    <Component class="javax.swing.JSeparator" name="separadorS">
+    </Component>
+    <Component class="javax.swing.JLabel" name="primerAdministradorL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Primer Administrador"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="empresaL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Empresa:"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

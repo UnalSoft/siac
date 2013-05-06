@@ -5,6 +5,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -19,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import model.vo.EmpresaVO;
+import model.vo.UsuarioVO;
 
 /**
  *
@@ -35,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Empresa.findByDireccion", query = "SELECT e FROM Empresa e WHERE e.direccion = :direccion"),
     @NamedQuery(name = "Empresa.findByTelefono", query = "SELECT e FROM Empresa e WHERE e.telefono = :telefono")})
 public class Empresa implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -161,5 +165,34 @@ public class Empresa implements Serializable {
     public String toString() {
         return "model.entity.Empresa[ nit=" + nit + " ]";
     }
-    
+
+    public EmpresaVO toVO() {
+        EmpresaVO empresa = new EmpresaVO();
+
+        empresa.setDireccion(getDireccion());
+        empresa.setNit(getNit());
+        empresa.setNivel(getNivel());
+        empresa.setNombre(getNombre());
+        empresa.setTelefono(getTelefono());
+
+        if (getEmpresasnit() != null) {
+            empresa.setEmpresasnit(getEmpresasnit().getNit());
+        }
+        
+        ArrayList<EmpresaVO> listEmpresaVO = new ArrayList<EmpresaVO>();
+        for (Empresa entity : getEmpresaCollection()) {
+            listEmpresaVO.add(entity.toVO());
+        }
+        
+        empresa.setEmpresaList(listEmpresaVO);
+        
+        ArrayList<UsuarioVO> listUsuarioVO = new ArrayList<UsuarioVO>();
+        for (Usuario entity : getUsuarioCollection()) {
+            listUsuarioVO.add(entity.toVO());
+        }
+        
+        empresa.setUsuarioList(listUsuarioVO);
+
+        return empresa;
+    }
 }

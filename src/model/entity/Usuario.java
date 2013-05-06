@@ -5,6 +5,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -19,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import model.vo.ErrorVO;
 import model.vo.UsuarioVO;
 
 /**
@@ -37,6 +39,7 @@ import model.vo.UsuarioVO;
     @NamedQuery(name = "Usuario.findByCorreo", query = "SELECT u FROM Usuario u WHERE u.correo = :correo"),
     @NamedQuery(name = "Usuario.findByRol", query = "SELECT u FROM Usuario u WHERE u.rol = :rol")})
 public class Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -168,9 +171,29 @@ public class Usuario implements Serializable {
     public String toString() {
         return "model.entity.Usuario[ dni=" + dni + " ]";
     }
-    
-    public UsuarioVO toVO(){
-        return null;
+
+    public UsuarioVO toVO() {
+
+        UsuarioVO usuario = new UsuarioVO();
+
+        usuario.setClave(getClave());
+        usuario.setCorreo(getCorreo());
+        usuario.setDni(getDni());
+        usuario.setNombre(getNombre());
+        usuario.setNombreDeUsuario(getNombreDeUsuario());
+        usuario.setRol(getRol());
+
+        if (getEmpresasNIT() != null) {
+            usuario.setEmpresasNIT(getEmpresasNIT().getNit());
+        }
+
+        ArrayList<ErrorVO> listErrorVO = new ArrayList<ErrorVO>();
+        for (Error entity : getErrorCollection()) {
+            listErrorVO.add(entity.toVO());
+        }
+        
+        usuario.setErrorList(listErrorVO);
+        
+        return usuario;
     }
-    
 }

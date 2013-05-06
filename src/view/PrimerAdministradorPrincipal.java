@@ -35,12 +35,10 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         rolL = new javax.swing.JLabel();
         accionesL = new javax.swing.JLabel();
         administrarUsuariosP = new javax.swing.JPanel();
-        crearUsuarioB = new javax.swing.JButton();
         consultarUsuarioB = new javax.swing.JButton();
         modificarUsuarioB = new javax.swing.JButton();
         eliminarUsuarioB = new javax.swing.JButton();
         administrarPrimerAdminP = new javax.swing.JPanel();
-        crearPrimerAdminB = new javax.swing.JButton();
         consultarPrimerAdminB = new javax.swing.JButton();
         modificarPrimerAdminB = new javax.swing.JButton();
         eliminarPrimerAdminB = new javax.swing.JButton();
@@ -80,11 +78,6 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
 
         administrarUsuariosP.setBorder(javax.swing.BorderFactory.createTitledBorder("Administrar Usuarios de Empresa"));
 
-        crearUsuarioB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        crearUsuarioB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Crear.png"))); // NOI18N
-        crearUsuarioB.setText("Crear");
-        crearUsuarioB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
         consultarUsuarioB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         consultarUsuarioB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarUsuarioB.setText("Consultar");
@@ -106,25 +99,20 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
             administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarUsuariosPLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(administrarUsuariosPLayout.createSequentialGroup()
-                        .add(modificarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(eliminarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(38, 38, 38))
-                    .add(administrarUsuariosPLayout.createSequentialGroup()
-                        .add(crearUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(consultarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .add(modificarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(eliminarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(38, 38, 38))
+            .add(administrarUsuariosPLayout.createSequentialGroup()
+                .add(77, 77, 77)
+                .add(consultarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         administrarUsuariosPLayout.setVerticalGroup(
             administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarUsuariosPLayout.createSequentialGroup()
-                .add(16, 16, 16)
-                .add(administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(crearUsuarioB)
-                    .add(consultarUsuarioB))
+                .add(17, 17, 17)
+                .add(consultarUsuarioB)
                 .add(30, 30, 30)
                 .add(administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(modificarUsuarioB)
@@ -133,11 +121,6 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         );
 
         administrarPrimerAdminP.setBorder(javax.swing.BorderFactory.createTitledBorder("Administrar Primer Administrador de Nivel"));
-
-        crearPrimerAdminB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        crearPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Crear.png"))); // NOI18N
-        crearPrimerAdminB.setText("Crear");
-        crearPrimerAdminB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         consultarPrimerAdminB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         consultarPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
@@ -160,26 +143,21 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
             administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarPrimerAdminPLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(administrarPrimerAdminPLayout.createSequentialGroup()
-                        .add(modificarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(eliminarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(38, 38, 38))
-                    .add(administrarPrimerAdminPLayout.createSequentialGroup()
-                        .add(crearPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(consultarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .add(modificarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(eliminarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(38, 38, 38))
+            .add(administrarPrimerAdminPLayout.createSequentialGroup()
+                .add(84, 84, 84)
+                .add(consultarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         administrarPrimerAdminPLayout.setVerticalGroup(
             administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarPrimerAdminPLayout.createSequentialGroup()
-                .add(16, 16, 16)
-                .add(administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(crearPrimerAdminB)
-                    .add(consultarPrimerAdminB))
-                .add(30, 30, 30)
+                .add(15, 15, 15)
+                .add(consultarPrimerAdminB)
+                .add(32, 32, 32)
                 .add(administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(modificarPrimerAdminB)
                     .add(eliminarPrimerAdminB))
@@ -313,8 +291,6 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton consultarPrimerAdminB;
     private javax.swing.JButton consultarUsuarioB;
     private javax.swing.JButton crearEmpresaB;
-    private javax.swing.JButton crearPrimerAdminB;
-    private javax.swing.JButton crearUsuarioB;
     private javax.swing.JButton eliminarEmpresaB;
     private javax.swing.JButton eliminarPrimerAdminB;
     private javax.swing.JButton eliminarUsuarioB;
