@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import model.vo.UsuarioVO;
 
 /**
  *
@@ -166,6 +167,10 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "model.entity.Usuario[ dni=" + dni + " ]";
+    }
+    
+    public UsuarioVO toVO(){
+        return null;
     }
     
 }
