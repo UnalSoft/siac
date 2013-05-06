@@ -31,7 +31,7 @@ public class Secundario extends javax.swing.JFrame {
         scrollPane = new javax.swing.JScrollPane();
         layoutP = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         layoutP.setLayout(new java.awt.BorderLayout());
         scrollPane.setViewportView(layoutP);

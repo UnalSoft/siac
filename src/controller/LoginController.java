@@ -47,7 +47,6 @@ public class LoginController {
         RecuperarContrasena recuperarContrasena = new RecuperarContrasena();
         secundario.setSize(recuperarContrasena.getPreferredSize());
         secundario.setVisible(true);
-        principal.setVisible(false);
         cambiarPanel(Secundario.getLayoutP(), recuperarContrasena);
     }
 

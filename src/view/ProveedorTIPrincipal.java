@@ -4,11 +4,15 @@
  */
 package view;
 
+import controller.ProveedorTIPrincipalController;
+
 /**
  *
  * @author Felipe
  */
 public class ProveedorTIPrincipal extends javax.swing.JPanel {
+    
+    ProveedorTIPrincipalController controller =  new ProveedorTIPrincipalController();
 
     /**
      * Creates new form AdministradorPrincipal
@@ -52,7 +56,7 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
 
         ProveedorTIL.setText("IAC - Proveedor de TI");
         panelSupP.add(ProveedorTIL);
-        ProveedorTIL.setBounds(6, 7, 135, 16);
+        ProveedorTIL.setBounds(6, 7, 106, 14);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
 
@@ -147,21 +151,41 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         crearEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Crear.png"))); // NOI18N
         crearEmpresaB.setText("Crear");
         crearEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        crearEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearEmpresaBActionPerformed(evt);
+            }
+        });
 
         consultarEmpresaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         consultarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarEmpresaB.setText("Consultar");
         consultarEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        consultarEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarEmpresaBActionPerformed(evt);
+            }
+        });
 
         modificarEmpresaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         modificarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
         modificarEmpresaB.setText("Modificar");
         modificarEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        modificarEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEmpresaBActionPerformed(evt);
+            }
+        });
 
         eliminarEmpresaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         eliminarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Eliminar.png"))); // NOI18N
         eliminarEmpresaB.setText("Eliminar");
         eliminarEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        eliminarEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarEmpresaBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout administrarNivelPLayout = new org.jdesktop.layout.GroupLayout(administrarNivelP);
         administrarNivelP.setLayout(administrarNivelPLayout);
@@ -256,6 +280,22 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
                 .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void crearEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEmpresaBActionPerformed
+        controller.crearEmpresa();
+    }//GEN-LAST:event_crearEmpresaBActionPerformed
+
+    private void consultarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmpresaBActionPerformed
+        controller.consultarEmpresa();
+    }//GEN-LAST:event_consultarEmpresaBActionPerformed
+
+    private void modificarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpresaBActionPerformed
+        controller.modificarEmpresa();
+    }//GEN-LAST:event_modificarEmpresaBActionPerformed
+
+    private void eliminarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpresaBActionPerformed
+        controller.eliminarEmpresa();
+    }//GEN-LAST:event_eliminarEmpresaBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ProveedorTIL;
