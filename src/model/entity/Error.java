@@ -30,6 +30,7 @@ import model.vo.ErrorVO;
     @NamedQuery(name = "Error.findByInterfaz", query = "SELECT e FROM Error e WHERE e.interfaz = :interfaz"),
     @NamedQuery(name = "Error.findByError", query = "SELECT e FROM Error e WHERE e.error = :error")})
 public class Error implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -117,7 +118,18 @@ public class Error implements Serializable {
 
     ErrorVO toVO() {
         //TODO
-        throw new UnsupportedOperationException("Not yet implemented");
+
+        ErrorVO error = new ErrorVO();
+
+        error.setError(getError());
+        error.setId(getId());
+        error.setInterfaz(getInterfaz());
+        if (getUsuariosDNI() != null) {
+            error.setUsuariosDNI(getUsuariosDNI().getDni());
+        }
+
+        return error;
+
+
     }
-    
 }
