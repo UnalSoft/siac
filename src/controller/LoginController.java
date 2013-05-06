@@ -10,6 +10,7 @@ import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
 import view.Login;
 import view.Principal;
+import view.ProveedorTIPrincipal;
 import view.RecuperarContrasena;
 import view.Secundario;
 
@@ -64,7 +65,9 @@ public class LoginController {
 
         if (ServiceFactory.getInstance().getUsuarioService().login(usuario) != null) {
             //TODO: Cambiar vista segun usuario
-//            cambiarPanel(Principal.getLayoutP(), new ProveedorTIPrincipal());
+            ProveedorTIPrincipal proveedorTIPrincipal = new ProveedorTIPrincipal();
+            principal.setSize(proveedorTIPrincipal.getPreferredSize());
+            cambiarPanel(Principal.getLayoutP(), proveedorTIPrincipal);
         } else {
             JOptionPane.showMessageDialog(login, "El usuario o la contraseña son incorrectos", "Error", JOptionPane.ERROR_MESSAGE, null);
         }

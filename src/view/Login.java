@@ -79,6 +79,11 @@ public class Login extends javax.swing.JPanel {
 
         iniciarSesionB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         iniciarSesionB.setText("Iniciar Sesión");
+        iniciarSesionB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarSesionBActionPerformed(evt);
+            }
+        });
 
         logoL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Logo.png"))); // NOI18N
 
@@ -170,6 +175,10 @@ public class Login extends javax.swing.JPanel {
     private void usuarioTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioTFActionPerformed
+
+    private void iniciarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBActionPerformed
+        LoginController.login();
+    }//GEN-LAST:event_iniciarSesionBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cerrarB;
