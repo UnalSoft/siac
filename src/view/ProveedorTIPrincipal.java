@@ -38,7 +38,6 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         crearCopiaDeSeguridadB = new javax.swing.JButton();
         restablecerCopiaDeSeguridadB = new javax.swing.JButton();
         administrarPrimerAdminP = new javax.swing.JPanel();
-        crearPrimerAdminB = new javax.swing.JButton();
         consultarPrimerAdminB = new javax.swing.JButton();
         modificarPrimerAdminB = new javax.swing.JButton();
         eliminarPrimerAdminB = new javax.swing.JButton();
@@ -111,11 +110,6 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
 
         administrarPrimerAdminP.setBorder(javax.swing.BorderFactory.createTitledBorder("Administrar Primer Administrador de Distribuidores"));
 
-        crearPrimerAdminB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        crearPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Crear.png"))); // NOI18N
-        crearPrimerAdminB.setText("Crear");
-        crearPrimerAdminB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-
         consultarPrimerAdminB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         consultarPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarPrimerAdminB.setText("Consultar");
@@ -137,26 +131,21 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
             administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarPrimerAdminPLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(administrarPrimerAdminPLayout.createSequentialGroup()
-                        .add(modificarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(eliminarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(38, 38, 38))
-                    .add(administrarPrimerAdminPLayout.createSequentialGroup()
-                        .add(crearPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(consultarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .add(modificarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(eliminarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .add(administrarPrimerAdminPLayout.createSequentialGroup()
+                .add(95, 95, 95)
+                .add(consultarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         administrarPrimerAdminPLayout.setVerticalGroup(
             administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarPrimerAdminPLayout.createSequentialGroup()
-                .add(16, 16, 16)
-                .add(administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(crearPrimerAdminB)
-                    .add(consultarPrimerAdminB))
-                .add(30, 30, 30)
+                .add(21, 21, 21)
+                .add(consultarPrimerAdminB)
+                .add(26, 26, 26)
                 .add(administrarPrimerAdminPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(modificarPrimerAdminB)
                     .add(eliminarPrimerAdminB))
@@ -232,7 +221,7 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
                         .addContainerGap()
                         .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 350, Short.MAX_VALUE))
+                        .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
@@ -290,7 +279,6 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton consultarPrimerAdminB;
     private javax.swing.JButton crearCopiaDeSeguridadB;
     private javax.swing.JButton crearEmpresaB;
-    private javax.swing.JButton crearPrimerAdminB;
     private javax.swing.JButton eliminarEmpresaB;
     private javax.swing.JButton eliminarPrimerAdminB;
     private javax.swing.JLabel jLabel2;
