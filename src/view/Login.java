@@ -38,7 +38,6 @@ public class Login extends javax.swing.JPanel {
         contrasenaL = new javax.swing.JLabel();
         panelSupP = new javax.swing.JPanel();
         siacL = new javax.swing.JLabel();
-        cerrarB = new javax.swing.JButton();
 
         usuarioL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         usuarioL.setText("Usuario:");
@@ -93,21 +92,6 @@ public class Login extends javax.swing.JPanel {
         panelSupP.add(siacL);
         siacL.setBounds(6, 7, 29, 16);
 
-        cerrarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        cerrarB.setText("X");
-        cerrarB.setBorderPainted(false);
-        cerrarB.setContentAreaFilled(false);
-        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cerrarB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cerrarB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        cerrarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarBActionPerformed(evt);
-            }
-        });
-        panelSupP.add(cerrarB);
-        cerrarB.setBounds(310, 0, 55, 30);
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,10 +143,6 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cerrarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBActionPerformed
-        LoginController.cerrar();
-    }//GEN-LAST:event_cerrarBActionPerformed
-
     private void contrasenaOlvidadaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenaOlvidadaBActionPerformed
         LoginController.mostrarRecuperarContrasena();
     }//GEN-LAST:event_contrasenaOlvidadaBActionPerformed
@@ -172,7 +152,6 @@ public class Login extends javax.swing.JPanel {
     }//GEN-LAST:event_usuarioTFActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cerrarB;
     private javax.swing.JLabel contrasenaL;
     private javax.swing.JButton contrasenaOlvidadaB;
     private javax.swing.JPasswordField contrasenaPF;

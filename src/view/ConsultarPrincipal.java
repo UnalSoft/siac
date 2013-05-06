@@ -28,7 +28,6 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
 
         panelSupP = new javax.swing.JPanel();
         AdministradorL = new javax.swing.JLabel();
-        cerrarB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
         registradoL = new javax.swing.JLabel();
@@ -44,16 +43,6 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
         AdministradorL.setText("SIAC - Usuario");
         panelSupP.add(AdministradorL);
         AdministradorL.setBounds(6, 7, 93, 16);
-
-        cerrarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        cerrarB.setText("X");
-        cerrarB.setBorderPainted(false);
-        cerrarB.setContentAreaFilled(false);
-        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cerrarB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cerrarB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        panelSupP.add(cerrarB);
-        cerrarB.setBounds(450, 0, 55, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
 
@@ -143,7 +132,6 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
     private javax.swing.JLabel AdministradorL;
     private javax.swing.JLabel accionesL;
     private javax.swing.JLabel bienvenidoL;
-    private javax.swing.JButton cerrarB;
     private javax.swing.JButton consultarB;
     private javax.swing.JPanel consultarUsuariosP;
     private javax.swing.JLabel jLabel2;

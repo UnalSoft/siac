@@ -30,7 +30,6 @@ public class RecuperarContrasena extends javax.swing.JPanel {
 
         panelSupP = new javax.swing.JPanel();
         restablecerContrasenaL = new javax.swing.JLabel();
-        cerrarB = new javax.swing.JButton();
         emailL = new javax.swing.JLabel();
         emailTF = new javax.swing.JTextField();
         cancelarB = new javax.swing.JButton();
@@ -46,21 +45,6 @@ public class RecuperarContrasena extends javax.swing.JPanel {
         restablecerContrasenaL.setText("SIAC - Restablecer Contraseña");
         panelSupP.add(restablecerContrasenaL);
         restablecerContrasenaL.setBounds(6, 7, 192, 16);
-
-        cerrarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        cerrarB.setText("X");
-        cerrarB.setBorderPainted(false);
-        cerrarB.setContentAreaFilled(false);
-        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cerrarB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cerrarB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        cerrarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarBActionPerformed(evt);
-            }
-        });
-        panelSupP.add(cerrarB);
-        cerrarB.setBounds(350, 0, 55, 30);
 
         emailL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         emailL.setText("Email:");
@@ -132,17 +116,12 @@ public class RecuperarContrasena extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cerrarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBActionPerformed
-        RecuperarContrasenaController.mostrarLogin();
-    }//GEN-LAST:event_cerrarBActionPerformed
-
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
         RecuperarContrasenaController.mostrarLogin();
     }//GEN-LAST:event_cancelarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarB;
-    private javax.swing.JButton cerrarB;
     private javax.swing.JLabel emailL;
     private javax.swing.JTextField emailTF;
     private javax.swing.JPanel panelInfP;

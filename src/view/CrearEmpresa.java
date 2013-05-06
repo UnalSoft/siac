@@ -28,7 +28,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
 
         panelSupP = new javax.swing.JPanel();
         crearEmpresaL = new javax.swing.JLabel();
-        cerrarB = new javax.swing.JButton();
         panelInfP = new javax.swing.JPanel();
         dniL = new javax.swing.JLabel();
         nombreL = new javax.swing.JLabel();
@@ -66,16 +65,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
         crearEmpresaL.setText("SIAC - Crear Empresa");
         panelSupP.add(crearEmpresaL);
         crearEmpresaL.setBounds(6, 7, 150, 16);
-
-        cerrarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        cerrarB.setText("X");
-        cerrarB.setBorderPainted(false);
-        cerrarB.setContentAreaFilled(false);
-        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cerrarB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cerrarB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        panelSupP.add(cerrarB);
-        cerrarB.setBounds(400, 0, 55, 30);
 
         panelInfP.setBackground(new java.awt.Color(181, 181, 181));
         panelInfP.setLayout(null);
@@ -243,7 +232,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarB;
-    private javax.swing.JButton cerrarB;
     private javax.swing.JLabel confirmarContrasenaL;
     private javax.swing.JPasswordField confirmarContrasenaPF;
     private javax.swing.JLabel contrasenaL;

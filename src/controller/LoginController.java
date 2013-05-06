@@ -25,7 +25,7 @@ public class LoginController {
             public void run() {
                 principal = new Principal();
                 principal.setVisible(true);
-                principal.setSize(361, 379);
+                principal.setSize(380, 390);
                 Principal.getLayoutP().setVisible(false);
                 Principal.getLayoutP().removeAll();
                 Principal.getLayoutP().add(new Login());
