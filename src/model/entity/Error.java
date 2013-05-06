@@ -15,6 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import model.vo.ErrorVO;
 
 /**
  *
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Error.findByInterfaz", query = "SELECT e FROM Error e WHERE e.interfaz = :interfaz"),
     @NamedQuery(name = "Error.findByError", query = "SELECT e FROM Error e WHERE e.error = :error")})
 public class Error implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -113,5 +115,21 @@ public class Error implements Serializable {
     public String toString() {
         return "model.entity.Error[ id=" + id + " ]";
     }
-    
+
+    public ErrorVO toVO() {
+        //TODO
+
+        ErrorVO error = new ErrorVO();
+
+        error.setError(getError());
+        error.setId(getId());
+        error.setInterfaz(getInterfaz());
+        if (getUsuariosDNI() != null) {
+            error.setUsuariosDNI(getUsuariosDNI().getDni());
+        }
+
+        return error;
+
+
+    }
 }
