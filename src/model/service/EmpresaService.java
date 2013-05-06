@@ -4,10 +4,12 @@
  */
 package model.service;
 
-import java.util.List;
+import java.util.*;
 import javax.persistence.EntityNotFoundException;
+import model.dao.DAOFactory;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
+import model.entity.Empresa;
 import model.vo.EmpresaVO;
 
 /**
@@ -31,17 +33,44 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
 
     @Override
     public void create(EmpresaVO vo) throws PreexistingEntityException, NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Empresa entity = new Empresa();
+        entity.setDireccion(vo.getDireccion());
+        entity.setNit(vo.getNit());
+        entity.setNivel(vo.getNivel());
+        entity.setNombre(vo.getNombre());
+        entity.setTelefono(vo.getTelefono());
+
+        Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasnit());
+        empresa.getEmpresaCollection().add(entity);
+        entity.setEmpresasnit(empresa);
+
+        entity.setEmpresaCollection((Collection) vo.getEmpresaList());
+        entity.setUsuarioCollection((Collection) vo.getUsuarioList());
+
+        DAOFactory.getInstance().getEmpresaDAO().create(entity);
+
     }
 
     @Override
     public EmpresaVO find(Integer id) throws EntityNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().find(id);
+        if (Empresa != null) {
+            return Empresa.toVO();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public void update(EmpresaVO vo) throws NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Empresa entity = DAOFactory.getInstance().getEmpresaDAO().find(vo.getNit());
+        entity.setDireccion(vo.getDireccion());
+        entity.setNivel(vo.getNivel());
+        entity.setNombre(vo.getNombre());
+        entity.setTelefono(vo.getTelefono());
+        DAOFactory.getInstance().getEmpresaDAO().update(entity);
+
+
     }
 
     @Override
@@ -51,6 +80,19 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
 
     @Override
     public List<EmpresaVO> getList() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<EmpresaVO> list = new ArrayList<EmpresaVO>();
+        for (Empresa empresa : DAOFactory.getInstance().getEmpresaDAO().getList()) {
+            list.add((empresa).toVO());
+        }
+        Collections.sort(list, new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                EmpresaVO p1 = (EmpresaVO) o1;
+                EmpresaVO p2 = (EmpresaVO) o2;
+                return p1.getNit().compareTo(p2.getNit());
+            }
+        });
+        return list;
     }
 }
