@@ -32,14 +32,19 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
     }
 
     @Override
-    public void create(Usuario entity) throws PreexistingEntityException {
+    public void create(Usuario entity) throws PreexistingEntityException, NonexistentEntityException {
         EntityManager entityManager = null;
         try {
             entityManager = getEntityManager();
             entityManager.getTransaction().begin();
             Empresa empresasNIT = entity.getEmpresasNIT();
             if (empresasNIT != null) {
-                empresasNIT = entityManager.getReference(empresasNIT.getClass(), empresasNIT.getNit());
+                Integer nitEmpresa = empresasNIT.getNit();
+                try {
+                    empresasNIT = entityManager.getReference(empresasNIT.getClass(), empresasNIT.getNit());
+                } catch (EntityNotFoundException e) {
+                    throw new NonexistentEntityException("La Empresa con Nit " + nitEmpresa + ", asociada al usuario que intenta crear, no existe.", e);
+                }
                 entity.setEmpresasNIT(empresasNIT);
             }
 

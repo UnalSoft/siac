@@ -29,7 +29,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void create(UsuarioVO vo) throws PreexistingEntityException{
+    public void create(UsuarioVO vo) throws PreexistingEntityException, NonexistentEntityException{
         Usuario entity = new Usuario();
         entity.setClave(vo.getClave());
         entity.setCorreo(vo.getCorreo());
