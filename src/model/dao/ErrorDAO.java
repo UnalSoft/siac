@@ -12,13 +12,12 @@ import model.entity.Error;
  */
 public class ErrorDAO implements ICrudDAO<Error, Integer> {
 
-    private EntityManager entityManager;
-    
-    public ErrorDAO(String PUName) { 
-    
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(PUName);
-        this.entityManager = entityManagerFactory.createEntityManager();
-        
+    private EntityManagerFactory entityManagerFactory;
+
+    public ErrorDAO(String PUName) {
+
+        entityManagerFactory = Persistence.createEntityManagerFactory(PUName);
+
     }
 
     @Override

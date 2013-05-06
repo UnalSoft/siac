@@ -12,13 +12,16 @@ import model.entity.Empresa;
  */
 public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
 
-    private EntityManager entityManager;
-    
+    private EntityManagerFactory entityManagerFactory;
+
     public EmpresaDAO(String PUName) {
-        
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(PUName);
-        this.entityManager = entityManagerFactory.createEntityManager();
-        
+
+        entityManagerFactory = Persistence.createEntityManagerFactory(PUName);
+
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManagerFactory.createEntityManager();
     }
 
     @Override
