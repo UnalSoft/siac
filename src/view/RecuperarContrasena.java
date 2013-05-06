@@ -28,67 +28,67 @@ public class RecuperarContrasena extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        panelSupP = new javax.swing.JPanel();
+        restablecerContrasenaL = new javax.swing.JLabel();
+        cerrarB = new javax.swing.JButton();
+        emailL = new javax.swing.JLabel();
+        emailTF = new javax.swing.JTextField();
+        cancelarB = new javax.swing.JButton();
+        restablecerContrasenaB = new javax.swing.JButton();
+        panelInfP = new javax.swing.JPanel();
 
         setMaximumSize(new java.awt.Dimension(397, 161));
         setMinimumSize(new java.awt.Dimension(397, 161));
 
-        jPanel1.setBackground(new java.awt.Color(181, 181, 181));
-        jPanel1.setLayout(null);
+        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
+        panelSupP.setLayout(null);
 
-        jLabel3.setText("SIAC - Restablecer Contraseña");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(6, 7, 192, 16);
+        restablecerContrasenaL.setText("SIAC - Restablecer Contraseña");
+        panelSupP.add(restablecerContrasenaL);
+        restablecerContrasenaL.setBounds(6, 7, 192, 16);
 
-        jButton3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton3.setText("X");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cerrarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        cerrarB.setText("X");
+        cerrarB.setBorderPainted(false);
+        cerrarB.setContentAreaFilled(false);
+        cerrarB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrarB.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cerrarB.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        cerrarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cerrarBActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(350, 0, 55, 30);
+        panelSupP.add(cerrarB);
+        cerrarB.setBounds(350, 0, 55, 30);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel1.setText("Email:");
-        jLabel1.setToolTipText("");
+        emailL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        emailL.setText("Email:");
+        emailL.setToolTipText("");
 
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        emailTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cancelarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        cancelarB.setText("Cancelar");
+        cancelarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cancelarBActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton4.setText("Restablecer Contraseña");
+        restablecerContrasenaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        restablecerContrasenaB.setText("Restablecer Contraseña");
 
-        jPanel2.setBackground(new java.awt.Color(181, 181, 181));
+        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+        org.jdesktop.layout.GroupLayout panelInfPLayout = new org.jdesktop.layout.GroupLayout(panelInfP);
+        panelInfP.setLayout(panelInfPLayout);
+        panelInfPLayout.setHorizontalGroup(
+            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 0, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+        panelInfPLayout.setVerticalGroup(
+            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 18, Short.MAX_VALUE)
         );
 
@@ -98,56 +98,56 @@ public class RecuperarContrasena extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-                    .add(jPanel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                    .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .add(0, 0, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
                         .add(16, 16, 16)
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(cancelarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 203, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(restablecerContrasenaB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 203, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(34, 34, 34)
-                        .add(jLabel1)
+                        .add(emailL)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 261, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 261, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(17, 17, 17))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(emailL)
+                    .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(19, 19, 19)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
-                    .add(jButton4))
+                    .add(cancelarB)
+                    .add(restablecerContrasenaB))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void cerrarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarBActionPerformed
         RecuperarContrasenaController.mostrarLogin();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_cerrarBActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
         RecuperarContrasenaController.mostrarLogin();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cancelarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton cancelarB;
+    private javax.swing.JButton cerrarB;
+    private javax.swing.JLabel emailL;
+    private javax.swing.JTextField emailTF;
+    private javax.swing.JPanel panelInfP;
+    private javax.swing.JPanel panelSupP;
+    private javax.swing.JButton restablecerContrasenaB;
+    private javax.swing.JLabel restablecerContrasenaL;
     // End of variables declaration//GEN-END:variables
 }
