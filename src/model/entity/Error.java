@@ -15,6 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import model.vo.ErrorVO;
 
 /**
  *
@@ -112,6 +113,11 @@ public class Error implements Serializable {
     @Override
     public String toString() {
         return "model.entity.Error[ id=" + id + " ]";
+    }
+
+    ErrorVO toVO() {
+        //TODO
+        throw new UnsupportedOperationException("Not yet implemented");
     }
     
 }
