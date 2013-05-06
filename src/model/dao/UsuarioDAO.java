@@ -19,22 +19,32 @@ import model.entity.Usuario;
  */
 public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
-    private EntityManager entityManager;
+    private EntityManagerFactory entityManagerFactory;
 
     public UsuarioDAO(String PUName) {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(PUName);
-        this.entityManager = entityManagerFactory.createEntityManager();
+        entityManagerFactory = Persistence.createEntityManagerFactory(PUName);
 
     }
 
+    public EntityManager getEntityManager() {
+        return entityManagerFactory.createEntityManager();
+    }
+
     @Override
-    public void create(Usuario entity) throws PreexistingEntityException {
+    public void create(Usuario entity) throws PreexistingEntityException, NonexistentEntityException {
+        EntityManager entityManager = null;
         try {
+            entityManager = getEntityManager();
             entityManager.getTransaction().begin();
             Empresa empresasNIT = entity.getEmpresasNIT();
             if (empresasNIT != null) {
-                empresasNIT = entityManager.getReference(empresasNIT.getClass(), empresasNIT.getNit());
+                Integer nitEmpresa = empresasNIT.getNit();
+                try {
+                    empresasNIT = entityManager.getReference(empresasNIT.getClass(), empresasNIT.getNit());
+                } catch (EntityNotFoundException e) {
+                    throw new NonexistentEntityException("La Empresa con Nit " + nitEmpresa + ", asociada al usuario que intenta crear, no existe.", e);
+                }
                 entity.setEmpresasNIT(empresasNIT);
             }
 
@@ -63,7 +73,9 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
     @Override
     public Usuario find(Long id) throws EntityNotFoundException {
+        EntityManager entityManager = null;
         try {
+            entityManager = getEntityManager();
             return entityManager.find(Usuario.class, id);
         } catch (EntityNotFoundException ex) {
             throw new EntityNotFoundException("El usuario con id " + id + " no existe.");
@@ -77,7 +89,9 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
     @Override
     public void update(Usuario entity) throws NonexistentEntityException {
+        EntityManager entityManager = null;
         try {
+            entityManager = getEntityManager();
             entityManager.getTransaction().begin();
 
             Usuario persistentUsuario = entityManager.find(Usuario.class, entity.getDni());
@@ -123,25 +137,40 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
     @Override
     public void delete(Long id) throws NonexistentEntityException {
-        entityManager.getTransaction().begin();
-        Usuario usuario = null;
+        EntityManager entityManager = null;
         try {
-            usuario = entityManager.getReference(Usuario.class, id);
-        } catch (EntityNotFoundException e) {
-            throw new NonexistentEntityException("El usuario con id " + id + " no existe.", e);
+            entityManager = getEntityManager();
+            entityManager.getTransaction().begin();
+            Usuario usuario = null;
+            try {
+                usuario = entityManager.getReference(Usuario.class, id);
+            } catch (EntityNotFoundException e) {
+                throw new NonexistentEntityException("El usuario con id " + id + " no existe.", e);
+            }
+            Empresa empresasNIT = usuario.getEmpresasNIT();
+            if (empresasNIT != null) {
+                empresasNIT.getUsuarioCollection().remove(usuario);
+                entityManager.merge(empresasNIT);
+            }
+            entityManager.remove(usuario);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager != null && entityManager.getTransaction() != null) {
+                entityManager.getTransaction().rollback();
+            }
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
         }
-        Empresa empresasNIT = usuario.getEmpresasNIT();
-        if (empresasNIT != null) {
-            empresasNIT.getUsuarioCollection().remove(usuario);
-            entityManager.merge(empresasNIT);
-        }
-        entityManager.remove(usuario);
-        entityManager.getTransaction().commit();
     }
 
     @Override
     public List<Usuario> getList() {
+        EntityManager entityManager = null;
         try {
+            entityManager = getEntityManager();
             CriteriaQuery cq = entityManager.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Usuario.class));
             Query q = entityManager.createQuery(cq);
@@ -155,7 +184,9 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
     }
 
     public Usuario login(Usuario entity) {
+        EntityManager entityManager = null;
         try {
+            entityManager = getEntityManager();
             Usuario usuario;
             Query q = entityManager.createQuery("SELECT u FROM Usuario u "
                     + "WHERE u.nombreDeUsuario LIKE :username "

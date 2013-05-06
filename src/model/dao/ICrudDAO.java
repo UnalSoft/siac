@@ -12,7 +12,7 @@ import model.dao.exceptions.PreexistingEntityException;
  */
 public interface ICrudDAO<E, ID extends Serializable> {
     
-    void create(E entity) throws PreexistingEntityException;
+    void create(E entity) throws PreexistingEntityException, NonexistentEntityException;
 
     E find(ID id) throws EntityNotFoundException;
 

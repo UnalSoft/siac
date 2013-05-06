@@ -16,7 +16,7 @@ import model.dao.exceptions.PreexistingEntityException;
  */
 public interface IService<VO, ID extends Serializable> {
 
-    void create(VO vo) throws PreexistingEntityException;
+    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException;
 
     VO find(ID id)  throws EntityNotFoundException;
 
