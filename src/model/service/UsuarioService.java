@@ -75,7 +75,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     @Override
     public List<UsuarioVO> getList() {
         List<UsuarioVO> list = new ArrayList<UsuarioVO>();
-        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList(em)) {
+        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList()) {
             list.add((usuario).toVO());
         }
         Collections.sort(list, new Comparator() {
