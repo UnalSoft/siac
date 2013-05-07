@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Felipe
@@ -15,6 +18,54 @@ public class CrearEmpresa extends javax.swing.JPanel {
      */
     public CrearEmpresa() {
         initComponents();
+    }
+
+    public JPasswordField getConfirmarContrasenaPF() {
+        return confirmarContrasenaPF;
+    }
+
+    public JPasswordField getContrasenaPF() {
+        return contrasenaPF;
+    }
+
+    public JTextField getCorreoTF() {
+        return correoTF;
+    }
+
+    public JTextField getDireccionTF() {
+        return direccionTF;
+    }
+
+    public JTextField getDniTF() {
+        return dniTF;
+    }
+
+    public JTextField getNitTF() {
+        return nitTF;
+    }
+
+    public JTextField getNivelTF() {
+        return nivelTF;
+    }
+
+    public JTextField getNombreDeUsuarioTF() {
+        return nombreDeUsuarioTF;
+    }
+
+    public JTextField getNombreEmpresaTF() {
+        return nombreEmpresaTF;
+    }
+
+    public JTextField getNombreTF() {
+        return nombreTF;
+    }
+
+    public JTextField getRolTF() {
+        return rolTF;
+    }
+
+    public JTextField getTelefonoTF() {
+        return telefonoTF;
     }
 
     /**
@@ -64,7 +115,7 @@ public class CrearEmpresa extends javax.swing.JPanel {
 
         crearEmpresaL.setText("SIAC - Crear Empresa");
         panelSupP.add(crearEmpresaL);
-        crearEmpresaL.setBounds(6, 7, 150, 16);
+        crearEmpresaL.setBounds(6, 7, 150, 14);
 
         panelInfP.setBackground(new java.awt.Color(181, 181, 181));
         panelInfP.setLayout(null);
@@ -161,7 +212,7 @@ public class CrearEmpresa extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
                         .add(empresaL)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

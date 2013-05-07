@@ -4,7 +4,7 @@
  */
 package view;
 
-import javax.swing.JPanel;
+import javax.swing.JViewport;
 
 /**
  *
@@ -29,28 +29,18 @@ public class Secundario extends javax.swing.JFrame {
     private void initComponents() {
 
         scrollPane = new javax.swing.JScrollPane();
-        layoutP = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        layoutP.setLayout(new java.awt.BorderLayout());
-        scrollPane.setViewportView(layoutP);
-
         getContentPane().add(scrollPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static JPanel getLayoutP() {
-        return layoutP;
-    }
-
-    public static void setLayoutP(JPanel layoutP) {
-        Secundario.layoutP = layoutP;
+    public JViewport getViewport() {
+        return scrollPane.getViewport();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JPanel layoutP;
     private javax.swing.JScrollPane scrollPane;
     // End of variables declaration//GEN-END:variables
 }

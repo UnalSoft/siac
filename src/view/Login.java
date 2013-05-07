@@ -5,6 +5,8 @@
 package view;
 
 import controller.LoginController;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +21,14 @@ public class Login extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JPasswordField getContrasenaPF() {
+        return contrasenaPF;
+    }
+
+    public JTextField getUsuarioTF() {
+        return usuarioTF;
+    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +59,7 @@ public class Login extends javax.swing.JPanel {
         panelInfP.setLayout(panelInfPLayout);
         panelInfPLayout.setHorizontalGroup(
             panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 361, Short.MAX_VALUE)
+            .add(0, 0, Short.MAX_VALUE)
         );
         panelInfPLayout.setVerticalGroup(
             panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -103,16 +113,6 @@ public class Login extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(0, 0, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(usuarioL)
-                    .add(contrasenaL))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(contrasenaPF, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                    .add(usuarioTF))
-                .add(21, 21, 21))
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -122,16 +122,26 @@ public class Login extends javax.swing.JPanel {
                         .add(iniciarSesionB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(118, 118, 118)
-                        .add(logoL)))
-                .addContainerGap())
+                        .add(logoL))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(22, 22, 22)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(usuarioL)
+                            .add(contrasenaL))
+                        .add(7, 7, 7)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(usuarioTF)
+                            .add(contrasenaPF))
+                        .add(10, 10, 10)))
+                .add(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(38, 38, 38)
+                .add(18, 18, 18)
                 .add(logoL)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 58, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(usuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(usuarioL))
@@ -163,13 +173,13 @@ public class Login extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contrasenaL;
     private javax.swing.JButton contrasenaOlvidadaB;
-    public javax.swing.JPasswordField contrasenaPF;
+    private javax.swing.JPasswordField contrasenaPF;
     private javax.swing.JButton iniciarSesionB;
     private javax.swing.JLabel logoL;
     private javax.swing.JPanel panelInfP;
     private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel siacL;
     private javax.swing.JLabel usuarioL;
-    public javax.swing.JTextField usuarioTF;
+    private javax.swing.JTextField usuarioTF;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JViewport;
 import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
 import view.AdministradorPrincipal;
@@ -30,11 +31,10 @@ public class LoginController {
 
     public static void mostrarLogin() {
         principal = new Principal();
-//        principal.setLocationRelativeTo(null);
+        principal.setLocationRelativeTo(null);
         login = new Login();
-        principal.setSize(login.getPreferredSize());
         principal.setVisible(true);
-        cambiarPanel(Principal.getLayoutP(), login);
+        cambiarPanel(principal.getViewport(), login);
     }
 
     public static void cerrar() {
@@ -43,14 +43,14 @@ public class LoginController {
 
     public static void mostrarRecuperarContrasena() {
         secundario = new Secundario();
-//        secundario.setLocationRelativeTo(null);
+        secundario.setLocationRelativeTo(principal);
         RecuperarContrasena recuperarContrasena = new RecuperarContrasena();
         secundario.setSize(recuperarContrasena.getPreferredSize());
         secundario.setVisible(true);
-        cambiarPanel(Secundario.getLayoutP(), recuperarContrasena);
+        cambiarPanel(secundario.getViewport(), recuperarContrasena);
     }
 
-    public static void cambiarPanel(JPanel contenedor, JPanel panel) {
+    public static void cambiarPanel(JViewport contenedor, JPanel panel) {
         contenedor.setVisible(false);
         contenedor.removeAll();
         contenedor.add(panel);
@@ -60,8 +60,8 @@ public class LoginController {
 
     public static void login() {
         UsuarioVO usuario = new UsuarioVO();
-        String nombreUsuario = login.usuarioTF.getText();
-        String clave = new String(login.contrasenaPF.getPassword());
+        String nombreUsuario = login.getUsuarioTF().getText();
+        String clave = new String(login.getContrasenaPF().getPassword());
 
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);
@@ -73,24 +73,24 @@ public class LoginController {
                 case PROVEEDOR_DE_TI:
                     ProveedorTIPrincipal proveedorTIPrincipal = new ProveedorTIPrincipal();
                     principal.setSize(proveedorTIPrincipal.getPreferredSize());
-                    cambiarPanel(Principal.getLayoutP(), proveedorTIPrincipal);
+                    cambiarPanel(principal.getViewport(), proveedorTIPrincipal);
                     break;
                 case PRIMER_ADMINISTRADOR:
                     PrimerAdministradorPrincipal primerAdministradorPrincipal = new PrimerAdministradorPrincipal();
                     principal.setSize(primerAdministradorPrincipal.getPreferredSize());
-                    cambiarPanel(Principal.getLayoutP(), primerAdministradorPrincipal);
+                    cambiarPanel(principal.getViewport(), primerAdministradorPrincipal);
                 case ADMINISTRADOR:
                     AdministradorPrincipal administradorPrincipal = new AdministradorPrincipal();
                     principal.setSize(administradorPrincipal.getPreferredSize());
-                    cambiarPanel(Principal.getLayoutP(), administradorPrincipal);
+                    cambiarPanel(principal.getViewport(), administradorPrincipal);
                 case CONSULTA:
                     ConsultarPrincipal consultarPrincipal = new ConsultarPrincipal();
                     principal.setSize(consultarPrincipal.getPreferredSize());
-                    cambiarPanel(Principal.getLayoutP(), consultarPrincipal);
+                    cambiarPanel(principal.getViewport(), consultarPrincipal);
                 case OTRO:
                     OtroRolPrincipal otroRolPrincipal = new OtroRolPrincipal();
                     principal.setSize(otroRolPrincipal.getPreferredSize());
-                    cambiarPanel(Principal.getLayoutP(), otroRolPrincipal);
+                    cambiarPanel(principal.getViewport(), otroRolPrincipal);
             }
 
         } else {

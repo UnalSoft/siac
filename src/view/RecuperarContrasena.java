@@ -5,6 +5,7 @@
 package view;
 
 import controller.RecuperarContrasenaController;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,6 +18,10 @@ public class RecuperarContrasena extends javax.swing.JPanel {
      */
     public RecuperarContrasena() {
         initComponents();
+    }
+
+    public JTextField getEmailTF() {
+        return emailTF;
     }
 
     /**
@@ -44,7 +49,7 @@ public class RecuperarContrasena extends javax.swing.JPanel {
 
         restablecerContrasenaL.setText("SIAC - Restablecer Contraseña");
         panelSupP.add(restablecerContrasenaL);
-        restablecerContrasenaL.setBounds(6, 7, 192, 16);
+        restablecerContrasenaL.setBounds(6, 7, 150, 14);
 
         emailL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         emailL.setText("Email:");
@@ -73,24 +78,19 @@ public class RecuperarContrasena extends javax.swing.JPanel {
         );
         panelInfPLayout.setVerticalGroup(
             panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 18, Short.MAX_VALUE)
+            .add(0, 25, Short.MAX_VALUE)
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-                    .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .add(0, 0, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
                         .add(16, 16, 16)
                         .add(cancelarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
                         .add(restablecerContrasenaB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 203, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(34, 34, 34)
@@ -98,6 +98,8 @@ public class RecuperarContrasena extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 261, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(17, 17, 17))
+            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

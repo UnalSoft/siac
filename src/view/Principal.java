@@ -6,6 +6,7 @@ package view;
 
 import controller.LoginController;
 import javax.swing.JPanel;
+import javax.swing.JViewport;
 
 /**
  *
@@ -30,27 +31,26 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         scrollPane = new javax.swing.JScrollPane();
-        layoutP = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        layoutP.setLayout(new java.awt.BorderLayout());
-        scrollPane.setViewportView(layoutP);
-
-        getContentPane().add(scrollPane, java.awt.BorderLayout.CENTER);
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(scrollPane, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static JPanel getLayoutP() {
-        return layoutP;
+    public JViewport getViewport() {
+        return scrollPane.getViewport();
     }
-
-    public static void setLayoutP(JPanel layoutP) {
-        Principal.layoutP = layoutP;
-    }
-
-
 
     /**
      * @param args the command line arguments
@@ -87,7 +87,6 @@ public class Principal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JPanel layoutP;
     private javax.swing.JScrollPane scrollPane;
     // End of variables declaration//GEN-END:variables
 }
