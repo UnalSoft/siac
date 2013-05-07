@@ -69,27 +69,43 @@ public class LoginController {
         UsuarioVO usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
 
         if (usuarioLogin != null) {
+            String nombreEmpresa = ServiceFactory.getInstance().getEmpresaService().find(usuarioLogin.getEmpresasNIT()).getNombre();
             switch (usuarioLogin.getRol()) {
                 case PROVEEDOR_DE_TI:
                     ProveedorTIPrincipal proveedorTIPrincipal = new ProveedorTIPrincipal();
                     principal.setSize(proveedorTIPrincipal.getPreferredSize());
+                    proveedorTIPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
+                    proveedorTIPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
+                    proveedorTIPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), proveedorTIPrincipal);
                     break;
                 case PRIMER_ADMINISTRADOR:
                     PrimerAdministradorPrincipal primerAdministradorPrincipal = new PrimerAdministradorPrincipal();
                     principal.setSize(primerAdministradorPrincipal.getPreferredSize());
+                    primerAdministradorPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
+                    primerAdministradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
+                    primerAdministradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), primerAdministradorPrincipal);
                 case ADMINISTRADOR:
                     AdministradorPrincipal administradorPrincipal = new AdministradorPrincipal();
                     principal.setSize(administradorPrincipal.getPreferredSize());
+                    administradorPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
+                    administradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
+                    administradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), administradorPrincipal);
                 case CONSULTA:
                     ConsultarPrincipal consultarPrincipal = new ConsultarPrincipal();
                     principal.setSize(consultarPrincipal.getPreferredSize());
+                    consultarPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
+                    consultarPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
+                    consultarPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), consultarPrincipal);
                 case OTRO:
                     OtroRolPrincipal otroRolPrincipal = new OtroRolPrincipal();
                     principal.setSize(otroRolPrincipal.getPreferredSize());
+                    otroRolPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
+                    otroRolPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
+                    otroRolPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), otroRolPrincipal);
             }
 

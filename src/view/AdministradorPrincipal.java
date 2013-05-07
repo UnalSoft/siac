@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Felipe
@@ -15,6 +17,18 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
      */
     public AdministradorPrincipal() {
         initComponents();
+    }
+    
+    public JLabel getNombreEmpresaL() {
+        return nombreEmpresaL;
+    }
+
+    public JLabel getNombreUsuarioL() {
+        return nombreUsuarioL;
+    }
+
+    public JLabel getRolL() {
+        return rolL;
     }
 
     /**
@@ -29,9 +43,6 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
         panelSupP = new javax.swing.JPanel();
         AdministradorL = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        bienvenidoL = new javax.swing.JLabel();
-        registradoL = new javax.swing.JLabel();
-        rolL = new javax.swing.JLabel();
         accionesL = new javax.swing.JLabel();
         administrarUsuariosP = new javax.swing.JPanel();
         crearB = new javax.swing.JButton();
@@ -39,21 +50,21 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
         modificarB = new javax.swing.JButton();
         eliminarB = new javax.swing.JButton();
         panelInfP = new javax.swing.JPanel();
+        bienvenidoL = new javax.swing.JLabel();
+        nombreUsuarioL = new javax.swing.JLabel();
+        registradoL = new javax.swing.JLabel();
+        nombreEmpresaL = new javax.swing.JLabel();
+        rolLabelL = new javax.swing.JLabel();
+        rolL = new javax.swing.JLabel();
 
         panelSupP.setBackground(new java.awt.Color(181, 181, 181));
         panelSupP.setLayout(null);
 
         AdministradorL.setText("SIAC - Administrador");
         panelSupP.add(AdministradorL);
-        AdministradorL.setBounds(6, 7, 135, 16);
+        AdministradorL.setBounds(6, 7, 100, 14);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
-
-        bienvenidoL.setText("Bienvenido de nuevo: Administrador");
-
-        registradoL.setText("Esta registrado en la empresa: Empresa");
-
-        rolL.setText("Su rol en esta empresa es: Administrador");
 
         accionesL.setText("Las acciones que puede realizar son:");
 
@@ -111,6 +122,18 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
         panelInfP.setBackground(new java.awt.Color(181, 181, 181));
         panelInfP.setLayout(null);
 
+        bienvenidoL.setText("Bienvenido de nuevo: ");
+
+        nombreUsuarioL.setText("Administrador de TI");
+
+        registradoL.setText("Esta registrado en la empresa: ");
+
+        nombreEmpresaL.setText("UnalSoft S.A.S.");
+
+        rolLabelL.setText("Su rol en esta empresa es: ");
+
+        rolL.setText("Proveedor de TI");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,15 +144,24 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .add(44, 44, 44)
                         .add(jLabel2)
-                        .add(33, 33, 33)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, registradoL)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, rolL)))
+                        .add(47, 47, 47)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(registradoL)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(nombreEmpresaL))
+                            .add(layout.createSequentialGroup()
+                                .add(rolLabelL)
+                                .add(18, 18, 18)
+                                .add(rolL))
+                            .add(layout.createSequentialGroup()
+                                .add(bienvenidoL)
+                                .add(18, 18, 18)
+                                .add(nombreUsuarioL))))
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
                         .add(accionesL)))
-                .add(0, 0, Short.MAX_VALUE))
+                .add(0, 74, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
                 .add(administrarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -144,11 +176,17 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel2)
                     .add(layout.createSequentialGroup()
-                        .add(bienvenidoL)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(bienvenidoL)
+                            .add(nombreUsuarioL))
                         .add(18, 18, 18)
-                        .add(registradoL)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(registradoL)
+                            .add(nombreEmpresaL))
                         .add(18, 18, 18)
-                        .add(rolL)))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(rolLabelL)
+                            .add(rolL))))
                 .add(29, 29, 29)
                 .add(accionesL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -168,9 +206,12 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton eliminarB;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton modificarB;
+    private javax.swing.JLabel nombreEmpresaL;
+    private javax.swing.JLabel nombreUsuarioL;
     private javax.swing.JPanel panelInfP;
     private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel registradoL;
     private javax.swing.JLabel rolL;
+    private javax.swing.JLabel rolLabelL;
     // End of variables declaration//GEN-END:variables
 }

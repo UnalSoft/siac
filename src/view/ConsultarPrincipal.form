@@ -18,23 +18,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="panelSupP" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="registradoL" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="bienvenidoL" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="rolL" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="accionesL" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="accionesL" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="305" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="30" max="32767" attributes="0"/>
@@ -42,6 +28,29 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
           <Component id="panelInfP" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="registradoL" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="nombreEmpresaL" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="rolLabelL" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="rolL" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="bienvenidoL" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="nombreUsuarioL" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -52,11 +61,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="bienvenidoL" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="bienvenidoL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nombreUsuarioL" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="registradoL" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="registradoL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nombreEmpresaL" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="rolL" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rolLabelL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rolL" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -98,21 +116,6 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/resources/User.png"/>
         </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="bienvenidoL">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Bienvenido de nuevo: Usuario"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="registradoL">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Esta registrado en la empresa: Empresa"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="rolL">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Su rol en esta empresa es: Usuario"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="accionesL">
@@ -175,5 +178,35 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
     </Container>
+    <Component class="javax.swing.JLabel" name="bienvenidoL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bienvenido de nuevo: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nombreUsuarioL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Administrador de TI"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="registradoL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Esta registrado en la empresa: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nombreEmpresaL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="UnalSoft S.A.S."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rolLabelL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Su rol en esta empresa es: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rolL">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Proveedor de TI"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

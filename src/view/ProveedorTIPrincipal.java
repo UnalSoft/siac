@@ -5,6 +5,7 @@
 package view;
 
 import controller.ProveedorTIPrincipalController;
+import javax.swing.JLabel;
 
 /**
  *
@@ -21,6 +22,18 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JLabel getNombreEmpresaL() {
+        return nombreEmpresaL;
+    }
+
+    public JLabel getNombreUsuarioL() {
+        return nombreUsuarioL;
+    }
+
+    public JLabel getRolL() {
+        return rolL;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +48,7 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
         registradoL = new javax.swing.JLabel();
-        rolL = new javax.swing.JLabel();
+        rolLabelL = new javax.swing.JLabel();
         accionesL = new javax.swing.JLabel();
         mantenimientoP = new javax.swing.JPanel();
         crearCopiaDeSeguridadB = new javax.swing.JButton();
@@ -50,6 +63,9 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         modificarEmpresaB = new javax.swing.JButton();
         eliminarEmpresaB = new javax.swing.JButton();
         panelInfP = new javax.swing.JPanel();
+        nombreUsuarioL = new javax.swing.JLabel();
+        nombreEmpresaL = new javax.swing.JLabel();
+        rolL = new javax.swing.JLabel();
 
         panelSupP.setBackground(new java.awt.Color(181, 181, 181));
         panelSupP.setLayout(null);
@@ -60,11 +76,11 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
 
-        bienvenidoL.setText("Bienvenido de nuevo: Administrador de TI");
+        bienvenidoL.setText("Bienvenido de nuevo: ");
 
-        registradoL.setText("Esta registrado en la empresa: UnalSoft S.A.S.");
+        registradoL.setText("Esta registrado en la empresa: ");
 
-        rolL.setText("Su rol en esta empresa es: Proveedor de TI");
+        rolLabelL.setText("Su rol en esta empresa es: ");
 
         accionesL.setText("Las acciones que puede realizar son:");
 
@@ -237,6 +253,12 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         panelInfP.setBackground(new java.awt.Color(181, 181, 181));
         panelInfP.setLayout(null);
 
+        nombreUsuarioL.setText("Administrador de TI");
+
+        nombreEmpresaL.setText("UnalSoft S.A.S.");
+
+        rolL.setText("Proveedor de TI");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,10 +278,19 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
                                 .add(44, 44, 44)
                                 .add(jLabel2)
                                 .add(33, 33, 33)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, registradoL)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, rolL)))
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(layout.createSequentialGroup()
+                                        .add(registradoL)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                        .add(nombreEmpresaL))
+                                    .add(layout.createSequentialGroup()
+                                        .add(rolLabelL)
+                                        .add(18, 18, 18)
+                                        .add(rolL))
+                                    .add(layout.createSequentialGroup()
+                                        .add(bienvenidoL)
+                                        .add(18, 18, 18)
+                                        .add(nombreUsuarioL))))
                             .add(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .add(accionesL)))
@@ -268,7 +299,7 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(180, 180, 180)
                 .add(mantenimientoP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -278,11 +309,17 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel2)
                     .add(layout.createSequentialGroup()
-                        .add(bienvenidoL)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(bienvenidoL)
+                            .add(nombreUsuarioL))
                         .add(18, 18, 18)
-                        .add(registradoL)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(registradoL)
+                            .add(nombreEmpresaL))
                         .add(18, 18, 18)
-                        .add(rolL)))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(rolLabelL)
+                            .add(rolL))))
                 .add(29, 29, 29)
                 .add(accionesL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -340,10 +377,13 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
     private javax.swing.JPanel mantenimientoP;
     private javax.swing.JButton modificarEmpresaB;
     private javax.swing.JButton modificarPrimerAdminB;
+    private javax.swing.JLabel nombreEmpresaL;
+    private javax.swing.JLabel nombreUsuarioL;
     private javax.swing.JPanel panelInfP;
     private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel registradoL;
     private javax.swing.JButton restablecerCopiaDeSeguridadB;
     private javax.swing.JLabel rolL;
+    private javax.swing.JLabel rolLabelL;
     // End of variables declaration//GEN-END:variables
 }
