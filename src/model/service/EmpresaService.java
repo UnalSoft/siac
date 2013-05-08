@@ -9,6 +9,7 @@ import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
+import model.dao.exceptions.RequiredAttributeException;
 import model.entity.Empresa;
 import model.vo.EmpresaVO;
 
@@ -32,23 +33,26 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
     }
 
     @Override
-    public void create(EmpresaVO vo) throws PreexistingEntityException, NonexistentEntityException {
-        Empresa entity = new Empresa();
-        entity.setDireccion(vo.getDireccion());
-        entity.setNit(vo.getNit());
-        entity.setNivel(vo.getNivel());
-        entity.setNombre(vo.getNombre());
-        entity.setTelefono(vo.getTelefono());
-
-        Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasnit());
-        empresa.getEmpresaCollection().add(entity);
-        entity.setEmpresasnit(empresa);
-
-        entity.setEmpresaCollection((Collection) vo.getEmpresaList());
-        entity.setUsuarioCollection((Collection) vo.getUsuarioList());
-
-        DAOFactory.getInstance().getEmpresaDAO().create(entity);
-
+    public void create(EmpresaVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException {
+        if (validarCampos(vo)) {
+            Empresa entity = new Empresa();
+            entity.setDireccion(vo.getDireccion());
+            entity.setNit(vo.getNit());
+            entity.setNivel(vo.getNivel());
+            entity.setNombre(vo.getNombre());
+            entity.setTelefono(vo.getTelefono());
+            
+            if (vo.getEmpresasnit() != null) {
+                Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasnit());
+                empresa.getEmpresaCollection().add(entity);
+                entity.setEmpresasnit(empresa);
+            }
+            
+            entity.setEmpresaCollection((Collection) vo.getEmpresaList());
+            entity.setUsuarioCollection((Collection) vo.getUsuarioList());
+            
+            DAOFactory.getInstance().getEmpresaDAO().create(entity);
+        }
     }
 
     @Override
@@ -85,7 +89,6 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
             list.add((empresa).toVO());
         }
         Collections.sort(list, new Comparator() {
-
             @Override
             public int compare(Object o1, Object o2) {
                 EmpresaVO p1 = (EmpresaVO) o1;
@@ -94,5 +97,18 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
             }
         });
         return list;
+    }
+
+    public boolean validarCampos(EmpresaVO vo) throws RequiredAttributeException {
+        if (vo.getNit() == null) {
+            throw new RequiredAttributeException("El atributo Nit es requerido");
+        }
+        if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
+            throw new RequiredAttributeException("El atributo Nombre es requerido");
+        }
+        if (vo.getNivel() == null) {
+            throw new RequiredAttributeException("El atributo Nivel es requerido");
+        }
+        return true;
     }
 }

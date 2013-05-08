@@ -5,6 +5,7 @@ import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
+import model.dao.exceptions.RequiredAttributeException;
 import model.entity.Empresa;
 import model.entity.Usuario;
 import model.vo.UsuarioVO;
@@ -28,23 +29,24 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void create(UsuarioVO vo) throws PreexistingEntityException, NonexistentEntityException{
-        Usuario entity = new Usuario();
-        entity.setClave(vo.getClave());
-        entity.setCorreo(vo.getCorreo());
-        entity.setDni(vo.getDni());
-        entity.setNombre(vo.getNombre());
-        entity.setNombreDeUsuario(vo.getNombreDeUsuario());
-        entity.setRol(vo.getRol());
-
-        entity.setErrorCollection((Collection) vo.getErrorList());
-
-        Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
-        empresa.getUsuarioCollection().add(entity);
-        entity.setEmpresasNIT(empresa);
-
-        DAOFactory.getInstance().getUsuarioDAO().create(entity);
-
+    public void create(UsuarioVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException {
+        if (validarCampos(vo)) {
+            Usuario entity = new Usuario();
+            entity.setClave(vo.getClave());
+            entity.setCorreo(vo.getCorreo());
+            entity.setDni(vo.getDni());
+            entity.setNombre(vo.getNombre());
+            entity.setNombreDeUsuario(vo.getNombreDeUsuario());
+            entity.setRol(vo.getRol());
+            
+            entity.setErrorCollection((Collection) vo.getErrorList());
+            
+            Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
+            empresa.getUsuarioCollection().add(entity);
+            entity.setEmpresasNIT(empresa);
+            
+            DAOFactory.getInstance().getUsuarioDAO().create(entity);
+        }
     }
 
     @Override
@@ -79,7 +81,6 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             list.add((usuario).toVO());
         }
         Collections.sort(list, new Comparator() {
-
             @Override
             public int compare(Object o1, Object o2) {
                 UsuarioVO p1 = (UsuarioVO) o1;
@@ -98,5 +99,27 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().login(entity);
         return usuario != null ? usuario.toVO() : null;
 
+    }
+
+    public boolean validarCampos(UsuarioVO vo) throws RequiredAttributeException {
+        if (vo.getDni() == null) {
+            throw new RequiredAttributeException("El atributo DNI es requerido");
+        }
+        if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
+            throw new RequiredAttributeException("El atributo Nombre es requerido");
+        }
+        if (vo.getNombreDeUsuario() == null || vo.getNombreDeUsuario().isEmpty()) {
+            throw new RequiredAttributeException("El atributo Nombre de Usuario es requerido");
+        }
+        if (vo.getClave() == null || vo.getClave().isEmpty()) {
+            throw new RequiredAttributeException("El atributo Contraseña es requerido");
+        }
+        if (vo.getCorreo() == null || vo.getCorreo().isEmpty()) {
+            throw new RequiredAttributeException("El atributo Correo es requerido");
+        }
+        if (vo.getRol() == null) {
+            throw new RequiredAttributeException("El atributo Rol es requerido");
+        }
+        return true;
     }
 }

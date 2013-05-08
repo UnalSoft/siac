@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
+import model.dao.exceptions.RequiredAttributeException;
 
 /**
  *
@@ -16,7 +17,7 @@ import model.dao.exceptions.PreexistingEntityException;
  */
 public interface IService<VO, ID extends Serializable> {
 
-    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException;
+    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException;
 
     VO find(ID id)  throws EntityNotFoundException;
 

@@ -57,9 +57,6 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
-            if (entityManager != null && entityManager.getTransaction() != null) {
-                entityManager.getTransaction().rollback();
-            }
             if (find(entity.getDni()) != null) {
                 throw new PreexistingEntityException("El Usuario " + entity.getNombre() + " ya existe.", ex);
             }

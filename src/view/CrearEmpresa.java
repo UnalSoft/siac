@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.CrearEmpresaController;
+import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -12,12 +14,14 @@ import javax.swing.JTextField;
  * @author Felipe
  */
 public class CrearEmpresa extends javax.swing.JPanel {
+    private final JFrame frame;
 
     /**
      * Creates new form AdministradorPrincipal
      */
-    public CrearEmpresa() {
+    public CrearEmpresa(JFrame frame) {
         initComponents();
+        this.frame = frame;
     }
 
     public JPasswordField getConfirmarContrasenaPF() {
@@ -66,6 +70,10 @@ public class CrearEmpresa extends javax.swing.JPanel {
 
     public JTextField getTelefonoTF() {
         return telefonoTF;
+    }
+
+    public JFrame getFrame() {
+        return frame;
     }
 
     /**
@@ -135,8 +143,18 @@ public class CrearEmpresa extends javax.swing.JPanel {
         rolL.setText("Rol:");
 
         cancelarB.setText("Cancelar");
+        cancelarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBActionPerformed(evt);
+            }
+        });
 
         crearUsuarioB.setText("Crear usuario");
+        crearUsuarioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUsuarioBActionPerformed(evt);
+            }
+        });
 
         rolTF.setText("Primer Administrador");
         rolTF.setEnabled(false);
@@ -280,6 +298,14 @@ public class CrearEmpresa extends javax.swing.JPanel {
                 .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void crearUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioBActionPerformed
+        CrearEmpresaController.crearEmpresa(this);
+    }//GEN-LAST:event_crearUsuarioBActionPerformed
+
+    private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
+        frame.dispose();
+    }//GEN-LAST:event_cancelarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarB;
