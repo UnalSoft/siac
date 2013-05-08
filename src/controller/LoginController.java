@@ -34,11 +34,11 @@ public class LoginController {
     public static UsuarioVO usuarioActivo;
 
     public static UsuarioVO getUsuarioLogin() {
-        return usuarioLogin;
+        return usuarioActivo;
     }
 
     public static void setUsuarioLogin(UsuarioVO usuarioLogin) {
-        LoginController.usuarioLogin = usuarioLogin;
+        LoginController.usuarioActivo = usuarioLogin;
     }
 
     

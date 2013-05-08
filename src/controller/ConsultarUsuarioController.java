@@ -32,7 +32,7 @@ public class ConsultarUsuarioController {
     public void llenarTabla(){
         for(UsuarioVO usuarioVO : usuariosList){
             if(usuarioVO.getEmpresasNIT().equals
-                    (LoginController.usuarioLogin.getEmpresasNIT())){
+                    (LoginController.usuarioActivo.getEmpresasNIT())){
                 Object [] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
                     usuarioVO.getCorreo(), usuarioVO.getRol(),
                     usuarioVO.getEmpresasNIT()};
@@ -66,7 +66,7 @@ public class ConsultarUsuarioController {
                 if (usuarioVO.getDni().toString()
                         .equals(consultarUsuario.getBuscarTF().getText())&&
                         usuarioVO.getEmpresasNIT().equals
-                        (LoginController.usuarioLogin.getEmpresasNIT())) {
+                        (LoginController.usuarioActivo.getEmpresasNIT())) {
                     Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
                         usuarioVO.getCorreo(), usuarioVO.getRol(),
                         usuarioVO.getEmpresasNIT()};
@@ -78,7 +78,7 @@ public class ConsultarUsuarioController {
                 if (usuarioVO.getNombre().toString()
                         .equals(consultarUsuario.getBuscarTF().getText())&&
                         usuarioVO.getEmpresasNIT().equals
-                        (LoginController.usuarioLogin.getEmpresasNIT())) {
+                        (LoginController.usuarioActivo.getEmpresasNIT())) {
                     Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
                         usuarioVO.getCorreo(), usuarioVO.getRol(),
                         usuarioVO.getEmpresasNIT()};
