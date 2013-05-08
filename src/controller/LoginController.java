@@ -4,9 +4,12 @@
  */
 package controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JViewport;
+import model.dao.exceptions.DataBaseException;
 import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
 import view.AdministradorPrincipal;
@@ -67,7 +70,20 @@ public class LoginController {
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);
 
-        UsuarioVO usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
+        UsuarioVO usuarioLogin;
+        try {
+            usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
+        } catch (DataBaseException ex) {
+            int opcion = JOptionPane.showOptionDialog(login, ex.getMessage() + "\n" + ex.getCause().getMessage(), "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, new String[]{"Reportar Error", "Cancelar"}, "Cancelar");
+            switch (opcion) {
+                case JOptionPane.OK_OPTION:
+                    //TODO Reportar Error
+                    break;
+                case JOptionPane.CANCEL_OPTION:
+                    break;
+            }
+            return;
+        }
 
         if (usuarioLogin != null) {
             String nombreEmpresa = ServiceFactory.getInstance().getEmpresaService().find(usuarioLogin.getEmpresasNIT()).getNombre();

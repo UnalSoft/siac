@@ -4,6 +4,7 @@ import controller.LoginController;
 import java.util.*;
 import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
+import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.InsufficientPermissionsException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
@@ -13,6 +14,7 @@ import model.entity.Nivel;
 import model.entity.Rol;
 import model.entity.Usuario;
 import model.vo.UsuarioVO;
+import util.BCrypt;
 
 /**
  *
@@ -37,7 +39,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Usuario entity = new Usuario();
-                entity.setClave(vo.getClave());
+                entity.setClave(BCrypt.hashpw(vo.getClave(), BCrypt.gensalt()));
                 entity.setCorreo(vo.getCorreo());
                 entity.setDni(vo.getDni());
                 entity.setNombre(vo.getNombre());
@@ -99,7 +101,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         return list;
     }
 
-    public UsuarioVO login(UsuarioVO vo) {
+    public UsuarioVO login(UsuarioVO vo) throws DataBaseException {
         Usuario entity = new Usuario();
         entity.setNombreDeUsuario(vo.getNombreDeUsuario());
         entity.setClave(vo.getClave());
