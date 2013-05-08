@@ -28,6 +28,7 @@ public class LoginController {
     static Login login;
     static Principal principal;
     static Secundario secundario;
+    public static UsuarioVO usuarioActivo;
 
     public static void mostrarLogin() {
         principal = new Principal();
@@ -108,7 +109,7 @@ public class LoginController {
                     otroRolPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), otroRolPrincipal);
             }
-
+            usuarioActivo = usuarioLogin;
         } else {
             JOptionPane.showMessageDialog(login, "El usuario o la contraseña son incorrectos", "Error", JOptionPane.ERROR_MESSAGE, null);
         }
