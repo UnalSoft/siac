@@ -248,11 +248,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarBActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="crearUsuarioB">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear usuario"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearUsuarioBActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="rolTF">
       <Properties>

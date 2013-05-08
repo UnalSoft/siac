@@ -7,8 +7,10 @@ package model.service;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
+import model.dao.exceptions.InsufficientPermissionsException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
+import model.dao.exceptions.RequiredAttributeException;
 
 /**
  *
@@ -16,7 +18,7 @@ import model.dao.exceptions.PreexistingEntityException;
  */
 public interface IService<VO, ID extends Serializable> {
 
-    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException;
+    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException;
 
     VO find(ID id)  throws EntityNotFoundException;
 

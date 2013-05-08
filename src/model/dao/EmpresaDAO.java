@@ -56,11 +56,8 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
             entityManager.getTransaction().commit();
 
         } catch (Exception ex) {
-            if (entityManager != null && entityManager.getTransaction() != null) {
-                entityManager.getTransaction().rollback();
-            }
             if (find(entity.getNit()) != null) {
-                throw new PreexistingEntityException("La Empresa " + entity.getNombre() + " ya existe.", ex);
+                throw new PreexistingEntityException("La empresa con nit " + entity.getNit() + " ya existe.", ex);
             }
             throw ex;
         } finally {

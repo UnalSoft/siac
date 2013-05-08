@@ -34,7 +34,7 @@ public class ProveedorTIPrincipalController {
     public void crearEmpresa() {
         secundario = new Secundario();
         secundario.setLocationRelativeTo(principal);
-        CrearEmpresa crearEmpresa = new CrearEmpresa();
+        CrearEmpresa crearEmpresa = new CrearEmpresa(secundario);
         crearEmpresa.getNivelTF().setText(Nivel.DISTRIBUIDORA.getText());
         crearEmpresa.getRolTF().setText(Rol.PRIMER_ADMINISTRADOR.getLabel());
         secundario.setSize(crearEmpresa.getPreferredSize());

@@ -8,6 +8,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
+import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.entity.Empresa;
@@ -57,9 +58,6 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
-            if (entityManager != null && entityManager.getTransaction() != null) {
-                entityManager.getTransaction().rollback();
-            }
             if (find(entity.getDni()) != null) {
                 throw new PreexistingEntityException("El Usuario " + entity.getNombre() + " ya existe.", ex);
             }
@@ -183,7 +181,7 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
         }
     }
 
-    public Usuario login(Usuario entity) {
+    public Usuario login(Usuario entity) throws DataBaseException {
         EntityManager entityManager = null;
         try {
             entityManager = getEntityManager();
@@ -198,8 +196,9 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
             } catch (NoResultException e) {
                 usuario = null;
             }
-
             return usuario;
+        } catch (Exception e) {
+            throw new DataBaseException("Error de Conexion a la Base de Datos", e);
         } finally {
             if (entityManager != null) {
                 entityManager.clear();
