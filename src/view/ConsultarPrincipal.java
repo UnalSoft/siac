@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ConsultarUsuarioController;
 import javax.swing.JLabel;
 
 /**
@@ -40,26 +41,16 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSupP = new javax.swing.JPanel();
-        AdministradorL = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         accionesL = new javax.swing.JLabel();
         consultarUsuariosP = new javax.swing.JPanel();
         consultarB = new javax.swing.JButton();
-        panelInfP = new javax.swing.JPanel();
         bienvenidoL = new javax.swing.JLabel();
         nombreUsuarioL = new javax.swing.JLabel();
         registradoL = new javax.swing.JLabel();
         nombreEmpresaL = new javax.swing.JLabel();
         rolLabelL = new javax.swing.JLabel();
         rolL = new javax.swing.JLabel();
-
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        AdministradorL.setText("SIAC - Usuario");
-        panelSupP.add(AdministradorL);
-        AdministradorL.setBounds(6, 7, 70, 14);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
 
@@ -71,6 +62,11 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
         consultarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarB.setText("Consultar");
         consultarB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        consultarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout consultarUsuariosPLayout = new org.jdesktop.layout.GroupLayout(consultarUsuariosP);
         consultarUsuariosP.setLayout(consultarUsuariosPLayout);
@@ -89,9 +85,6 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
         bienvenidoL.setText("Bienvenido de nuevo: ");
 
         nombreUsuarioL.setText("Administrador de TI");
@@ -108,40 +101,39 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(accionesL)
-                .add(0, 305, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .add(consultarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18))
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(0, 0, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
-                .add(44, 44, 44)
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
-                        .add(registradoL)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(nombreEmpresaL))
+                        .add(44, 44, 44)
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(registradoL)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(nombreEmpresaL))
+                            .add(layout.createSequentialGroup()
+                                .add(rolLabelL)
+                                .add(18, 18, 18)
+                                .add(rolL))
+                            .add(layout.createSequentialGroup()
+                                .add(bienvenidoL)
+                                .add(18, 18, 18)
+                                .add(nombreUsuarioL))))
                     .add(layout.createSequentialGroup()
-                        .add(rolLabelL)
-                        .add(18, 18, 18)
-                        .add(rolL))
-                    .add(layout.createSequentialGroup()
-                        .add(bienvenidoL)
-                        .add(18, 18, 18)
-                        .add(nombreUsuarioL)))
-                .add(58, 58, 58))
+                        .addContainerGap(23, Short.MAX_VALUE)
+                        .add(consultarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(14, 14, 14)))
+                .add(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(43, 43, 43)
+                .add(17, 17, 17)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel2)
                     .add(layout.createSequentialGroup()
@@ -160,13 +152,16 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
                 .add(accionesL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(consultarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 24, Short.MAX_VALUE)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void consultarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBActionPerformed
+        ConsultarUsuarioController consultarUsuarioController = new ConsultarUsuarioController();
+        consultarUsuarioController.consultarUsuario();
+    }//GEN-LAST:event_consultarBActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdministradorL;
     private javax.swing.JLabel accionesL;
     private javax.swing.JLabel bienvenidoL;
     private javax.swing.JButton consultarB;
@@ -174,8 +169,6 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel nombreEmpresaL;
     private javax.swing.JLabel nombreUsuarioL;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel registradoL;
     private javax.swing.JLabel rolL;
     private javax.swing.JLabel rolLabelL;

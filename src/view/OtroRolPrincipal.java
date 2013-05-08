@@ -40,10 +40,7 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSupP = new javax.swing.JPanel();
-        AdministradorL = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         bienvenidoL = new javax.swing.JLabel();
         nombreUsuarioL = new javax.swing.JLabel();
         registradoL = new javax.swing.JLabel();
@@ -51,17 +48,7 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
         rolLabelL = new javax.swing.JLabel();
         rolL = new javax.swing.JLabel();
 
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        AdministradorL.setText("SIAC - Usuario");
-        panelSupP.add(AdministradorL);
-        AdministradorL.setBounds(6, 7, 70, 14);
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
-
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
 
         bienvenidoL.setText("Bienvenido de nuevo: ");
 
@@ -79,11 +66,10 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(layout.createSequentialGroup()
-                .add(44, 44, 44)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
                 .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 38, Short.MAX_VALUE)
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(registradoL)
@@ -97,14 +83,12 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
                         .add(bienvenidoL)
                         .add(18, 18, 18)
                         .add(nombreUsuarioL)))
-                .add(28, 28, 28))
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(34, 34, 34)
+                .add(24, 24, 24)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel2)
                     .add(layout.createSequentialGroup()
@@ -119,19 +103,15 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(rolLabelL)
                             .add(rolL))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 29, Short.MAX_VALUE)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdministradorL;
     private javax.swing.JLabel bienvenidoL;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel nombreEmpresaL;
     private javax.swing.JLabel nombreUsuarioL;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel registradoL;
     private javax.swing.JLabel rolL;
     private javax.swing.JLabel rolLabelL;

@@ -28,7 +28,18 @@ public class LoginController {
     static Login login;
     static Principal principal;
     static Secundario secundario;
+    static UsuarioVO usuarioLogin;
 
+    public static UsuarioVO getUsuarioLogin() {
+        return usuarioLogin;
+    }
+
+    public static void setUsuarioLogin(UsuarioVO usuarioLogin) {
+        LoginController.usuarioLogin = usuarioLogin;
+    }
+
+    
+    
     public static void mostrarLogin() {
         principal = new Principal();
         principal.setLocationRelativeTo(null);
@@ -45,16 +56,23 @@ public class LoginController {
         secundario = new Secundario();
         secundario.setLocationRelativeTo(principal);
         RecuperarContrasena recuperarContrasena = new RecuperarContrasena();
-        secundario.setSize(recuperarContrasena.getPreferredSize());
         secundario.setVisible(true);
+        secundario.setSize(recuperarContrasena.getPreferredSize());
         cambiarPanel(secundario.getViewport(), recuperarContrasena);
     }
 
     public static void cambiarPanel(JViewport contenedor, JPanel panel) {
+        contenedor.getParent().setVisible(false);
         contenedor.setVisible(false);
         contenedor.removeAll();
         contenedor.add(panel);
-        contenedor.setSize(panel.getPreferredSize());
+        contenedor.setSize(panel.getPreferredSize().getSize());
+        contenedor.getParent().setSize(panel.getPreferredSize().getSize());
+        contenedor.getParent().revalidate();
+        contenedor.getParent().repaint();
+        contenedor.revalidate();
+        contenedor.repaint();
+        contenedor.getParent().setVisible(true);
         contenedor.setVisible(true);
     }
 
@@ -66,7 +84,7 @@ public class LoginController {
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);
 
-        UsuarioVO usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
+        usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
 
         if (usuarioLogin != null) {
             String nombreEmpresa = ServiceFactory.getInstance().getEmpresaService().find(usuarioLogin.getEmpresasNIT()).getNombre();
@@ -86,6 +104,7 @@ public class LoginController {
                     primerAdministradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     primerAdministradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), primerAdministradorPrincipal);
+                    break;
                 case ADMINISTRADOR:
                     AdministradorPrincipal administradorPrincipal = new AdministradorPrincipal();
                     principal.setSize(administradorPrincipal.getPreferredSize());
@@ -93,6 +112,7 @@ public class LoginController {
                     administradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     administradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), administradorPrincipal);
+                    break;
                 case CONSULTA:
                     ConsultarPrincipal consultarPrincipal = new ConsultarPrincipal();
                     principal.setSize(consultarPrincipal.getPreferredSize());
@@ -100,6 +120,7 @@ public class LoginController {
                     consultarPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     consultarPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), consultarPrincipal);
+                    break;
                 case OTRO:
                     OtroRolPrincipal otroRolPrincipal = new OtroRolPrincipal();
                     principal.setSize(otroRolPrincipal.getPreferredSize());
@@ -107,6 +128,8 @@ public class LoginController {
                     otroRolPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     otroRolPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
                     cambiarPanel(principal.getViewport(), otroRolPrincipal);
+                    principal.setTitle("Otro Rol");
+                    break;
             }
 
         } else {

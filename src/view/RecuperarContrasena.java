@@ -33,23 +33,13 @@ public class RecuperarContrasena extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSupP = new javax.swing.JPanel();
-        restablecerContrasenaL = new javax.swing.JLabel();
         emailL = new javax.swing.JLabel();
         emailTF = new javax.swing.JTextField();
         cancelarB = new javax.swing.JButton();
         restablecerContrasenaB = new javax.swing.JButton();
-        panelInfP = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(397, 161));
-        setMinimumSize(new java.awt.Dimension(397, 161));
-
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        restablecerContrasenaL.setText("SIAC - Restablecer Contraseña");
-        panelSupP.add(restablecerContrasenaL);
-        restablecerContrasenaL.setBounds(6, 7, 150, 14);
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(400, 210));
 
         emailL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         emailL.setText("Email:");
@@ -68,53 +58,35 @@ public class RecuperarContrasena extends javax.swing.JPanel {
         restablecerContrasenaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         restablecerContrasenaB.setText("Restablecer Contraseña");
 
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-
-        org.jdesktop.layout.GroupLayout panelInfPLayout = new org.jdesktop.layout.GroupLayout(panelInfP);
-        panelInfP.setLayout(panelInfPLayout);
-        panelInfPLayout.setHorizontalGroup(
-            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 0, Short.MAX_VALUE)
-        );
-        panelInfPLayout.setVerticalGroup(
-            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 25, Short.MAX_VALUE)
-        );
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(layout.createSequentialGroup()
-                        .add(16, 16, 16)
+            .add(layout.createSequentialGroup()
+                .add(6, 6, 6)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(cancelarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 34, Short.MAX_VALUE)
+                        .add(18, 18, 18)
                         .add(restablecerContrasenaB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 203, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(34, 34, 34)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(emailL)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 261, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .add(17, 17, 17))
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 291, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(emailL))
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(emailL)
-                    .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(19, 19, 19)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cancelarB)
-                    .add(restablecerContrasenaB))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(restablecerContrasenaB)
+                    .add(cancelarB))
+                .add(43, 43, 43))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -126,9 +98,6 @@ public class RecuperarContrasena extends javax.swing.JPanel {
     private javax.swing.JButton cancelarB;
     private javax.swing.JLabel emailL;
     private javax.swing.JTextField emailTF;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JButton restablecerContrasenaB;
-    private javax.swing.JLabel restablecerContrasenaL;
     // End of variables declaration//GEN-END:variables
 }

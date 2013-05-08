@@ -4,6 +4,11 @@
  */
 package view;
 
+import controller.ConsultarUsuarioController;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Felipe
@@ -17,6 +22,14 @@ public class ConsultarUsuario extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTable getUsuarioT() {
+        return usuarioT;
+    }
+
+    public void setUsuarioT(JTable usuarioT) {
+        this.usuarioT = usuarioT;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,9 +41,6 @@ public class ConsultarUsuario extends javax.swing.JPanel {
 
         busquedaBG = new javax.swing.ButtonGroup();
         ConsultaF = new javax.swing.JFrame();
-        panelSupP2 = new javax.swing.JPanel();
-        usuarioL = new javax.swing.JLabel();
-        panelInfP2 = new javax.swing.JPanel();
         dniL = new javax.swing.JLabel();
         nombreL = new javax.swing.JLabel();
         nombreTF = new javax.swing.JTextField();
@@ -42,28 +52,15 @@ public class ConsultarUsuario extends javax.swing.JPanel {
         correoTF = new javax.swing.JTextField();
         rolCB = new javax.swing.JComboBox();
         atrasB = new javax.swing.JButton();
-        panelSupP = new javax.swing.JPanel();
-        AdministradorL = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         dniRB = new javax.swing.JRadioButton();
         nombreRB = new javax.swing.JRadioButton();
         buscarTF = new javax.swing.JTextField();
-        buscarB = new javax.swing.JToggleButton();
+        buscarB = new javax.swing.JButton();
         usuarioSP = new javax.swing.JScrollPane();
         usuarioT = new javax.swing.JTable();
         cancelarB = new javax.swing.JButton();
         verInformacionB = new javax.swing.JButton();
-
-        panelSupP2.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP2.setLayout(null);
-
-        usuarioL.setText("SIAC - Usuario");
-        panelSupP2.add(usuarioL);
-        usuarioL.setBounds(6, 7, 130, 16);
-
-        panelInfP2.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP2.setLayout(null);
 
         dniL.setText("DNI:");
 
@@ -108,9 +105,6 @@ public class ConsultarUsuario extends javax.swing.JPanel {
                             .add(rolL)
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(rolCB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-            .add(ConsultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                .add(org.jdesktop.layout.GroupLayout.LEADING, panelInfP2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
-                .add(org.jdesktop.layout.GroupLayout.LEADING, panelSupP2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(ConsultaFLayout.createSequentialGroup()
                 .add(170, 170, 170)
                 .add(atrasB))
@@ -118,8 +112,7 @@ public class ConsultarUsuario extends javax.swing.JPanel {
         ConsultaFLayout.setVerticalGroup(
             ConsultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(ConsultaFLayout.createSequentialGroup()
-                .add(panelSupP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
+                .add(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE)
                 .add(ConsultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(dniL)
                     .add(dniTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -140,23 +133,13 @@ public class ConsultarUsuario extends javax.swing.JPanel {
                     .add(rolL)
                     .add(rolCB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(atrasB)
-                .add(18, 18, 18)
-                .add(panelInfP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(atrasB))
         );
-
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        AdministradorL.setText("SIAC - Consultar Usuario");
-        panelSupP.add(AdministradorL);
-        AdministradorL.setBounds(6, 7, 170, 16);
 
         bienvenidoL.setText("Buscar por:");
 
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
+        busquedaBG.add(dniRB);
+        dniRB.setSelected(true);
         dniRB.setText("DNI");
 
         busquedaBG.add(nombreRB);
@@ -167,13 +150,15 @@ public class ConsultarUsuario extends javax.swing.JPanel {
         buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBActionPerformed(evt);
+            }
+        });
 
         usuarioT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "DNI", "Nombre", "Correo", "Rol", "Empresa"
@@ -204,35 +189,31 @@ public class ConsultarUsuario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                .add(15, 15, 15)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(cancelarB)
+                        .add(dniRB)
+                        .add(18, 18, 18)
+                        .add(nombreRB))
+                    .add(bienvenidoL)
+                    .add(layout.createSequentialGroup()
+                        .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(verInformacionB))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(16, 16, 16)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createSequentialGroup()
-                                .add(dniRB)
-                                .add(18, 18, 18)
-                                .add(nombreRB))
-                            .add(bienvenidoL)
-                            .add(layout.createSequentialGroup()
-                                .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .add(0, 15, Short.MAX_VALUE))
+                        .add(buscarB))
+                    .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(269, 269, 269)
+                .add(cancelarB)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(verInformacionB)
+                .add(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(18, 18, 18)
                 .add(bienvenidoL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -244,43 +225,56 @@ public class ConsultarUsuario extends javax.swing.JPanel {
                     .add(buscarB))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cancelarB)
                     .add(verInformacionB))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        new ConsultarUsuarioController().buscar();
+    }//GEN-LAST:event_buscarBActionPerformed
+
+    public JTextField getBuscarTF() {
+        return buscarTF;
+    }
+
+    public void setBuscarTF(JTextField buscarTF) {
+        this.buscarTF = buscarTF;
+    }
+
+    public JRadioButton getDniRB() {
+        return dniRB;
+    }
+
+    public void setDniRB(JRadioButton dniRB) {
+        this.dniRB = dniRB;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdministradorL;
     private javax.swing.JFrame ConsultaF;
     private javax.swing.JButton atrasB;
     private javax.swing.JLabel bienvenidoL;
-    private javax.swing.JToggleButton buscarB;
-    private javax.swing.JTextField buscarTF;
+    private javax.swing.JButton buscarB;
+    private static javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
     private javax.swing.JLabel correoL;
     private javax.swing.JTextField correoTF;
     private javax.swing.JLabel dniL;
-    private javax.swing.JRadioButton dniRB;
+    private static javax.swing.JRadioButton dniRB;
     private javax.swing.JTextField dniTF;
     private javax.swing.JLabel nombreDeUsuarioL;
     private javax.swing.JTextField nombreDeUsuarioTF;
     private javax.swing.JLabel nombreL;
     private javax.swing.JRadioButton nombreRB;
     private javax.swing.JTextField nombreTF;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelInfP2;
-    private javax.swing.JPanel panelSupP;
-    private javax.swing.JPanel panelSupP2;
     private javax.swing.JComboBox rolCB;
     private javax.swing.JLabel rolL;
-    private javax.swing.JLabel usuarioL;
     private javax.swing.JScrollPane usuarioSP;
-    private javax.swing.JTable usuarioT;
+    private static javax.swing.JTable usuarioT;
     private javax.swing.JButton verInformacionB;
     // End of variables declaration//GEN-END:variables
 }

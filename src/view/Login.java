@@ -39,32 +39,18 @@ public class Login extends javax.swing.JPanel {
     private void initComponents() {
 
         usuarioL = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         contrasenaOlvidadaB = new javax.swing.JButton();
         usuarioTF = new javax.swing.JTextField();
         contrasenaPF = new javax.swing.JPasswordField();
         iniciarSesionB = new javax.swing.JButton();
         logoL = new javax.swing.JLabel();
         contrasenaL = new javax.swing.JLabel();
-        panelSupP = new javax.swing.JPanel();
-        siacL = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(355, 285));
 
         usuarioL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         usuarioL.setText("Usuario:");
         usuarioL.setToolTipText("");
-
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-
-        org.jdesktop.layout.GroupLayout panelInfPLayout = new org.jdesktop.layout.GroupLayout(panelInfP);
-        panelInfP.setLayout(panelInfPLayout);
-        panelInfPLayout.setHorizontalGroup(
-            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 0, Short.MAX_VALUE)
-        );
-        panelInfPLayout.setVerticalGroup(
-            panelInfPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 20, Short.MAX_VALUE)
-        );
 
         contrasenaOlvidadaB.setFont(new java.awt.Font("Calibri", 0, 12)); // NOI18N
         contrasenaOlvidadaB.setText("¿Has olvidado tu contraseña?");
@@ -100,48 +86,38 @@ public class Login extends javax.swing.JPanel {
         contrasenaL.setText("Contraseña:");
         contrasenaL.setToolTipText("");
 
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        siacL.setText("SIAC");
-        panelSupP.add(siacL);
-        siacL.setBounds(6, 7, 40, 14);
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(contrasenaOlvidadaB)
+                .add(18, 18, 18)
+                .add(iniciarSesionB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(22, 22, 22)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(usuarioL)
+                    .add(contrasenaL))
+                .add(7, 7, 7)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(contrasenaOlvidadaB)
-                        .add(18, 18, 18)
-                        .add(iniciarSesionB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(logoL)
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
-                        .add(118, 118, 118)
-                        .add(logoL))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(22, 22, 22)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(usuarioL)
-                            .add(contrasenaL))
-                        .add(7, 7, 7)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(usuarioTF)
-                            .add(contrasenaPF))
-                        .add(10, 10, 10)))
-                .add(11, 11, 11))
+                            .add(contrasenaPF)
+                            .add(usuarioTF))
+                        .add(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
+            .add(layout.createSequentialGroup()
+                .add(15, 15, 15)
                 .add(logoL)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 58, Short.MAX_VALUE)
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(usuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(usuarioL))
@@ -153,8 +129,7 @@ public class Login extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(iniciarSesionB)
                     .add(contrasenaOlvidadaB))
-                .add(18, 18, 18)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,9 +151,6 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JPasswordField contrasenaPF;
     private javax.swing.JButton iniciarSesionB;
     private javax.swing.JLabel logoL;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
-    private javax.swing.JLabel siacL;
     private javax.swing.JLabel usuarioL;
     private javax.swing.JTextField usuarioTF;
     // End of variables declaration//GEN-END:variables
