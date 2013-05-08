@@ -90,6 +90,8 @@ public class UsuarioServiceTest {
     @Test
     public void testLogin() {
         System.out.println("login");
+        
+        //Caso Valido
         UsuarioVO vo = new UsuarioVO();
         vo.setDni(Long.MIN_VALUE);
         vo.setNombreDeUsuario("rogelio");
@@ -99,6 +101,23 @@ public class UsuarioServiceTest {
         
         UsuarioVO expResult = ServiceFactory.getInstance().getUsuarioService().find(vo.getDni());
         assertEquals(expResult.getDni(), result.getDni());
+        
+        //casos invalidos
+        
+        vo.setClave("vidriola");
+        
+        result = ServiceFactory.getInstance().getUsuarioService().login(vo);
+        expResult = null;
+        assertEquals(expResult, result);
+        
+        //2do caso invalido
+        vo.setNombreDeUsuario("roger");
+        vo.setClave("vidriolo");
+        
+        result = ServiceFactory.getInstance().getUsuarioService().login(vo);
+        expResult = null;
+        assertEquals(expResult, result);
+        
 
     }
 }
