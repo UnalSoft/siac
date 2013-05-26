@@ -121,6 +121,13 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
         return true;
     }
     
+    /**
+     * Metodo que revisa que el usuario activo tenga permisos para ejecutar operaciones
+     * sobre la siscutida empresa
+     * 
+     * @param vo Empresa a la cual se hará la operación
+     * @return 
+     */
     private boolean havePermissions(EmpresaVO vo) {
         UsuarioVO usuarioActivo = LoginController.usuarioActivo; 
             Empresa empresaUsuarioActivo = DAOFactory.getInstance().getEmpresaDAO().find(usuarioActivo.getEmpresasNIT());
