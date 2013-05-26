@@ -137,7 +137,7 @@ public class UsuarioServiceTest {
 
         //Caso Valido
         UsuarioVO vo = new UsuarioVO();
-        vo.setDni(Long.MIN_VALUE);
+        vo.setDni(new Long("404"));
         vo.setNombreDeUsuario("rogelio");
         vo.setClave("vidriolo");
 
@@ -146,6 +146,7 @@ public class UsuarioServiceTest {
 
         try {
             result = ServiceFactory.getInstance().getUsuarioService().login(vo);
+            System.out.println("login");
         } catch (DataBaseException ex) {
             Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -160,7 +161,7 @@ public class UsuarioServiceTest {
     public void testLoginWrongPassword() {
 
         UsuarioVO vo = new UsuarioVO();
-        vo.setDni(Long.MIN_VALUE);
+        vo.setDni(new Long("404"));
         vo.setNombreDeUsuario("rogelio");
         vo.setClave("vidriola");
 
@@ -181,7 +182,7 @@ public class UsuarioServiceTest {
     public void testLoginInexistentUser() {
 
         UsuarioVO vo = new UsuarioVO();
-        vo.setDni(Long.MIN_VALUE);
+        vo.setDni(new Long("404"));
         vo.setNombreDeUsuario("roger");
         vo.setClave("vidriolo");
 

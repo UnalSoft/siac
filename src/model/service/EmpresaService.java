@@ -88,7 +88,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
 
     @Override
     public void delete(Integer id) throws NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        DAOFactory.getInstance().getEmpresaDAO().delete(id);
     }
 
     @Override
