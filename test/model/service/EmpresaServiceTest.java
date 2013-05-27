@@ -101,8 +101,8 @@ public class EmpresaServiceTest {
     }
 
     @Test
-    public void testValidarCamposInvalidCharacersInAddress() {
-        System.out.println("validarCamposInvalidCharacersInAddress");
+    public void testValidarCamposInvalidCharactersInAddress() {
+        System.out.println("validarCamposInvalidCharactersInAddress");
 
         empresa.setDireccion("*************************");
 
