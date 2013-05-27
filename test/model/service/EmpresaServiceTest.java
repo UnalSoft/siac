@@ -73,7 +73,7 @@ public class EmpresaServiceTest {
     @Test
     public void testValidarCamposNullRequieredFieldNit() {
         System.out.println("validarCamposNullRequieredFieldNit");
-       
+
         empresa.setNit(null);
 
         try {
@@ -84,11 +84,11 @@ public class EmpresaServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposNullRequieredFieldNombre() {
         System.out.println("validarCamposNullRequieredFieldNombre");
-       
+
         empresa.setNombre(null);
 
         try {
@@ -99,17 +99,15 @@ public class EmpresaServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidCharacersInAddress() {
         System.out.println("validarCamposInvalidCharacersInAddress");
-        boolean expResult = false;
-        boolean result;
 
         empresa.setDireccion("*************************");
 
         try {
-            result = ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
+            ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
             fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,46 +118,43 @@ public class EmpresaServiceTest {
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInAddress() {
         System.out.println("validarCamposInvalidNumberOfCharactersInAddress");
-        boolean expResult = false;
-        boolean result;
-
         char dummy = '0';
         String address = new String();
 
-        
+
 
         for (int i = 1; i <= MAXADDRESS; i++) {
             address = address + dummy;
         }
-        
+
         System.out.println(address + " " + address.length());
-        
+
         empresa.setDireccion(address);
 
         try {
-            result = ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
+            ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
             fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInNit() {
         System.out.println("validarCamposInvalidNumberOfCharactersInNit");
-        
+
         int dummy = 10;
         int nit = 0;
 
-        
+
 
         for (int i = 0; i < MAXNIT; i++) {
-            nit = nit + (dummy^i);
+            nit = nit + (dummy ^ i);
         }
-        
-        System.out.println(nit + " " + ((Integer)nit).toString().length());
-        
+
+        System.out.println(nit + " " + ((Integer) nit).toString().length());
+
         empresa.setNit(nit);
 
         try {
@@ -170,12 +165,11 @@ public class EmpresaServiceTest {
         }
 
     }
-    
-    
+
     @Test
     public void testValidarCamposInvalidCharactersInName() {
         System.out.println("validarCamposInvalidCharactersInName");
-        
+
         empresa.setNombre("~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
         try {
@@ -190,18 +184,18 @@ public class EmpresaServiceTest {
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInName() {
         System.out.println("validarCamposInvalidNumberOfCharactersInName");
-        
+
         char dummy = '0';
         String name = new String();
 
-        
+
 
         for (int i = 1; i <= MAXNAME; i++) {
             name = name + dummy;
         }
-        
+
         System.out.println(name + " " + name.length());
-        
+
         empresa.setNombre(name);
 
         try {
@@ -212,23 +206,22 @@ public class EmpresaServiceTest {
         }
 
     }
-    
-    
+
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInPhoneNumber() {
         System.out.println("validarCamposInvalidNumberOfCharactersInPhoneNumber");
-        
+
         char dummy = '0';
         String number = new String();
 
-        
+
 
         for (int i = 1; i <= MAXPHONE; i++) {
             number = number + dummy;
         }
-        
+
         System.out.println(number + " " + number.length());
-        
+
         empresa.setTelefono(number);
 
         try {
@@ -239,7 +232,4 @@ public class EmpresaServiceTest {
         }
 
     }
-    
-    
-    
 }
