@@ -355,4 +355,105 @@ public class UsuarioServiceTest {
 
     }
     
+    
+    @Test
+    public void testValidarCamposInvalidNumberOfCharactersInPass() {
+        System.out.println("validarCamposInvalidNumberOfCharactersInPass");
+        char dummy = '0';
+        String pass = new String();
+
+
+
+        for (int i = 1; i <= MAXPASS; i++) {
+            pass = pass + dummy;
+        }
+
+        System.out.println(pass + " " + pass.length());
+
+        usuario.setClave(pass);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposInvalidNumberOfCharactersInMail() {
+        System.out.println("validarCamposInvalidNumberOfCharactersInMail");
+        char dummy = '0';
+        String mail = new String();
+
+
+
+        for (int i = 1; i <= MAXMAIL; i++) {
+            mail = mail + dummy;
+        }
+
+        System.out.println(mail + " " + mail.length());
+
+        usuario.setCorreo(mail);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposInvalidNumberOfCharactersInName() {
+        System.out.println("validarCamposInvalidNumberOfCharactersInName");
+        char dummy = '0';
+        String name = new String();
+
+
+
+        for (int i = 1; i <= MAXNAME; i++) {
+            name = name + dummy;
+        }
+
+        System.out.println(name + " " + name.length());
+
+        usuario.setNombre(name);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposInvalidNumberOfCharactersInUserName() {
+        System.out.println("validarCamposInvalidNumberOfCharactersInUserName");
+        char dummy = '0';
+        String username = new String();
+
+
+
+        for (int i = 1; i <= MAXNAME; i++) {
+            username = username + dummy;
+        }
+
+        System.out.println(username + " " + username.length());
+
+        usuario.setNombreDeUsuario(username);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
 }
