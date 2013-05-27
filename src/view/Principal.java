@@ -5,7 +5,7 @@
 package view;
 
 import controller.LoginController;
-import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JViewport;
 
 /**
@@ -19,6 +19,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setTitle("SIAC");
     }
 
     /**
@@ -33,6 +34,7 @@ public class Principal extends javax.swing.JFrame {
         scrollPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/resources/LogoBarraEstado.png")).getImage());
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,7 +53,7 @@ public class Principal extends javax.swing.JFrame {
     public JViewport getViewport() {
         return scrollPane.getViewport();
     }
-
+    
     /**
      * @param args the command line arguments
      */

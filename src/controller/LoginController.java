@@ -4,8 +4,6 @@
  */
 package controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JViewport;
@@ -151,5 +149,11 @@ public class LoginController {
         } else {
             JOptionPane.showMessageDialog(login, "El usuario o la contraseña son incorrectos", "Error", JOptionPane.ERROR_MESSAGE, null);
         }
+    }
+    
+    public static void cerrarSesion() {
+        login = new Login();
+        principal.setSize(login.getPreferredSize());
+        cambiarPanel(principal.getViewport(), login);
     }
 }

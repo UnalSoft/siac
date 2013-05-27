@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.LoginController;
 import controller.ProveedorTIPrincipalController;
 import javax.swing.JLabel;
 
@@ -43,8 +44,6 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSupP = new javax.swing.JPanel();
-        ProveedorTIL = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
         registradoL = new javax.swing.JLabel();
@@ -62,17 +61,10 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         consultarEmpresaB = new javax.swing.JButton();
         modificarEmpresaB = new javax.swing.JButton();
         eliminarEmpresaB = new javax.swing.JButton();
-        panelInfP = new javax.swing.JPanel();
         nombreUsuarioL = new javax.swing.JLabel();
         nombreEmpresaL = new javax.swing.JLabel();
         rolL = new javax.swing.JLabel();
-
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        ProveedorTIL.setText("IAC - Proveedor de TI");
-        panelSupP.add(ProveedorTIL);
-        ProveedorTIL.setBounds(6, 7, 106, 14);
+        cerrarSesionB = new javax.swing.JButton();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
 
@@ -156,7 +148,7 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
             .add(administrarPrimerAdminPLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(modificarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 41, Short.MAX_VALUE)
                 .add(eliminarPrimerAdminB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .add(administrarPrimerAdminPLayout.createSequentialGroup()
@@ -250,86 +242,95 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
         nombreUsuarioL.setText("Administrador de TI");
 
         nombreEmpresaL.setText("UnalSoft S.A.S.");
 
         rolL.setText("Proveedor de TI");
 
+        cerrarSesionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CerrarSesion.png"))); // NOI18N
+        cerrarSesionB.setText("Cerrar sesión");
+        cerrarSesionB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cerrarSesionB.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cerrarSesionB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cerrarSesionB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionBActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(accionesL)
                             .add(layout.createSequentialGroup()
-                                .add(44, 44, 44)
-                                .add(jLabel2)
-                                .add(33, 33, 33)
+                                .add(174, 174, 174)
+                                .add(mantenimientoP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(38, 38, 38)
+                        .add(jLabel2)
+                        .add(33, 33, 33)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(layout.createSequentialGroup()
-                                        .add(registradoL)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                        .add(nombreEmpresaL))
                                     .add(layout.createSequentialGroup()
                                         .add(rolLabelL)
                                         .add(18, 18, 18)
                                         .add(rolL))
                                     .add(layout.createSequentialGroup()
-                                        .add(bienvenidoL)
-                                        .add(18, 18, 18)
-                                        .add(nombreUsuarioL))))
+                                        .add(registradoL)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                        .add(nombreEmpresaL)))
+                                .addContainerGap())
                             .add(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .add(accionesL)))
-                        .add(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .add(layout.createSequentialGroup()
-                .add(180, 180, 180)
-                .add(mantenimientoP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                                .add(bienvenidoL)
+                                .add(18, 18, 18)
+                                .add(nombreUsuarioL)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(cerrarSesionB))))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(0, 9, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(43, 43, 43)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel2)
                     .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(bienvenidoL)
-                            .add(nombreUsuarioL))
-                        .add(18, 18, 18)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(registradoL)
-                            .add(nombreEmpresaL))
-                        .add(18, 18, 18)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(rolLabelL)
-                            .add(rolL))))
-                .add(29, 29, 29)
+                        .add(33, 33, 33)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel2)
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                    .add(bienvenidoL)
+                                    .add(nombreUsuarioL))
+                                .add(18, 18, 18)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                    .add(registradoL)
+                                    .add(nombreEmpresaL))
+                                .add(18, 18, 18)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                                    .add(rolLabelL)
+                                    .add(rolL)))))
+                    .add(cerrarSesionB))
+                .add(31, 31, 31)
                 .add(accionesL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(administrarNivelP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(mantenimientoP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 21, Short.MAX_VALUE)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -361,12 +362,16 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         controller.eliminarAdministrador();
     }//GEN-LAST:event_eliminarPrimerAdminBActionPerformed
 
+    private void cerrarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBActionPerformed
+        LoginController.cerrarSesion();
+    }//GEN-LAST:event_cerrarSesionBActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ProveedorTIL;
     private javax.swing.JLabel accionesL;
     private javax.swing.JPanel administrarNivelP;
     private javax.swing.JPanel administrarPrimerAdminP;
     private javax.swing.JLabel bienvenidoL;
+    private javax.swing.JButton cerrarSesionB;
     private javax.swing.JButton consultarEmpresaB;
     private javax.swing.JButton consultarPrimerAdminB;
     private javax.swing.JButton crearCopiaDeSeguridadB;
@@ -379,8 +384,6 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton modificarPrimerAdminB;
     private javax.swing.JLabel nombreEmpresaL;
     private javax.swing.JLabel nombreUsuarioL;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel registradoL;
     private javax.swing.JButton restablecerCopiaDeSeguridadB;
     private javax.swing.JLabel rolL;
