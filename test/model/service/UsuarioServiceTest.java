@@ -295,4 +295,64 @@ public class UsuarioServiceTest {
 
     }
     
+    @Test
+    public void testValidarCamposInvalidCharactersInPass() {
+        System.out.println("validarCamposInvalidCharactersInPass");
+
+        usuario.setClave("**********");
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposInvalidCharactersInName() {
+        System.out.println("validarCamposInvalidCharactersInName");
+
+        usuario.setNombre("*************************");
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposInvalidCharactersInUserName() {
+        System.out.println("validarCamposInvalidCharactersInUserName");
+
+        usuario.setNombre("***********");
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposInvalidCharactersInMail() {
+        System.out.println("validarCamposInvalidCharactersInMail");
+
+        usuario.setNombre("***********");
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
 }
