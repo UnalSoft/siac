@@ -20,7 +20,7 @@ public class ErrorController {
             JOptionPane.showMessageDialog(panel, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        //TODO enviar email a desarrolladores
-        //ServiceFactory.getInstance().getErrorService().enviarMail();
+        //TODO Informar al Proveedor de TI sobre el error producido
+
     }
 }
