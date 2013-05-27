@@ -4,13 +4,12 @@
  */
 package controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JViewport;
 import model.dao.exceptions.DataBaseException;
 import model.service.ServiceFactory;
+import model.vo.ErrorVO;
 import model.vo.UsuarioVO;
 import view.AdministradorPrincipal;
 import view.ConsultarPrincipal;

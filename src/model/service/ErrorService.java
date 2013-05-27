@@ -1,6 +1,5 @@
 package model.service;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -36,7 +35,6 @@ public class ErrorService implements IService<ErrorVO, Integer> {
     public void create(ErrorVO vo) throws PreexistingEntityException, NonexistentEntityException {
         Error entity = new Error();
         entity.setError(vo.getError());
-        entity.setId(vo.getId());
         entity.setInterfaz(vo.getInterfaz());
 
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().find(vo.getUsuariosDNI());
