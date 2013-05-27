@@ -14,7 +14,6 @@ import model.entity.Nivel;
 import model.entity.Rol;
 import model.entity.Usuario;
 import model.vo.UsuarioVO;
-import util.BCrypt;
 
 /**
  *
@@ -39,7 +38,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Usuario entity = new Usuario();
-                entity.setClave(BCrypt.hashpw(vo.getClave(), BCrypt.gensalt()));
+                entity.setClave(vo.getClave());
                 entity.setCorreo(vo.getCorreo());
                 entity.setDni(vo.getDni());
                 entity.setNombre(vo.getNombre());
