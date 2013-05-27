@@ -64,13 +64,13 @@ public class Login extends javax.swing.JPanel {
         });
 
         usuarioTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        usuarioTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioTFActionPerformed(evt);
-            }
-        });
 
         contrasenaPF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        contrasenaPF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                contrasenaPFKeyPressed(evt);
+            }
+        });
 
         iniciarSesionB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         iniciarSesionB.setText("Iniciar Sesión");
@@ -95,7 +95,7 @@ public class Login extends javax.swing.JPanel {
                 .add(contrasenaOlvidadaB)
                 .add(18, 18, 18)
                 .add(iniciarSesionB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 127, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(11, 16, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(22, 22, 22)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -129,7 +129,7 @@ public class Login extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(iniciarSesionB)
                     .add(contrasenaOlvidadaB))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,13 +137,15 @@ public class Login extends javax.swing.JPanel {
         LoginController.mostrarRecuperarContrasena();
     }//GEN-LAST:event_contrasenaOlvidadaBActionPerformed
 
-    private void usuarioTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usuarioTFActionPerformed
-
     private void iniciarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSesionBActionPerformed
         LoginController.login();
     }//GEN-LAST:event_iniciarSesionBActionPerformed
+
+    private void contrasenaPFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contrasenaPFKeyPressed
+        if(evt.getKeyCode()==10){
+            LoginController.login();
+        }
+    }//GEN-LAST:event_contrasenaPFKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contrasenaL;
