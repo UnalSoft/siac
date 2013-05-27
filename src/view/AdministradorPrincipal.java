@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.LoginController;
 import javax.swing.JLabel;
 
 /**
@@ -129,6 +130,11 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
         cerrarSesionB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cerrarSesionB.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         cerrarSesionB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cerrarSesionB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -150,9 +156,8 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .add(bienvenidoL)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(nombreUsuarioL)
-                        .add(29, 29, 29)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 26, Short.MAX_VALUE)
+                        .add(nombreUsuarioL)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(cerrarSesionB)
                 .addContainerGap())
             .add(layout.createSequentialGroup()
@@ -194,9 +199,13 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                 .add(accionesL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(administrarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cerrarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBActionPerformed
+        LoginController.cerrarSesion();
+    }//GEN-LAST:event_cerrarSesionBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;

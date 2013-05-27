@@ -5,7 +5,6 @@
 package view;
 
 import controller.LoginController;
-import controller.OtroRolPrincipalController;
 import javax.swing.JLabel;
 
 /**
