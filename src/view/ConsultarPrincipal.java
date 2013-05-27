@@ -174,8 +174,7 @@ public class ConsultarPrincipal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void consultarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBActionPerformed
-        ConsultarUsuarioController consultarUsuarioController = new ConsultarUsuarioController();
-        consultarUsuarioController.consultarUsuario();
+        new ConsultarUsuarioController().consultarUsuario();
     }//GEN-LAST:event_consultarBActionPerformed
 
     private void cerrarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBActionPerformed

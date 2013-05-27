@@ -25,7 +25,6 @@
                       <Component id="rolLabelL" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="rolL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="14" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="registradoL" min="-2" max="-2" attributes="0"/>

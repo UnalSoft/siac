@@ -9,10 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JViewport;
 import javax.swing.table.DefaultTableModel;
 import model.service.ServiceFactory;
-import model.service.UsuarioService;
 import model.vo.UsuarioVO;
 import view.ConsultarUsuario;
-import view.Principal;
 import view.Secundario;
 
 /**
@@ -21,15 +19,16 @@ import view.Secundario;
  */
 public class ConsultarUsuarioController {
     
-    static Principal principal;
     static Secundario secundario;
     static ConsultarUsuario consultarUsuario = new ConsultarUsuario();
-    List<UsuarioVO> usuariosList = ServiceFactory.getInstance()
-            .getUsuarioService().getList();
-    DefaultTableModel model = (DefaultTableModel)consultarUsuario.getUsuarioT()
-            .getModel();
+    List<UsuarioVO> usuariosList;
+    DefaultTableModel model;
     
     public void llenarTabla(){
+        usuariosList = ServiceFactory.getInstance()
+            .getUsuarioService().getList();
+        model = (DefaultTableModel)consultarUsuario.getUsuarioT()
+            .getModel();
         for(UsuarioVO usuarioVO : usuariosList){
             if(usuarioVO.getEmpresasNIT().equals
                     (LoginController.usuarioActivo.getEmpresasNIT())){
@@ -51,11 +50,16 @@ public class ConsultarUsuarioController {
 
     public void consultarUsuario() {
         secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
+        secundario.setLocationRelativeTo(null);
         secundario.setSize(consultarUsuario.getPreferredSize());
         secundario.setVisible(true);
         cambiarPanel(secundario.getViewport(), consultarUsuario);
         llenarTabla();
+    }
+    
+    public void cancelar(){
+        secundario.removeAll();
+        secundario.setVisible(false);
     }
 
     public void buscar() {
@@ -86,6 +90,28 @@ public class ConsultarUsuarioController {
                 }
             }
         }
+    }
+
+    public void mostrarUsuario() {
+        if(consultarUsuario.getUsuarioT().getSelectedRow()!=-1){
+        UsuarioVO usuarioVO = ServiceFactory.getInstance().getUsuarioService()
+                .find(Long.valueOf(consultarUsuario.getUsuarioT()
+                .getValueAt(consultarUsuario.getUsuarioT().getSelectedRow(), 0)
+                .toString()));
+        consultarUsuario.getConsultaF().setLocationRelativeTo(null);
+        consultarUsuario.getConsultaF().setSize(401,223);
+        consultarUsuario.getConsultaF().setVisible(true);
+        consultarUsuario.getDniTF().setText(usuarioVO.getDni().toString());
+        consultarUsuario.getNombreDeUsuarioTF().setText
+                (usuarioVO.getNombreDeUsuario());
+        consultarUsuario.getNombreTF().setText(usuarioVO.getNombre());
+        consultarUsuario.getCorreoTF().setText(usuarioVO.getCorreo());
+        consultarUsuario.getRolTF().setText(usuarioVO.getRol().getLabel());
+        }
+    }
+    
+    public void ocultarUsuario() {
+        consultarUsuario.getConsultaF().setVisible(false);
     }
 
 }
