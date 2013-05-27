@@ -81,7 +81,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public void delete(Long id) throws NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        DAOFactory.getInstance().getUsuarioDAO().delete(id);
     }
 
     @Override
