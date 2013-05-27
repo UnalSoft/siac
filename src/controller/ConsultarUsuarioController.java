@@ -5,6 +5,7 @@
 package controller;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JViewport;
 import javax.swing.table.DefaultTableModel;
@@ -21,15 +22,15 @@ public class ConsultarUsuarioController {
 
     static Secundario secundario;
     static ConsultarUsuario consultarUsuario = new ConsultarUsuario();
-    List<UsuarioVO> usuariosList;
     DefaultTableModel model;
-
+    
     public void llenarTabla() {
-        //TODO Limpiar la tabla al inicio
-        usuariosList = ServiceFactory.getInstance()
+        List<UsuarioVO> usuariosList = ServiceFactory.getInstance()
                 .getUsuarioService().findByEnterprise(LoginController.usuarioActivo.getEmpresasNIT());
         model = (DefaultTableModel) consultarUsuario.getUsuarioT()
                 .getModel();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
         for (UsuarioVO usuarioVO : usuariosList) {
             Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
                 usuarioVO.getCorreo(), usuarioVO.getRol(),
@@ -61,31 +62,33 @@ public class ConsultarUsuarioController {
     }
 
     public void buscar() {
+        model = (DefaultTableModel) consultarUsuario.getUsuarioT().getModel();
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
+        List<UsuarioVO> usuarios;
         if (consultarUsuario.getDniRB().isSelected()) {
-            //TODO usar metodo findByDNIAndEnterprise del servicio
-            for (UsuarioVO usuarioVO : usuariosList) {
-                if (usuarioVO.getDni().toString()
-                        .equals(consultarUsuario.getBuscarTF().getText())
-                        && usuarioVO.getEmpresasNIT().equals(LoginController.usuarioActivo.getEmpresasNIT())) {
-                    Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
-                        usuarioVO.getCorreo(), usuarioVO.getRol(),
-                        usuarioVO.getEmpresasNIT()};
-                    model.addRow(datos);
-                }
+            try {
+                usuarios = ServiceFactory.getInstance().getUsuarioService()
+                        .findByDNIAndEnterprise(new Long(consultarUsuario.getBuscarTF().getText()), LoginController.usuarioActivo.getEmpresasNIT());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(consultarUsuario, "El campo DNI debe ser un numero", "Error", JOptionPane.ERROR_MESSAGE);
+                consultarUsuario.getBuscarTF().requestFocus();
+                return;
+            }
+            for (UsuarioVO usuarioVO : usuarios) {
+                Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
+                    usuarioVO.getCorreo(), usuarioVO.getRol(),
+                    ServiceFactory.getInstance().getEmpresaService().find(usuarioVO.getEmpresasNIT()).getNombre()};
+                model.addRow(datos);
             }
         } else {
-            //TODO usar metodo findByNameAndEnterprise del servicio
-            for (UsuarioVO usuarioVO : usuariosList) {
-                if (usuarioVO.getNombre().toString()
-                        .equals(consultarUsuario.getBuscarTF().getText())
-                        && usuarioVO.getEmpresasNIT().equals(LoginController.usuarioActivo.getEmpresasNIT())) {
-                    Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
-                        usuarioVO.getCorreo(), usuarioVO.getRol(),
-                        usuarioVO.getEmpresasNIT()};
-                    model.addRow(datos);
-                }
+            usuarios = ServiceFactory.getInstance().getUsuarioService()
+                    .findByNameAndEnterprise(consultarUsuario.getBuscarTF().getText(), LoginController.usuarioActivo.getEmpresasNIT());
+            for (UsuarioVO usuarioVO : usuarios) {
+                Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
+                    usuarioVO.getCorreo(), usuarioVO.getRol(),
+                    ServiceFactory.getInstance().getEmpresaService().find(usuarioVO.getEmpresasNIT()).getNombre()};
+                model.addRow(datos);
             }
         }
     }
