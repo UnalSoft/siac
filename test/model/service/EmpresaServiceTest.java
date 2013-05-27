@@ -71,6 +71,36 @@ public class EmpresaServiceTest {
     }
 
     @Test
+    public void testValidarCamposNullRequieredFieldNit() {
+        System.out.println("validarCamposNullRequieredFieldNit");
+       
+        empresa.setNit(null);
+
+        try {
+            ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposNullRequieredFieldNombre() {
+        System.out.println("validarCamposNullRequieredFieldNombre");
+       
+        empresa.setNombre(null);
+
+        try {
+            ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
     public void testValidarCamposInvalidCharacersInAddress() {
         System.out.println("validarCamposInvalidCharacersInAddress");
         boolean expResult = false;
