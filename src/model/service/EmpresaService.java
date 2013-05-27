@@ -75,34 +75,55 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
         }
     }
     
-    public EmpresaVO findByEnterprise(Integer nit) throws EntityNotFoundException {
+    public List<EmpresaVO> findByEnterprise(Integer nit) throws EntityNotFoundException {
         //TODO validar permisos
-        Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().findByEnterprise(nit);
-        if (Empresa != null) {
-            return Empresa.toVO();
-        } else {
-            return null;
+        List<EmpresaVO> list = new ArrayList<>();
+        for (Empresa empresa : DAOFactory.getInstance().getEmpresaDAO().findByEnterprise(nit)) {
+            list.add((empresa).toVO());
         }
+        Collections.sort(list, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                EmpresaVO p1 = (EmpresaVO) o1;
+                EmpresaVO p2 = (EmpresaVO) o2;
+                return p1.getNit().compareTo(p2.getNit());
+            }
+        });
+        return list;
     }
     
-    public EmpresaVO findByNameAndEnterprise(String name, Integer nit) throws EntityNotFoundException {
+    public List<EmpresaVO> findByNameAndEnterprise(String name, Integer nit) throws EntityNotFoundException {
         //TODO validar permisos
-        Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().findByNameAndEnterprise(name, nit);
-        if (Empresa != null) {
-            return Empresa.toVO();
-        } else {
-            return null;
+        List<EmpresaVO> list = new ArrayList<>();
+        for (Empresa empresa : DAOFactory.getInstance().getEmpresaDAO().findByNameAndEnterprise(name, nit)) {
+            list.add((empresa).toVO());
         }
+        Collections.sort(list, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                EmpresaVO p1 = (EmpresaVO) o1;
+                EmpresaVO p2 = (EmpresaVO) o2;
+                return p1.getNit().compareTo(p2.getNit());
+            }
+        });
+        return list;
     }
     
-    public EmpresaVO findByNitAndEnterprise(Integer nit, Integer nitEnt) throws EntityNotFoundException {
+    public List<EmpresaVO> findByNitAndEnterprise(Integer nit, Integer nitEnt) throws EntityNotFoundException {
         //TODO validar permisos
-        Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().findByNitAndEnterprise(nit, nitEnt);
-        if (Empresa != null) {
-            return Empresa.toVO();
-        } else {
-            return null;
+        List<EmpresaVO> list = new ArrayList<>();
+        for (Empresa empresa : DAOFactory.getInstance().getEmpresaDAO().findByNitAndEnterprise(nit, nitEnt)) {
+            list.add((empresa).toVO());
         }
+        Collections.sort(list, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                EmpresaVO p1 = (EmpresaVO) o1;
+                EmpresaVO p2 = (EmpresaVO) o2;
+                return p1.getNit().compareTo(p2.getNit());
+            }
+        });
+        return list;
     }
 
     @Override
@@ -124,7 +145,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
 
     @Override
     public List<EmpresaVO> getList() {
-        List<EmpresaVO> list = new ArrayList<EmpresaVO>();
+        List<EmpresaVO> list = new ArrayList<>();
         for (Empresa empresa : DAOFactory.getInstance().getEmpresaDAO().getList()) {
             list.add((empresa).toVO());
         }
