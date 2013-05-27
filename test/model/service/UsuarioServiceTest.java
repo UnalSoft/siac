@@ -21,6 +21,17 @@ import static org.junit.Assert.*;
  */
 public class UsuarioServiceTest {
 
+    UsuarioVO usuario;
+    //sizes
+    int MAXPASS = 255;
+    int MAXMAIL = 30;
+    int MAXNAME = 80;
+    int MAXUSERNAME = 20;
+    String VALID_CHARACTERS_NAME = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-`´¨";
+    String VALID_CHARACTERS_PASS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    String VALID_CHARACTERS_MAIL = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.@";
+    String VALID_CHARACTERS_USERNAME = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.@";
+
     public UsuarioServiceTest() {
     }
 
@@ -86,7 +97,7 @@ public class UsuarioServiceTest {
             }
         }
 
-        UsuarioVO usuario = new UsuarioVO();
+        usuario = new UsuarioVO();
         usuario.setNombre("Rogelio");
         usuario.setRol(Rol.PRIMER_ADMINISTRADOR);
         usuario.setCorreo("rogelio@bayer.com");
@@ -125,6 +136,8 @@ public class UsuarioServiceTest {
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        usuario = null;
 
     }
 
@@ -200,6 +213,86 @@ public class UsuarioServiceTest {
     }
 
     @Test
-    public void testValidarCampos() {
+    public void testValidarCamposExpectedFunctionality() throws Exception {
+        System.out.println("validarCamposExpectedFunctionality");
+        boolean expResult = true;
+        boolean result = ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+        assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testValidarCamposNullRequieredFieldDni() {
+        System.out.println("validarCamposNullRequieredFieldDni");
+
+        usuario.setDni(null);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposNullRequieredFieldPass() {
+        System.out.println("validarCamposNullRequieredFieldPass");
+
+        usuario.setClave(null);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposNullRequieredFieldMail() {
+        System.out.println("validarCamposNullRequieredFieldMail");
+
+        usuario.setCorreo(null);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposNullRequieredFieldName() {
+        System.out.println("validarCamposNullRequieredFieldName");
+
+        usuario.setNombre(null);
+
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    @Test
+    public void testValidarCamposNullRequieredFieldUserName() {
+        System.out.println("validarCamposNullRequieredFieldUserName");
+
+        usuario.setNombreDeUsuario(null);
+        
+        try {
+            ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
 }
