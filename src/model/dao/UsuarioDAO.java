@@ -208,14 +208,74 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
     }
 
     public List<Usuario> findByEnterprise(Integer nit) {
-        throw new UnsupportedOperationException("Not yet implemented");       
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Usuario> usuarios;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.empresasNIT.nit LIKE :nit")
+                    .setParameter("nit", nit);
+
+            usuarios = q.getResultList();
+
+            return usuarios;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay usuarios asociados a la empresa con nit: " + nit);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
     }
 
     public List<Usuario> findByNameAndEnterprise(String name, Integer nit) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Usuario> usuarios;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.nombre LIKE :name "
+                    + "AND u.empresasNIT.nit LIKE :nit")
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("nit", nit);
+
+            usuarios = q.getResultList();
+
+            return usuarios;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay usuarios con nombre: " + name 
+                    + " asociados a la empresa con nit: " + nit);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
     }
 
     public List<Usuario> findByDNIAndEnterprise(Long dni, Integer nit) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Usuario> usuarios;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.dni LIKE :dni "
+                    + "AND u.empresasNIT.nit LIKE :nit")
+                    .setParameter("dni", "%" + dni + "%")
+                    .setParameter("nit", nit);
+
+            usuarios = q.getResultList();
+
+            return usuarios;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay usuarios con dni: " + dni 
+                    + " asociados a la empresa con nit: " + nit);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
     }
 }
