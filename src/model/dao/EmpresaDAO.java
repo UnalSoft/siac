@@ -176,4 +176,16 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
             }
         }
     }
+
+    public Empresa findByEnterprise(Integer nit) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public Empresa findByNameAndEnterprise(String name, Integer nit) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public Empresa findByNitAndEnterprise(Integer nit, Integer nitEnt) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }

@@ -66,7 +66,38 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
 
     @Override
     public EmpresaVO find(Integer id) throws EntityNotFoundException {
+        //TODO validar permisos
         Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().find(id);
+        if (Empresa != null) {
+            return Empresa.toVO();
+        } else {
+            return null;
+        }
+    }
+    
+    public EmpresaVO findByEnterprise(Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().findByEnterprise(nit);
+        if (Empresa != null) {
+            return Empresa.toVO();
+        } else {
+            return null;
+        }
+    }
+    
+    public EmpresaVO findByNameAndEnterprise(String name, Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().findByNameAndEnterprise(name, nit);
+        if (Empresa != null) {
+            return Empresa.toVO();
+        } else {
+            return null;
+        }
+    }
+    
+    public EmpresaVO findByNitAndEnterprise(Integer nit, Integer nitEnt) throws EntityNotFoundException {
+        //TODO validar permisos
+        Empresa Empresa = DAOFactory.getInstance().getEmpresaDAO().findByNitAndEnterprise(nit, nitEnt);
         if (Empresa != null) {
             return Empresa.toVO();
         } else {

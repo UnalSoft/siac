@@ -206,4 +206,16 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
             }
         }
     }
+
+    public Usuario findByEnterprise(Integer nit) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public Usuario findByNameAndEnterprise(String name, Integer nit) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    public Usuario findByDNIAndEnterprise(Long dni, Integer nit) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }

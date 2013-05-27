@@ -61,7 +61,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public UsuarioVO find(Long id) throws EntityNotFoundException {
-        //TODO validar permisos por rol y tipo de empresa
+        //TODO validar permisos 
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().find(id);
         if (usuario != null) {
             return usuario.toVO();
@@ -70,9 +70,34 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         }
     }
     
-    public UsuarioVO findByName(Long id) throws EntityNotFoundException {
-        //TODO validar permisos por rol y tipo de empresa
-        return null;
+    public UsuarioVO findByEnterprise(Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().findByEnterprise(nit);
+        if (usuario != null) {
+            return usuario.toVO();
+        } else {
+            return null;
+        }
+    }
+    
+    public UsuarioVO findByNameAndEnterprise(String name, Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().findByNameAndEnterprise(name, nit);
+        if (usuario != null) {
+            return usuario.toVO();
+        } else {
+            return null;
+        }
+    }
+    
+    public UsuarioVO findByDNIAndEnterprise(Long dni, Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().findByDNIAndEnterprise(dni, nit);
+        if (usuario != null) {
+            return usuario.toVO();
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -92,7 +117,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public List<UsuarioVO> getList() {
-        //TODO validar permisos por rol y tipo de empresa
+        //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<UsuarioVO>();
         for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList()) {
             list.add((usuario).toVO());
