@@ -214,13 +214,13 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
             List<Usuario> usuarios;
             Query q = entityManager.createQuery("SELECT u FROM Usuario u "
                     + "WHERE u.empresasNIT.nit LIKE :nit")
-                    .setParameter("nit", nit);
+                    .setParameter("nit", nit.toString());
 
             usuarios = q.getResultList();
 
             return usuarios;
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay usuarios asociados a la empresa con nit: " + nit);
+            throw new EntityNotFoundException("No hay usuarios asociados a la empresa con nit: " + nit.toString());
         } finally {
             if (entityManager != null) {
                 entityManager.clear();
@@ -238,14 +238,14 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
                     + "WHERE u.nombre LIKE :name "
                     + "AND u.empresasNIT.nit LIKE :nit")
                     .setParameter("name", "%" + name + "%")
-                    .setParameter("nit", nit);
+                    .setParameter("nit", nit.toString());
 
             usuarios = q.getResultList();
 
             return usuarios;
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("No hay usuarios con nombre: " + name 
-                    + " asociados a la empresa con nit: " + nit);
+                    + " asociados a la empresa con nit: " + nit.toString());
         } finally {
             if (entityManager != null) {
                 entityManager.clear();
@@ -262,15 +262,15 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
             Query q = entityManager.createQuery("SELECT u FROM Usuario u "
                     + "WHERE u.dni LIKE :dni "
                     + "AND u.empresasNIT.nit LIKE :nit")
-                    .setParameter("dni", "%" + dni + "%")
-                    .setParameter("nit", nit);
+                    .setParameter("dni", "%" + dni.toString() + "%")
+                    .setParameter("nit", nit.toString());
 
             usuarios = q.getResultList();
 
             return usuarios;
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay usuarios con dni: " + dni 
-                    + " asociados a la empresa con nit: " + nit);
+            throw new EntityNotFoundException("No hay usuarios con dni: " + dni.toString() 
+                    + " asociados a la empresa con nit: " + nit.toString());
         } finally {
             if (entityManager != null) {
                 entityManager.clear();

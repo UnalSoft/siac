@@ -184,13 +184,13 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
             List<Empresa> empresas;
             Query q = entityManager.createQuery("SELECT e FROM Empresa e "
                     + "WHERE e.empresasnit.nit LIKE :nit ")
-                    .setParameter("nit", nit);
+                    .setParameter("nit", nit.toString());
 
             empresas = q.getResultList();
 
             return empresas;
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay empresas asociados a la empresa con nit: " + nit);
+            throw new EntityNotFoundException("No hay empresas asociados a la empresa con nit: " + nit.toString());
         } finally {
             if (entityManager != null) {
                 entityManager.clear();
@@ -208,14 +208,14 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
                     + "WHERE e.nombre LIKE :name "
                     + "AND e.empresasnit.nit LIKE :nit")
                     .setParameter("name", "%" + name + "%")
-                    .setParameter("nit", nit);
+                    .setParameter("nit", nit.toString());
 
             empresas = q.getResultList();
 
             return empresas;
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay empresa con nombre: " + name 
-                    + " asociados a la empresa con nit: " + nit);
+            throw new EntityNotFoundException("No hay empresa con nombre: " + name.toString() 
+                    + " asociados a la empresa con nit: " + nit.toString());
         } finally {
             if (entityManager != null) {
                 entityManager.clear();
@@ -232,15 +232,15 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
             Query q = entityManager.createQuery("SELECT e FROM Empresa e "
                     + "WHERE e.nit LIKE :nit "
                     + "AND e.empresasnit.nit LIKE :nitEnt")
-                    .setParameter("nit", "%" + nit + "%")
-                    .setParameter("nitEnt", nitEnt);
+                    .setParameter("nit", "%" + nit.toString() + "%")
+                    .setParameter("nitEnt", nitEnt.toString());
 
             empresas = q.getResultList();
 
             return empresas;
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay empresa con nit: " + nit
-                    + " asociados a la empresa con nit: " + nitEnt);
+            throw new EntityNotFoundException("No hay empresa con nit: " + nit.toString()
+                    + " asociados a la empresa con nit: " + nitEnt.toString());
         } finally {
             if (entityManager != null) {
                 entityManager.clear();
