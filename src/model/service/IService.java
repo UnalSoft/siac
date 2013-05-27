@@ -20,11 +20,11 @@ public interface IService<VO, ID extends Serializable> {
 
     void create(VO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException;
 
-    VO find(ID id)  throws EntityNotFoundException;
+    VO find(ID id)  throws EntityNotFoundException, InsufficientPermissionsException;
 
-    void update(VO vo) throws NonexistentEntityException;
+    void update(VO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException;
 
-    void delete(ID id) throws NonexistentEntityException;
+    void delete(ID id) throws NonexistentEntityException, InsufficientPermissionsException;
 
     List<VO> getList();
 }

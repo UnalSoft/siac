@@ -45,13 +45,13 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
                 entity.setNombre(vo.getNombre());
                 entity.setNombreDeUsuario(vo.getNombreDeUsuario());
                 entity.setRol(vo.getRol());
-                
+
                 entity.setErrorCollection((Collection) vo.getErrorList());
-                
+
                 Empresa empresa = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
                 empresa.getUsuarioCollection().add(entity);
                 entity.setEmpresasNIT(empresa);
-                
+
                 DAOFactory.getInstance().getUsuarioDAO().create(entity);
             } else {
                 throw new InsufficientPermissionsException("El Usuario no posee los permisos suficientes para realizar la operación");
@@ -69,7 +69,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             return null;
         }
     }
-    
+
     public List<UsuarioVO> findByEnterprise(Integer nit) throws EntityNotFoundException {
         //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<>();
@@ -86,7 +86,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         });
         return list;
     }
-    
+
     public List<UsuarioVO> findByNameAndEnterprise(String name, Integer nit) throws EntityNotFoundException {
         //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<>();
@@ -103,7 +103,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         });
         return list;
     }
-    
+
     public List<UsuarioVO> findByDNIAndEnterprise(Long dni, Integer nit) throws EntityNotFoundException {
         //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<>();
@@ -122,18 +122,30 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void update(UsuarioVO vo) throws NonexistentEntityException {
-        Usuario entity = DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni());
-        entity.setClave(vo.getClave());
-        entity.setCorreo(Hash.hashMD5(vo.getCorreo()));
-        entity.setNombre(vo.getNombre());
-        entity.setRol(vo.getRol());
-        DAOFactory.getInstance().getUsuarioDAO().update(entity);
+    public void update(UsuarioVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException {
+        if (validarCampos(vo)) {
+            if (havePermissions(vo)) {
+                Usuario entity = DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni());
+                entity.setClave(vo.getClave());
+                entity.setCorreo(Hash.hashMD5(vo.getCorreo()));
+                entity.setNombre(vo.getNombre());
+                entity.setNombreDeUsuario(vo.getNombreDeUsuario());
+                entity.setRol(vo.getRol());
+                DAOFactory.getInstance().getUsuarioDAO().update(entity);
+            } else {
+                throw new InsufficientPermissionsException("El Usuario no posee los permisos suficientes para realizar la operación");
+            }
+        }
     }
 
     @Override
-    public void delete(Long id) throws NonexistentEntityException {
-        DAOFactory.getInstance().getUsuarioDAO().delete(id);
+    public void delete(Long id) throws NonexistentEntityException, InsufficientPermissionsException {
+        UsuarioVO vo = DAOFactory.getInstance().getUsuarioDAO().find(id).toVO();
+        if (havePermissions(vo)) {
+            DAOFactory.getInstance().getUsuarioDAO().delete(id);
+        } else {
+            throw new InsufficientPermissionsException("El Usuario no posee los permisos suficientes para realizar la operación");
+        }
     }
 
     @Override
@@ -158,7 +170,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         Usuario entity = new Usuario();
         entity.setNombreDeUsuario(vo.getNombreDeUsuario());
         entity.setClave(Hash.hashMD5(vo.getClave()));
-        
+
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().login(entity);
         return usuario != null ? usuario.toVO() : null;
 
@@ -185,20 +197,20 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         }
         return true;
     }
-    
-    private boolean havePermissions (UsuarioVO vo) {
+
+    private boolean havePermissions(UsuarioVO vo) {
         UsuarioVO usuarioActivo = LoginController.usuarioActivo;
-            Empresa empresaUsuarioActivo = DAOFactory.getInstance().getEmpresaDAO().find(LoginController.usuarioActivo.getEmpresasNIT());
-            Empresa empresaVo = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
-            return ((usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
-                    || ((usuarioActivo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && (vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR)))
-                        && ((empresaUsuarioActivo.getNivel().equals(Nivel.DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
-                            || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.CANAL))
-                            || (empresaUsuarioActivo.getNivel().equals(Nivel.CANAL) && empresaVo.getNivel().equals(Nivel.PUNTO_DE_VENTA))))
-                    || ((usuarioActivo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) || usuarioActivo.getRol().equals(Rol.ADMINISTRADOR))
-                        && ((empresaUsuarioActivo.getNivel().equals(Nivel.DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
-                            || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
-                            || (empresaUsuarioActivo.getNivel().equals(Nivel.CANAL) && empresaVo.getNivel().equals(Nivel.CANAL))
-                            || (empresaUsuarioActivo.getNivel().equals(Nivel.PUNTO_DE_VENTA) && empresaVo.getNivel().equals(Nivel.PUNTO_DE_VENTA)))));
+        Empresa empresaUsuarioActivo = DAOFactory.getInstance().getEmpresaDAO().find(LoginController.usuarioActivo.getEmpresasNIT());
+        Empresa empresaVo = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
+        return ((usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
+                || ((usuarioActivo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && (vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR)))
+                && ((empresaUsuarioActivo.getNivel().equals(Nivel.DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
+                || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.CANAL))
+                || (empresaUsuarioActivo.getNivel().equals(Nivel.CANAL) && empresaVo.getNivel().equals(Nivel.PUNTO_DE_VENTA))))
+                || ((usuarioActivo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) || usuarioActivo.getRol().equals(Rol.ADMINISTRADOR))
+                && ((empresaUsuarioActivo.getNivel().equals(Nivel.DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
+                || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
+                || (empresaUsuarioActivo.getNivel().equals(Nivel.CANAL) && empresaVo.getNivel().equals(Nivel.CANAL))
+                || (empresaUsuarioActivo.getNivel().equals(Nivel.PUNTO_DE_VENTA) && empresaVo.getNivel().equals(Nivel.PUNTO_DE_VENTA)))));
     }
 }

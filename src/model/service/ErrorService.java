@@ -1,6 +1,5 @@
 package model.service;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,9 +8,9 @@ import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
-import model.vo.ErrorVO;
 import model.entity.Error;
 import model.entity.Usuario;
+import model.vo.ErrorVO;
 
 /**
  *
@@ -66,7 +65,7 @@ public class ErrorService implements IService<ErrorVO, Integer> {
 
     @Override
     public void delete(Integer id) throws NonexistentEntityException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        DAOFactory.getInstance().getErrorDAO().delete(id);
     }
 
     @Override
