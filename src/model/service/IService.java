@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import model.dao.exceptions.InsufficientPermissionsException;
+import model.dao.exceptions.InvalidAttributeException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.dao.exceptions.RequiredAttributeException;
@@ -18,11 +19,11 @@ import model.dao.exceptions.RequiredAttributeException;
  */
 public interface IService<VO, ID extends Serializable> {
 
-    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException;
+    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InvalidAttributeException, InsufficientPermissionsException;
 
-    VO find(ID id)  throws EntityNotFoundException, InsufficientPermissionsException;
+    VO find(ID id) throws EntityNotFoundException, InsufficientPermissionsException;
 
-    void update(VO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException;
+    void update(VO vo) throws NonexistentEntityException, RequiredAttributeException, InvalidAttributeException, InsufficientPermissionsException;
 
     void delete(ID id) throws NonexistentEntityException, InsufficientPermissionsException;
 

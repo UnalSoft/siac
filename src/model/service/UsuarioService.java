@@ -6,6 +6,7 @@ import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
 import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.InsufficientPermissionsException;
+import model.dao.exceptions.InvalidAttributeException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.dao.exceptions.RequiredAttributeException;
@@ -23,6 +24,13 @@ import util.Hash;
 public class UsuarioService implements IService<UsuarioVO, Long> {
 
     private static UsuarioService instance;
+    public final static int MIN_LENGTH_NAME = 3;
+    public final static int MAX_LENGTH_NAME = 80;
+    public final static int MIN_LENGTH_PASSWD = 7;
+    public final static int MAX_LENGTH_PASSWD = 20;
+    public final static int MAX_LENGTH_USERNAME = 20;
+    public final static long MIN_DNI = 100000;
+    public final static long MAX_DNI = Long.MAX_VALUE;
 
     private UsuarioService() {
     }
@@ -35,7 +43,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void create(UsuarioVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException {
+    public void create(UsuarioVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Usuario entity = new Usuario();
@@ -122,7 +130,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void update(UsuarioVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException {
+    public void update(UsuarioVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Usuario entity = DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni());
@@ -176,26 +184,57 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     }
 
-    public boolean validarCampos(UsuarioVO vo) throws RequiredAttributeException {
+    public boolean validarCampos(UsuarioVO vo) throws RequiredAttributeException, InvalidAttributeException {
+        //Validar DNI
         if (vo.getDni() == null) {
             throw new RequiredAttributeException("El atributo DNI es requerido");
+        } else if (vo.getDni() < MIN_DNI || vo.getDni() > MAX_DNI) {
+            throw new InvalidAttributeException("El atributo DNI no está en el rango permitido");
         }
+        //Validar Nombre
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre es requerido");
+        } else if (vo.getNombre().length() < MIN_LENGTH_NAME || vo.getNombre().length() > MAX_LENGTH_NAME) {
+            throw new InvalidAttributeException("La longitud del atributo Nombre no está en el rango permitido (" 
+                    + MIN_LENGTH_NAME + " - " + MAX_LENGTH_NAME + ")");
+        } else if (!vo.getNombre().matches("([_A-Za-záéíóúAÉÍÓÚÑñ-]*(\\s[_A-Za-záéíóúAÉÍÓÚÑñ-]+)*)")) {
+            throw new InvalidAttributeException("El atributo Nombre contiene caracteres inválidos"); 
         }
+        //Validar Nombre de Usuario
         if (vo.getNombreDeUsuario() == null || vo.getNombreDeUsuario().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre de Usuario es requerido");
+        } else if (vo.getNombreDeUsuario().length() > MAX_LENGTH_USERNAME) {
+            throw new InvalidAttributeException("El atributo Nombre de Usuario debe tener una longitud menor a " + MAX_LENGTH_USERNAME);
+        } else if (!vo.getNombreDeUsuario().matches("[_A-Za-z0-9-.]*")) {
+            throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos"); 
         }
+        //Validar Clave
         if (vo.getClave() == null || vo.getClave().isEmpty()) {
             throw new RequiredAttributeException("El atributo Contraseña es requerido");
+        } else if (vo.getClave().length() < MIN_LENGTH_PASSWD || vo.getClave().length() > MAX_LENGTH_PASSWD) {
+            throw new InvalidAttributeException("La longitud del atributo Contraseña no está en el rango permitido (" 
+                    + MIN_LENGTH_PASSWD + " - " + MAX_LENGTH_PASSWD + ")");
+        } else if (!vo.getClave().matches("[_A-Za-z0-9-]*")) {
+            throw new InvalidAttributeException("El atributo Contraseña contiene caracteres inválidos"); 
         }
+        //Validar Correo
         if (vo.getCorreo() == null || vo.getCorreo().isEmpty()) {
             throw new RequiredAttributeException("El atributo Correo es requerido");
+        } else if (!isValidEmail(vo.getCorreo())) {
+            throw new InvalidAttributeException("El atributo Correo no tiene un formato válido");
         }
+        //Validar Rol
         if (vo.getRol() == null) {
             throw new RequiredAttributeException("El atributo Rol es requerido");
         }
         return true;
+    }
+    
+    private boolean isValidEmail(String mail) {      
+        if (mail.matches("([_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,}))")) {
+            return true;
+        }
+        return false;
     }
 
     private boolean havePermissions(UsuarioVO vo) {

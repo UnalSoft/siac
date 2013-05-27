@@ -3,6 +3,7 @@ package controller;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import model.dao.exceptions.InsufficientPermissionsException;
+import model.dao.exceptions.InvalidAttributeException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.dao.exceptions.RequiredAttributeException;
@@ -57,7 +58,8 @@ public class CrearEmpresaController {
                     ServiceFactory.getInstance().getEmpresaService().create(empresaVo);
                     ServiceFactory.getInstance().getUsuarioService().create(usuarioVo);
                 }
-            } catch (PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException ex) {
+            } catch (PreexistingEntityException | NonexistentEntityException | RequiredAttributeException
+                    | InvalidAttributeException | InsufficientPermissionsException ex) {
                 JOptionPane.showMessageDialog(crearEmpresa, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
