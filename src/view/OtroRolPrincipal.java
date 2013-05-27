@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.LoginController;
+import controller.OtroRolPrincipalController;
 import javax.swing.JLabel;
 
 /**
@@ -47,6 +49,7 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
         nombreEmpresaL = new javax.swing.JLabel();
         rolLabelL = new javax.swing.JLabel();
         rolL = new javax.swing.JLabel();
+        cerrarSesionB = new javax.swing.JButton();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/User.png"))); // NOI18N
 
@@ -62,33 +65,49 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
 
         rolL.setText("Proveedor de TI");
 
+        cerrarSesionB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CerrarSesion.png"))); // NOI18N
+        cerrarSesionB.setText("Cerrar sesión");
+        cerrarSesionB.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cerrarSesionB.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        cerrarSesionB.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        cerrarSesionB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionBActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jLabel2)
                 .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(registradoL)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(nombreEmpresaL))
                     .add(layout.createSequentialGroup()
                         .add(rolLabelL)
                         .add(18, 18, 18)
                         .add(rolL))
                     .add(layout.createSequentialGroup()
-                        .add(bienvenidoL)
-                        .add(18, 18, 18)
-                        .add(nombreUsuarioL)))
-                .add(50, 50, 50))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(layout.createSequentialGroup()
+                                .add(bienvenidoL)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(nombreUsuarioL)
+                                .add(35, 35, 35))
+                            .add(layout.createSequentialGroup()
+                                .add(registradoL)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(nombreEmpresaL)
+                                .add(18, 18, 18)))
+                        .add(cerrarSesionB)))
+                .add(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(24, 24, 24)
+                .add(17, 17, 17)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel2)
                     .add(layout.createSequentialGroup()
@@ -97,18 +116,26 @@ public class OtroRolPrincipal extends javax.swing.JPanel {
                             .add(nombreUsuarioL))
                         .add(18, 18, 18)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(registradoL)
-                            .add(nombreEmpresaL))
-                        .add(18, 18, 18)
+                            .add(nombreEmpresaL)
+                            .add(registradoL))
+                        .add(26, 26, 26)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(rolLabelL)
                             .add(rolL))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(cerrarSesionB)
+                .add(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cerrarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBActionPerformed
+        LoginController.cerrarSesion();
+    }//GEN-LAST:event_cerrarSesionBActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenidoL;
+    private javax.swing.JButton cerrarSesionB;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel nombreEmpresaL;
     private javax.swing.JLabel nombreUsuarioL;

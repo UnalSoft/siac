@@ -1,17 +1,6 @@
 package model.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.dao.DAOFactory;
-import model.dao.exceptions.NonexistentEntityException;
-import model.dao.exceptions.PreexistingEntityException;
-import model.dao.exceptions.RequiredAttributeException;
-import model.entity.Nivel;
-import model.entity.Rol;
-import model.vo.EmpresaVO;
-import model.vo.ErrorVO;
+import model.dao.exceptions.DataBaseException;
 import model.vo.UsuarioVO;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -88,7 +77,7 @@ public class UsuarioServiceTest {
      * Test of login method, of class UsuarioService.
      */
     @Test
-    public void testLogin() {
+    public void testLogin() throws DataBaseException {
         System.out.println("login");
         
         //Caso Valido
