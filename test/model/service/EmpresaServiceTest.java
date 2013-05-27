@@ -140,4 +140,76 @@ public class EmpresaServiceTest {
         }
 
     }
+    
+    
+    @Test
+    public void testValidarCamposInvalidCharactersInName() {
+        System.out.println("validarCamposInvalidCharactersInName");
+        
+        empresa.setNombre("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        try {
+            ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Test
+    public void testValidarCamposInvalidNumberOfCharactersInName() {
+        System.out.println("validarCamposInvalidNumberOfCharactersInName");
+        
+        char dummy = '0';
+        String name = new String();
+
+        
+
+        for (int i = 1; i <= MAXNAME; i++) {
+            name = name + dummy;
+        }
+        
+        System.out.println(name + " " + name.length());
+        
+        empresa.setNombre(name);
+
+        try {
+            ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    @Test
+    public void testValidarCamposInvalidNumberOfCharactersInPhoneNumber() {
+        System.out.println("validarCamposInvalidNumberOfCharactersInPhoneNumber");
+        
+        char dummy = '0';
+        String number = new String();
+
+        
+
+        for (int i = 1; i <= MAXPHONE; i++) {
+            number = number + dummy;
+        }
+        
+        System.out.println(number + " " + number.length());
+        
+        empresa.setTelefono(number);
+
+        try {
+            ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
+            fail();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    
+    
 }
