@@ -14,7 +14,7 @@ import model.entity.Nivel;
 import model.entity.Rol;
 import model.entity.Usuario;
 import model.vo.UsuarioVO;
-import util.BCrypt;
+import util.Hash;
 
 /**
  *
@@ -39,7 +39,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Usuario entity = new Usuario();
-                entity.setClave(BCrypt.hashpw(vo.getClave(), BCrypt.gensalt()));
+                entity.setClave(Hash.hashMD5(vo.getClave()));
                 entity.setCorreo(vo.getCorreo());
                 entity.setDni(vo.getDni());
                 entity.setNombre(vo.getNombre());
@@ -73,7 +73,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     public void update(UsuarioVO vo) throws NonexistentEntityException {
         Usuario entity = DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni());
         entity.setClave(vo.getClave());
-        entity.setCorreo(vo.getCorreo());
+        entity.setCorreo(Hash.hashMD5(vo.getCorreo()));
         entity.setNombre(vo.getNombre());
         entity.setRol(vo.getRol());
         DAOFactory.getInstance().getUsuarioDAO().update(entity);
@@ -104,8 +104,10 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     public UsuarioVO login(UsuarioVO vo) throws DataBaseException {
         Usuario entity = new Usuario();
         entity.setNombreDeUsuario(vo.getNombreDeUsuario());
-        entity.setClave(vo.getClave());
+        entity.setClave(Hash.hashMD5(vo.getClave()));
+        System.out.println(Hash.hashMD5(vo.getClave()));
 
+        
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().login(entity);
         return usuario != null ? usuario.toVO() : null;
 
