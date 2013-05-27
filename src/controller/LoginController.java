@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JViewport;
@@ -105,7 +106,7 @@ public class LoginController {
             switch (usuarioLogin.getRol()) {
                 case PROVEEDOR_DE_TI:
                     ProveedorTIPrincipal proveedorTIPrincipal = new ProveedorTIPrincipal();
-                    principal.setSize(proveedorTIPrincipal.getPreferredSize());
+                    principal.setSize(tamanioAjustadoFrame(proveedorTIPrincipal));
                     proveedorTIPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     proveedorTIPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     proveedorTIPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
@@ -113,7 +114,7 @@ public class LoginController {
                     break;
                 case PRIMER_ADMINISTRADOR:
                     PrimerAdministradorPrincipal primerAdministradorPrincipal = new PrimerAdministradorPrincipal();
-                    principal.setSize(primerAdministradorPrincipal.getPreferredSize());
+                    principal.setSize(tamanioAjustadoFrame(primerAdministradorPrincipal));
                     primerAdministradorPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     primerAdministradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     primerAdministradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
@@ -121,7 +122,7 @@ public class LoginController {
                     break;
                 case ADMINISTRADOR:
                     AdministradorPrincipal administradorPrincipal = new AdministradorPrincipal();
-                    principal.setSize(administradorPrincipal.getPreferredSize());
+                    principal.setSize(tamanioAjustadoFrame(administradorPrincipal));
                     administradorPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     administradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     administradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
@@ -129,7 +130,7 @@ public class LoginController {
                     break;
                 case CONSULTA:
                     ConsultarPrincipal consultarPrincipal = new ConsultarPrincipal();
-                    principal.setSize(consultarPrincipal.getPreferredSize());
+                    principal.setSize(tamanioAjustadoFrame(consultarPrincipal));
                     consultarPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     consultarPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     consultarPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
@@ -137,7 +138,7 @@ public class LoginController {
                     break;
                 case OTRO:
                     OtroRolPrincipal otroRolPrincipal = new OtroRolPrincipal();
-                    principal.setSize(otroRolPrincipal.getPreferredSize());
+                    principal.setSize(tamanioAjustadoFrame(otroRolPrincipal));
                     otroRolPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     otroRolPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     otroRolPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
@@ -151,9 +152,16 @@ public class LoginController {
         }
     }
     
+    public static Dimension tamanioAjustadoFrame (JPanel panel) {
+        int ajuste = 50;
+        return new Dimension (panel.getPreferredSize().width+ajuste, panel.getPreferredSize().height+ajuste);
+    }
+    
     public static void cerrarSesion() {
+        usuarioActivo = null;
         login = new Login();
-        principal.setSize(login.getPreferredSize());
+        principal.setSize(tamanioAjustadoFrame(login));
+        principal.setLocationRelativeTo(null);
         cambiarPanel(principal.getViewport(), login);
     }
 }
