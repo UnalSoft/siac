@@ -176,4 +176,76 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
             }
         }
     }
+
+    public List<Empresa> findByEnterprise(Integer nit) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Empresa> empresas;
+            Query q = entityManager.createQuery("SELECT e FROM Empresa e "
+                    + "WHERE e.empresasnit.nit LIKE :nit ")
+                    .setParameter("nit", nit);
+
+            empresas = q.getResultList();
+
+            return empresas;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay empresas asociados a la empresa con nit: " + nit);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
+
+    public List<Empresa> findByNameAndEnterprise(String name, Integer nit) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Empresa> empresas;
+            Query q = entityManager.createQuery("SELECT e FROM Empresa e "
+                    + "WHERE e.nombre LIKE :name "
+                    + "AND e.empresasnit.nit LIKE :nit")
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("nit", nit);
+
+            empresas = q.getResultList();
+
+            return empresas;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay empresa con nombre: " + name 
+                    + " asociados a la empresa con nit: " + nit);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
+
+    public List<Empresa> findByNitAndEnterprise(Integer nit, Integer nitEnt) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Empresa> empresas;
+            Query q = entityManager.createQuery("SELECT e FROM Empresa e "
+                    + "WHERE e.nit LIKE :nit "
+                    + "AND e.empresasnit.nit LIKE :nitEnt")
+                    .setParameter("nit", "%" + nit + "%")
+                    .setParameter("nitEnt", nitEnt);
+
+            empresas = q.getResultList();
+
+            return empresas;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay empresa con nit: " + nit
+                    + " asociados a la empresa con nit: " + nitEnt);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
 }

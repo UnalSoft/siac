@@ -61,12 +61,64 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public UsuarioVO find(Long id) throws EntityNotFoundException {
+        //TODO validar permisos 
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().find(id);
         if (usuario != null) {
             return usuario.toVO();
         } else {
             return null;
         }
+    }
+    
+    public List<UsuarioVO> findByEnterprise(Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        List<UsuarioVO> list = new ArrayList<>();
+        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().findByEnterprise(nit)) {
+            list.add((usuario).toVO());
+        }
+        Collections.sort(list, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                UsuarioVO p1 = (UsuarioVO) o1;
+                UsuarioVO p2 = (UsuarioVO) o2;
+                return p1.getDni().compareTo(p2.getDni());
+            }
+        });
+        return list;
+    }
+    
+    public List<UsuarioVO> findByNameAndEnterprise(String name, Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        List<UsuarioVO> list = new ArrayList<>();
+        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().findByNameAndEnterprise(name, nit)) {
+            list.add((usuario).toVO());
+        }
+        Collections.sort(list, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                UsuarioVO p1 = (UsuarioVO) o1;
+                UsuarioVO p2 = (UsuarioVO) o2;
+                return p1.getDni().compareTo(p2.getDni());
+            }
+        });
+        return list;
+    }
+    
+    public List<UsuarioVO> findByDNIAndEnterprise(Long dni, Integer nit) throws EntityNotFoundException {
+        //TODO validar permisos
+        List<UsuarioVO> list = new ArrayList<>();
+        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().findByDNIAndEnterprise(dni, nit)) {
+            list.add((usuario).toVO());
+        }
+        Collections.sort(list, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                UsuarioVO p1 = (UsuarioVO) o1;
+                UsuarioVO p2 = (UsuarioVO) o2;
+                return p1.getDni().compareTo(p2.getDni());
+            }
+        });
+        return list;
     }
 
     @Override
@@ -86,6 +138,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public List<UsuarioVO> getList() {
+        //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<UsuarioVO>();
         for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList()) {
             list.add((usuario).toVO());
