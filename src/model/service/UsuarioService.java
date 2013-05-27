@@ -105,8 +105,6 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         Usuario entity = new Usuario();
         entity.setNombreDeUsuario(vo.getNombreDeUsuario());
         entity.setClave(Hash.hashMD5(vo.getClave()));
-        System.out.println(Hash.hashMD5(vo.getClave()));
-
         
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().login(entity);
         return usuario != null ? usuario.toVO() : null;
