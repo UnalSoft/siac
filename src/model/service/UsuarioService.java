@@ -61,12 +61,18 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public UsuarioVO find(Long id) throws EntityNotFoundException {
+        //TODO validar permisos por rol y tipo de empresa
         Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().find(id);
         if (usuario != null) {
             return usuario.toVO();
         } else {
             return null;
         }
+    }
+    
+    public UsuarioVO findByName(Long id) throws EntityNotFoundException {
+        //TODO validar permisos por rol y tipo de empresa
+        return null;
     }
 
     @Override
@@ -86,6 +92,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public List<UsuarioVO> getList() {
+        //TODO validar permisos por rol y tipo de empresa
         List<UsuarioVO> list = new ArrayList<UsuarioVO>();
         for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList()) {
             list.add((usuario).toVO());
