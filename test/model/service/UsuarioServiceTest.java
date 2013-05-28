@@ -1,16 +1,12 @@
 package model.service;
 
 import controller.LoginController;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.dao.DAOFactory;
 import model.dao.exceptions.*;
 import model.entity.Nivel;
 import model.entity.Rol;
 import model.vo.EmpresaVO;
-import model.vo.ErrorVO;
 import model.vo.UsuarioVO;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -86,13 +82,7 @@ public class UsuarioServiceTest {
 
             try {
                 ServiceFactory.getInstance().getEmpresaService().create(empresa);
-            } catch (PreexistingEntityException ex) {
-                Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NonexistentEntityException ex) {
-                Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (RequiredAttributeException ex) {
-                Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InsufficientPermissionsException ex) {
+            } catch (    PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException | InvalidAttributeException ex) {
                 Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -110,13 +100,7 @@ public class UsuarioServiceTest {
 
             try {
                 ServiceFactory.getInstance().getUsuarioService().create(usuario);
-            } catch (PreexistingEntityException ex) {
-                Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NonexistentEntityException ex) {
-                Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (RequiredAttributeException ex) {
-                Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InsufficientPermissionsException ex) {
+            } catch (    PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException | InvalidAttributeException ex) {
                 Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -128,12 +112,12 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().delete(new Long("404"));
-        } catch (NonexistentEntityException ex) {
+        } catch (NonexistentEntityException | InsufficientPermissionsException ex) {
             Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             ServiceFactory.getInstance().getEmpresaService().delete(404);
-        } catch (NonexistentEntityException ex) {
+        } catch (NonexistentEntityException | InsufficientPermissionsException ex) {
             Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 
