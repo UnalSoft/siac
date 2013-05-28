@@ -24,13 +24,13 @@ import util.Hash;
 public class UsuarioService implements IService<UsuarioVO, Long> {
 
     private static UsuarioService instance;
-    public final static int MIN_LENGTH_NAME = 3;
-    public final static int MAX_LENGTH_NAME = 80;
-    public final static int MIN_LENGTH_PASSWD = 7;
-    public final static int MAX_LENGTH_PASSWD = 20;
-    public final static int MAX_LENGTH_USERNAME = 20;
-    public final static long MIN_DNI = 100000;
-    public final static long MAX_DNI = Long.MAX_VALUE;
+    private final static int MIN_LENGTH_NAME = 3;
+    private final static int MAX_LENGTH_NAME = 80;
+    private final static int MIN_LENGTH_PASSWD = 7;
+    private final static int MAX_LENGTH_PASSWD = 20;
+    private final static int MAX_LENGTH_USERNAME = 20;
+    private final static long MIN_DNI = 100000;
+    private final static long MAX_DNI = Long.MAX_VALUE;
 
     private UsuarioService() {
     }

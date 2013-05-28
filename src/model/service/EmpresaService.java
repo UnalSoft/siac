@@ -9,6 +9,7 @@ import java.util.*;
 import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
 import model.dao.exceptions.InsufficientPermissionsException;
+import model.dao.exceptions.InvalidAttributeException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.dao.exceptions.RequiredAttributeException;
@@ -25,6 +26,8 @@ import model.vo.UsuarioVO;
 public class EmpresaService implements IService<EmpresaVO, Integer> {
 
     private static EmpresaService instance;
+    private final static int MIN_LENGTH_NAME = 3;
+    private final static int MAX_LENGTH_NAME = 80;
 
     private EmpresaService() {
     }
@@ -38,7 +41,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
     }
 
     @Override
-    public void create(EmpresaVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException {
+    public void create(EmpresaVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Empresa entity = new Empresa();
@@ -127,7 +130,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
     }
 
     @Override
-    public void update(EmpresaVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException {
+    public void update(EmpresaVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Empresa entity = DAOFactory.getInstance().getEmpresaDAO().find(vo.getNit());
@@ -170,16 +173,31 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
         return list;
     }
 
-    public boolean validarCampos(EmpresaVO vo) throws RequiredAttributeException {
+    public boolean validarCampos(EmpresaVO vo) throws RequiredAttributeException, InvalidAttributeException {
         if (vo.getNit() == null) {
             throw new RequiredAttributeException("El atributo Nit es requerido");
         }
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre es requerido");
+        } else if (vo.getNombre().length() < MIN_LENGTH_NAME || vo.getNombre().length() > MAX_LENGTH_NAME) {
+            throw new InvalidAttributeException("La longitud del atributo Nombre no está en el rango permitido ("
+                    + MIN_LENGTH_NAME + " - " + MAX_LENGTH_NAME + ")");
+        } else if (!vo.getNombre().matches("([_A-Za-záéíóúAÉÍÓÚÑñ-]*(\\s[_A-Za-záéíóúAÉÍÓÚÑñ-]+)*)")) {
+            throw new InvalidAttributeException("El atributo Nombre contiene caracteres inválidos");
         }
         if (vo.getNivel() == null) {
             throw new RequiredAttributeException("El atributo Nivel es requerido");
         }
+//        if (vo.getDireccion() != null && !vo.getDireccion().isEmpty()) {
+//            if (!vo.getDireccion().matches("[\\w]*")) {
+//                throw new InvalidAttributeException("El atributo Direccion contiene caracteres inválidos");
+//            }
+//        }
+//        if (vo.getTelefono() != null && !vo.getTelefono().isEmpty()) {
+//            if (!vo.getTelefono().matches("([0-9]\\s+)*+[0-9]{3,}//s[0-9]{4,}")) {
+//                throw new InvalidAttributeException("El atributo Telefono contiene caracteres inválidos");
+//            }
+//        }
         return true;
     }
 
