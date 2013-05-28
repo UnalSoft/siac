@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ControlDeVersion;
 import controller.LoginController;
 import javax.swing.ImageIcon;
 import javax.swing.JViewport;
@@ -18,6 +19,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
+        ControlDeVersion.actualizado();
         initComponents();
         this.setTitle("SIAC");
     }
@@ -80,7 +82,6 @@ public class Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

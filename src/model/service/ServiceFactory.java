@@ -28,4 +28,8 @@ public class ServiceFactory {
     public ErrorService getErrorService() {
         return ErrorService.getInstance();
     }
+    
+    public VersionService getVersionService(){
+        return VersionService.getInstance();
+    }
 }

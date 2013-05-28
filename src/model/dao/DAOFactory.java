@@ -22,6 +22,10 @@ public class DAOFactory {
     public ErrorDAO getErrorDAO() {
         return new ErrorDAO(PU);
     }
+    
+    public VersionDAO getVersionDAO() {
+        return new VersionDAO(PU);
+    }
 
     private static DAOFactory instance;
 

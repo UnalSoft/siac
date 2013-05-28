@@ -5,6 +5,7 @@
     <class>model.entity.Empresa</class>
     <class>model.entity.Error</class>
     <class>model.entity.Usuario</class>
+    <class>model.entity.Version</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://190.24.194.14:3306/SIAC?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="SIAC2"/>
