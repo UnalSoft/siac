@@ -11,6 +11,7 @@ import javax.swing.JViewport;
 import javax.swing.table.DefaultTableModel;
 import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
+import util.DibujarPanel;
 import view.ConsultarUsuario;
 import view.Secundario;
 
@@ -20,10 +21,11 @@ import view.Secundario;
  */
 public class ConsultarUsuarioController {
 
-    static Secundario secundario;
-    static ConsultarUsuario consultarUsuario = new ConsultarUsuario();
+    static Secundario secundario= new Secundario();
+    static ConsultarUsuario consultarUsuario= new ConsultarUsuario();
     DefaultTableModel model;
     
+   
     public void llenarTabla() {
         List<UsuarioVO> usuariosList = ServiceFactory.getInstance()
                 .getUsuarioService().findByEnterprise(LoginController.usuarioActivo.getEmpresasNIT());
@@ -48,17 +50,15 @@ public class ConsultarUsuarioController {
     }
 
     public void consultarUsuario() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(null);
-        secundario.setSize(consultarUsuario.getPreferredSize());
         secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), consultarUsuario);
+        secundario.setTitle("Consultar Usuario");
+        DibujarPanel.dibujarPanel(secundario, secundario.getViewport(), consultarUsuario);
         llenarTabla();
     }
 
     public void cancelar() {
-        secundario.removeAll();
         secundario.setVisible(false);
+        secundario = new Secundario();
     }
 
     public void buscar() {
@@ -99,18 +99,13 @@ public class ConsultarUsuarioController {
                     .find(Long.valueOf(consultarUsuario.getUsuarioT()
                     .getValueAt(consultarUsuario.getUsuarioT().getSelectedRow(), 0)
                     .toString()));
-            consultarUsuario.getConsultaF().setLocationRelativeTo(null);
-            consultarUsuario.getConsultaF().setSize(401, 223);
-            consultarUsuario.getConsultaF().setVisible(true);
             consultarUsuario.getDniTF().setText(usuarioVO.getDni().toString());
             consultarUsuario.getNombreDeUsuarioTF().setText(usuarioVO.getNombreDeUsuario());
             consultarUsuario.getNombreTF().setText(usuarioVO.getNombre());
             consultarUsuario.getCorreoTF().setText(usuarioVO.getCorreo());
             consultarUsuario.getRolTF().setText(usuarioVO.getRol().getLabel());
+            DibujarPanel.dibujarPanel(secundario, secundario.getViewport(), consultarUsuario.getConsultaUsuarioP());
         }
     }
 
-    public void ocultarUsuario() {
-        consultarUsuario.getConsultaF().setVisible(false);
-    }
 }

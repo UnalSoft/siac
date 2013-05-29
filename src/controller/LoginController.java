@@ -11,6 +11,7 @@ import javax.swing.JViewport;
 import model.dao.exceptions.DataBaseException;
 import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
+import util.DibujarPanel;
 import view.AdministradorPrincipal;
 import view.ConsultarPrincipal;
 import view.Login;
@@ -47,7 +48,7 @@ public class LoginController {
         principal.setLocationRelativeTo(null);
         login = new Login();
         principal.setVisible(true);
-        cambiarPanel(principal.getViewport(), login);
+        DibujarPanel.dibujarPanel(principal, principal.getViewport(), login);
     }
 
     public static void cerrar() {
@@ -58,24 +59,7 @@ public class LoginController {
         secundario = new Secundario();
         secundario.setLocationRelativeTo(principal);
         RecuperarContrasena recuperarContrasena = new RecuperarContrasena();
-        secundario.setVisible(true);
-        secundario.setSize(recuperarContrasena.getPreferredSize());
-        cambiarPanel(secundario.getViewport(), recuperarContrasena);
-    }
-
-    public static void cambiarPanel(JViewport contenedor, JPanel panel) {
-        contenedor.getParent().setVisible(false);
-        contenedor.setVisible(false);
-        contenedor.removeAll();
-        contenedor.add(panel);
-        contenedor.setSize(panel.getPreferredSize().getSize());
-        contenedor.getParent().setSize(panel.getPreferredSize().getSize());
-        contenedor.getParent().revalidate();
-        contenedor.getParent().repaint();
-        contenedor.revalidate();
-        contenedor.repaint();
-        contenedor.getParent().setVisible(true);
-        contenedor.setVisible(true);
+        DibujarPanel.dibujarPanel(secundario, secundario.getViewport(), recuperarContrasena);
     }
 
     public static void login() {
@@ -106,43 +90,38 @@ public class LoginController {
             switch (usuarioLogin.getRol()) {
                 case PROVEEDOR_DE_TI:
                     ProveedorTIPrincipal proveedorTIPrincipal = new ProveedorTIPrincipal();
-                    principal.setSize(tamanioAjustadoFrame(proveedorTIPrincipal));
                     proveedorTIPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     proveedorTIPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     proveedorTIPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
-                    cambiarPanel(principal.getViewport(), proveedorTIPrincipal);
+                    DibujarPanel.dibujarPanel(principal, principal.getViewport(), proveedorTIPrincipal);
                     break;
                 case PRIMER_ADMINISTRADOR:
                     PrimerAdministradorPrincipal primerAdministradorPrincipal = new PrimerAdministradorPrincipal();
-                    principal.setSize(tamanioAjustadoFrame(primerAdministradorPrincipal));
                     primerAdministradorPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     primerAdministradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     primerAdministradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
-                    cambiarPanel(principal.getViewport(), primerAdministradorPrincipal);
+                    DibujarPanel.dibujarPanel(principal, principal.getViewport(), primerAdministradorPrincipal);
                     break;
                 case ADMINISTRADOR:
                     AdministradorPrincipal administradorPrincipal = new AdministradorPrincipal();
-                    principal.setSize(tamanioAjustadoFrame(administradorPrincipal));
                     administradorPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     administradorPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     administradorPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
-                    cambiarPanel(principal.getViewport(), administradorPrincipal);
+                    DibujarPanel.dibujarPanel(principal, principal.getViewport(), administradorPrincipal);
                     break;
                 case CONSULTA:
                     ConsultarPrincipal consultarPrincipal = new ConsultarPrincipal();
-                    principal.setSize(tamanioAjustadoFrame(consultarPrincipal));
                     consultarPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     consultarPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     consultarPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
-                    cambiarPanel(principal.getViewport(), consultarPrincipal);
+                    DibujarPanel.dibujarPanel(principal, principal.getViewport(), consultarPrincipal);
                     break;
                 case OTRO:
                     OtroRolPrincipal otroRolPrincipal = new OtroRolPrincipal();
-                    principal.setSize(tamanioAjustadoFrame(otroRolPrincipal));
                     otroRolPrincipal.getNombreUsuarioL().setText(usuarioLogin.getNombre());
                     otroRolPrincipal.getNombreEmpresaL().setText(nombreEmpresa);
                     otroRolPrincipal.getRolL().setText(usuarioLogin.getRol().getLabel());
-                    cambiarPanel(principal.getViewport(), otroRolPrincipal);
+                    DibujarPanel.dibujarPanel(principal, principal.getViewport(), otroRolPrincipal);
                     principal.setTitle("Otro Rol");
                     break;
             }
@@ -152,16 +131,10 @@ public class LoginController {
         }
     }
     
-    public static Dimension tamanioAjustadoFrame (JPanel panel) {
-        int ajuste = 50;
-        return new Dimension (panel.getPreferredSize().width+ajuste, panel.getPreferredSize().height+ajuste);
-    }
-    
     public static void cerrarSesion() {
         usuarioActivo = null;
         login = new Login();
-        principal.setSize(tamanioAjustadoFrame(login));
         principal.setLocationRelativeTo(null);
-        cambiarPanel(principal.getViewport(), login);
+        DibujarPanel.dibujarPanel(principal, principal.getViewport(), login);        
     }
 }

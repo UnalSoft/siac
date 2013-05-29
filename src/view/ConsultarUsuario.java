@@ -7,9 +7,11 @@ package view;
 import controller.ConsultarUsuarioController;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.JViewport;
 
 /**
  *
@@ -42,7 +44,7 @@ public class ConsultarUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         busquedaBG = new javax.swing.ButtonGroup();
-        consultaF = new javax.swing.JFrame();
+        consultaUsuarioP = new javax.swing.JPanel();
         dniL = new javax.swing.JLabel();
         nombreL = new javax.swing.JLabel();
         nombreTF = new javax.swing.JTextField();
@@ -69,6 +71,11 @@ public class ConsultarUsuario extends javax.swing.JPanel {
         nombreL.setText("Nombre:");
 
         nombreTF.setEditable(false);
+        nombreTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreTFActionPerformed(evt);
+            }
+        });
 
         dniTF.setEditable(false);
 
@@ -91,79 +98,60 @@ public class ConsultarUsuario extends javax.swing.JPanel {
 
         rolTF.setEditable(false);
 
-        org.jdesktop.layout.GroupLayout consultaFLayout = new org.jdesktop.layout.GroupLayout(consultaF.getContentPane());
-        consultaF.getContentPane().setLayout(consultaFLayout);
-        consultaFLayout.setHorizontalGroup(
-            consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(consultaFLayout.createSequentialGroup()
-                .add(consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(dniL)
-                        .add(102, 102, 102)
-                        .add(dniTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(nombreL)
-                        .add(76, 76, 76)
-                        .add(nombreTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(nombreDeUsuarioL)
-                        .add(6, 6, 6)
-                        .add(nombreDeUsuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(correoL)
-                        .add(84, 84, 84)
-                        .add(correoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(20, 20, 20)
-                        .add(rolL)
-                        .add(106, 106, 106)
-                        .add(rolTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(170, 170, 170)
-                        .add(atrasB)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        org.jdesktop.layout.GroupLayout consultaUsuarioPLayout = new org.jdesktop.layout.GroupLayout(consultaUsuarioP);
+        consultaUsuarioP.setLayout(consultaUsuarioPLayout);
+        consultaUsuarioPLayout.setHorizontalGroup(
+            consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, consultaUsuarioPLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(dniL)
+                    .add(nombreL)
+                    .add(nombreDeUsuarioL)
+                    .add(correoL)
+                    .add(rolL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(correoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(rolTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(nombreDeUsuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(nombreTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(dniTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 245, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
+            .add(consultaUsuarioPLayout.createSequentialGroup()
+                .add(153, 153, 153)
+                .add(atrasB)
+                .add(0, 0, Short.MAX_VALUE))
         );
-        consultaFLayout.setVerticalGroup(
-            consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(consultaFLayout.createSequentialGroup()
-                .add(6, 6, 6)
-                .add(consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(dniL))
-                    .add(dniTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(6, 6, 6)
-                .add(consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(nombreL))
-                    .add(nombreTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(6, 6, 6)
-                .add(consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(nombreDeUsuarioL))
-                    .add(nombreDeUsuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(6, 6, 6)
-                .add(consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(correoL))
-                    .add(correoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(12, 12, 12)
-                .add(consultaFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(consultaFLayout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(rolL))
-                    .add(rolTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(12, 12, 12)
+        consultaUsuarioPLayout.setVerticalGroup(
+            consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(consultaUsuarioPLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(dniTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(dniL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nombreTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(nombreL))
+                .add(8, 8, 8)
+                .add(consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nombreDeUsuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(nombreDeUsuarioL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(correoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(correoL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(consultaUsuarioPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(rolTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(rolL))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(atrasB)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        setPreferredSize(new java.awt.Dimension(463, 431));
 
         bienvenidoL.setText("Buscar por:");
 
@@ -229,25 +217,26 @@ public class ConsultarUsuario extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(15, 15, 15)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(dniRB)
+                        .addContainerGap()
+                        .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 305, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(18, 18, 18)
-                        .add(nombreRB))
-                    .add(bienvenidoL)
-                    .add(layout.createSequentialGroup()
-                        .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(buscarB))
-                    .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(layout.createSequentialGroup()
+                        .add(15, 15, 15)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(dniRB)
+                                .add(18, 18, 18)
+                                .add(nombreRB))
+                            .add(bienvenidoL)
+                            .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 438, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(layout.createSequentialGroup()
+                                .add(verInformacionB)
+                                .add(41, 41, 41)
+                                .add(cancelarB)))))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(layout.createSequentialGroup()
-                .add(269, 269, 269)
-                .add(cancelarB)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(verInformacionB)
-                .add(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -263,12 +252,12 @@ public class ConsultarUsuario extends javax.swing.JPanel {
                     .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(buscarB))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 272, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cancelarB)
-                    .add(verInformacionB))
-                .addContainerGap(8, Short.MAX_VALUE))
+                    .add(verInformacionB)
+                    .add(cancelarB))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -285,8 +274,12 @@ public class ConsultarUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_verInformacionBActionPerformed
 
     private void atrasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBActionPerformed
-        new ConsultarUsuarioController().ocultarUsuario();
+        new ConsultarUsuarioController().consultarUsuario();
     }//GEN-LAST:event_atrasBActionPerformed
+
+    private void nombreTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreTFActionPerformed
 
     public JTextField getBuscarTF() {
         return buscarTF;
@@ -302,10 +295,6 @@ public class ConsultarUsuario extends javax.swing.JPanel {
 
     public void setDniRB(JRadioButton dniRB) {
         this.dniRB = dniRB;
-    }
-
-    public JFrame getConsultaF() {
-        return consultaF;
     }
 
     public JTextField getCorreoTF() {
@@ -327,6 +316,12 @@ public class ConsultarUsuario extends javax.swing.JPanel {
     public JTextField getRolTF() {
         return rolTF;
     }
+
+    public JPanel getConsultaUsuarioP() {
+        return consultaUsuarioP;
+    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasB;
@@ -335,7 +330,7 @@ public class ConsultarUsuario extends javax.swing.JPanel {
     private static javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
-    private javax.swing.JFrame consultaF;
+    private javax.swing.JPanel consultaUsuarioP;
     private javax.swing.JLabel correoL;
     private javax.swing.JTextField correoTF;
     private javax.swing.JLabel dniL;

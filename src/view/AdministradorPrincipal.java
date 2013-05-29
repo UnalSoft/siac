@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ConsultarUsuarioController;
 import controller.LoginController;
 import javax.swing.JLabel;
 
@@ -73,6 +74,11 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
         consultarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarB.setText("Consultar");
         consultarB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        consultarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarBActionPerformed(evt);
+            }
+        });
 
         modificarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         modificarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
@@ -167,7 +173,7 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(administrarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -199,13 +205,17 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                 .add(accionesL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(administrarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cerrarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBActionPerformed
         LoginController.cerrarSesion();
     }//GEN-LAST:event_cerrarSesionBActionPerformed
+
+    private void consultarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBActionPerformed
+        new ConsultarUsuarioController().consultarUsuario();
+    }//GEN-LAST:event_consultarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;
