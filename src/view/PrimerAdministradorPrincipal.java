@@ -4,7 +4,11 @@
  */
 package view;
 
+import controller.ConsultarUsuarioController;
+import controller.CrearUsuarioController;
+import controller.EliminarUsuarioController;
 import controller.LoginController;
+import controller.ModificarUsuarioController;
 import javax.swing.JLabel;
 
 /**
@@ -47,6 +51,7 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         consultarUsuarioB = new javax.swing.JButton();
         modificarUsuarioB = new javax.swing.JButton();
         eliminarUsuarioB = new javax.swing.JButton();
+        crearUsuarioB = new javax.swing.JButton();
         administrarPrimerAdminP = new javax.swing.JPanel();
         consultarPrimerAdminB = new javax.swing.JButton();
         modificarPrimerAdminB = new javax.swing.JButton();
@@ -74,16 +79,41 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         consultarUsuarioB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarUsuarioB.setText("Consultar");
         consultarUsuarioB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        consultarUsuarioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarUsuarioBActionPerformed(evt);
+            }
+        });
 
         modificarUsuarioB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         modificarUsuarioB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
         modificarUsuarioB.setText("Modificar");
         modificarUsuarioB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        modificarUsuarioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarUsuarioBActionPerformed(evt);
+            }
+        });
 
         eliminarUsuarioB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         eliminarUsuarioB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Eliminar.png"))); // NOI18N
         eliminarUsuarioB.setText("Eliminar");
         eliminarUsuarioB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        eliminarUsuarioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarUsuarioBActionPerformed(evt);
+            }
+        });
+
+        crearUsuarioB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        crearUsuarioB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Crear.png"))); // NOI18N
+        crearUsuarioB.setText("Crear");
+        crearUsuarioB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        crearUsuarioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUsuarioBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout administrarUsuariosPLayout = new org.jdesktop.layout.GroupLayout(administrarUsuariosP);
         administrarUsuariosP.setLayout(administrarUsuariosPLayout);
@@ -91,20 +121,25 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
             administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarUsuariosPLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(modificarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(eliminarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(38, 38, 38))
-            .add(administrarUsuariosPLayout.createSequentialGroup()
-                .add(77, 77, 77)
-                .add(consultarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(administrarUsuariosPLayout.createSequentialGroup()
+                        .add(modificarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(eliminarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(38, 38, 38))
+                    .add(administrarUsuariosPLayout.createSequentialGroup()
+                        .add(crearUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(consultarUsuarioB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 145, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         administrarUsuariosPLayout.setVerticalGroup(
             administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(administrarUsuariosPLayout.createSequentialGroup()
-                .add(17, 17, 17)
-                .add(consultarUsuarioB)
+                .add(16, 16, 16)
+                .add(administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(consultarUsuarioB)
+                    .add(crearUsuarioB))
                 .add(30, 30, 30)
                 .add(administrarUsuariosPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(modificarUsuarioB)
@@ -242,16 +277,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
                 .add(accionesL)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(6, 6, 6))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(administrarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(170, 170, 170))))
+                .addContainerGap()
+                .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .add(18, 18, 18)
+                .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 320, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .add(layout.createSequentialGroup()
                 .add(59, 59, 59)
                 .add(jLabel2)
@@ -269,8 +299,12 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
                         .add(bienvenidoL)
                         .add(18, 18, 18)
                         .add(nombreUsuarioL)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 100, Short.MAX_VALUE)
                         .add(cerrarSesionB))))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(administrarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 341, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(159, 159, 159))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -309,6 +343,22 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         LoginController.cerrarSesion();
     }//GEN-LAST:event_cerrarSesionBActionPerformed
 
+    private void crearUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioBActionPerformed
+        new ConsultarUsuarioController().consultarUsuario();
+    }//GEN-LAST:event_crearUsuarioBActionPerformed
+
+    private void consultarUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarUsuarioBActionPerformed
+        new CrearUsuarioController().mostrarCrearUsuario();
+    }//GEN-LAST:event_consultarUsuarioBActionPerformed
+
+    private void modificarUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioBActionPerformed
+        new ModificarUsuarioController().listarUsuarios();
+    }//GEN-LAST:event_modificarUsuarioBActionPerformed
+
+    private void eliminarUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioBActionPerformed
+        new EliminarUsuarioController().listarUsuarios();
+    }//GEN-LAST:event_eliminarUsuarioBActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;
     private javax.swing.JPanel administrarNivelP;
@@ -320,6 +370,7 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton consultarPrimerAdminB;
     private javax.swing.JButton consultarUsuarioB;
     private javax.swing.JButton crearEmpresaB;
+    private javax.swing.JButton crearUsuarioB;
     private javax.swing.JButton eliminarEmpresaB;
     private javax.swing.JButton eliminarPrimerAdminB;
     private javax.swing.JButton eliminarUsuarioB;

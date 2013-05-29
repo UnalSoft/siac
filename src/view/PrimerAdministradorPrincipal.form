@@ -22,19 +22,11 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="administrarNivelP" min="-2" pref="317" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="administrarPrimerAdminP" min="-2" pref="317" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="administrarUsuariosP" min="-2" pref="317" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="administrarNivelP" pref="337" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="administrarPrimerAdminP" min="-2" pref="320" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
@@ -55,10 +47,15 @@
                       <Component id="bienvenidoL" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="nombreUsuarioL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="100" max="32767" attributes="0"/>
                       <Component id="cerrarSesionB" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="administrarUsuariosP" min="-2" pref="341" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -128,25 +125,33 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="modificarUsuarioB" min="-2" pref="145" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="eliminarUsuarioB" min="-2" pref="145" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                  <Component id="consultarUsuarioB" min="-2" pref="145" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="modificarUsuarioB" min="-2" pref="145" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="eliminarUsuarioB" min="-2" pref="145" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="crearUsuarioB" min="-2" pref="145" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="consultarUsuarioB" min="-2" pref="145" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Component id="consultarUsuarioB" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="consultarUsuarioB" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="crearUsuarioB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="modificarUsuarioB" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -169,6 +174,9 @@
             <Property name="text" type="java.lang.String" value="Consultar"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarUsuarioBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="modificarUsuarioB">
           <Properties>
@@ -181,6 +189,9 @@
             <Property name="text" type="java.lang.String" value="Modificar"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarUsuarioBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="eliminarUsuarioB">
           <Properties>
@@ -193,6 +204,24 @@
             <Property name="text" type="java.lang.String" value="Eliminar"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarUsuarioBActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="crearUsuarioB">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Calibri" size="18" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/Crear.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Crear"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearUsuarioBActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
