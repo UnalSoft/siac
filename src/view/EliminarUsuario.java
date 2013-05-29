@@ -4,7 +4,11 @@
  */
 package view;
 
+import controller.EliminarUsuarioController;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -31,10 +35,7 @@ public class EliminarUsuario extends javax.swing.JPanel {
         busquedaBG = new javax.swing.ButtonGroup();
         ventanaConfirmacionD = new javax.swing.JDialog();
         ventanaConfirmacionOP = new javax.swing.JOptionPane();
-        panelSupP = new javax.swing.JPanel();
-        AdministradorL = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         dniRB = new javax.swing.JRadioButton();
         nombreRB = new javax.swing.JRadioButton();
         buscarTF = new javax.swing.JTextField();
@@ -59,18 +60,9 @@ public class EliminarUsuario extends javax.swing.JPanel {
             .add(ventanaConfirmacionOP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
 
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        AdministradorL.setText("SIAC - Empresa");
-        panelSupP.add(AdministradorL);
-        AdministradorL.setBounds(6, 7, 100, 16);
-
         bienvenidoL.setText("Buscar por:");
 
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
+        dniRB.setSelected(true);
         dniRB.setText("DNI");
 
         busquedaBG.add(nombreRB);
@@ -81,6 +73,11 @@ public class EliminarUsuario extends javax.swing.JPanel {
         buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBActionPerformed(evt);
+            }
+        });
 
         usuarioT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,42 +108,47 @@ public class EliminarUsuario extends javax.swing.JPanel {
         usuarioSP.setViewportView(usuarioT);
 
         cancelarB.setText("Cancelar");
+        cancelarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBActionPerformed(evt);
+            }
+        });
 
         eliminarB.setText("Eliminar");
+        eliminarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
+                .add(15, 15, 15)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                     .add(layout.createSequentialGroup()
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 321, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(cancelarB)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(eliminarB))
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(16, 16, 16)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createSequentialGroup()
-                                .add(dniRB)
-                                .add(18, 18, 18)
-                                .add(nombreRB))
-                            .add(bienvenidoL)
-                            .add(layout.createSequentialGroup()
-                                .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .add(0, 15, Short.MAX_VALUE))
+                        .add(dniRB)
+                        .add(18, 18, 18)
+                        .add(nombreRB))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
+                    .add(layout.createSequentialGroup()
+                        .add(buscarTF)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addContainerGap()
                 .add(bienvenidoL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -162,13 +164,35 @@ public class EliminarUsuario extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cancelarB)
                     .add(eliminarB))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(7, 7, 7))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        new EliminarUsuarioController().buscar();
+    }//GEN-LAST:event_buscarBActionPerformed
+
+    private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
+        new EliminarUsuarioController().cancelar();
+    }//GEN-LAST:event_cancelarBActionPerformed
+
+    private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
+        new EliminarUsuarioController().eliminarUsuario();
+    }//GEN-LAST:event_eliminarBActionPerformed
+
+    public JTextField getBuscarTF() {
+        return buscarTF;
+    }
+
+    public JRadioButton getDniRB() {
+        return dniRB;
+    }
+
+    public JTable getUsuarioT() {
+        return usuarioT;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdministradorL;
     private javax.swing.JLabel bienvenidoL;
     private javax.swing.JToggleButton buscarB;
     private javax.swing.JTextField buscarTF;
@@ -177,8 +201,6 @@ public class EliminarUsuario extends javax.swing.JPanel {
     private javax.swing.JRadioButton dniRB;
     private javax.swing.JButton eliminarB;
     private javax.swing.JRadioButton nombreRB;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JScrollPane usuarioSP;
     private javax.swing.JTable usuarioT;
     private javax.swing.JDialog ventanaConfirmacionD;

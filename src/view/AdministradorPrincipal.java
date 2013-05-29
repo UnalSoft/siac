@@ -5,7 +5,10 @@
 package view;
 
 import controller.ConsultarUsuarioController;
+import controller.CrearUsuarioController;
+import controller.EliminarUsuarioController;
 import controller.LoginController;
+import controller.ModificarUsuarioController;
 import javax.swing.JLabel;
 
 /**
@@ -69,6 +72,11 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
         crearB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Crear.png"))); // NOI18N
         crearB.setText("Crear");
         crearB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        crearB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearBActionPerformed(evt);
+            }
+        });
 
         consultarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         consultarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
@@ -84,11 +92,21 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
         modificarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
         modificarB.setText("Modificar");
         modificarB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        modificarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarBActionPerformed(evt);
+            }
+        });
 
         eliminarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         eliminarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Eliminar.png"))); // NOI18N
         eliminarB.setText("Eliminar");
         eliminarB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        eliminarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout administrarUsuariosPLayout = new org.jdesktop.layout.GroupLayout(administrarUsuariosP);
         administrarUsuariosP.setLayout(administrarUsuariosPLayout);
@@ -163,7 +181,7 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                         .add(bienvenidoL)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(nombreUsuarioL)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 45, Short.MAX_VALUE)
                 .add(cerrarSesionB)
                 .addContainerGap())
             .add(layout.createSequentialGroup()
@@ -205,7 +223,7 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
                 .add(accionesL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(administrarUsuariosP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -216,6 +234,18 @@ public class AdministradorPrincipal extends javax.swing.JPanel {
     private void consultarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarBActionPerformed
         new ConsultarUsuarioController().consultarUsuario();
     }//GEN-LAST:event_consultarBActionPerformed
+
+    private void crearBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearBActionPerformed
+        new CrearUsuarioController().mostrarCrearUsuario();
+    }//GEN-LAST:event_crearBActionPerformed
+
+    private void modificarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBActionPerformed
+        new ModificarUsuarioController().listarUsuarios();
+    }//GEN-LAST:event_modificarBActionPerformed
+
+    private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
+        new EliminarUsuarioController().listarUsuarios();
+    }//GEN-LAST:event_eliminarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;

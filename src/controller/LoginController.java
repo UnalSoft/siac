@@ -4,10 +4,7 @@
  */
 package controller;
 
-import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JViewport;
 import model.dao.exceptions.DataBaseException;
 import model.service.ServiceFactory;
 import model.vo.UsuarioVO;

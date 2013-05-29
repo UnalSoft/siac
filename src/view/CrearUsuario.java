@@ -4,6 +4,11 @@
  */
 package view;
 
+import controller.CrearUsuarioController;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Felipe
@@ -17,6 +22,35 @@ public class CrearUsuario extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JPasswordField getConfirmarContrasenaPF() {
+        return confirmarContrasenaPF;
+    }
+
+    public JPasswordField getContrasenaPF() {
+        return contrasenaPF;
+    }
+
+    public JTextField getCorreoTF() {
+        return correoTF;
+    }
+
+    public JTextField getDniTF() {
+        return dniTF;
+    }
+
+    public JTextField getNombreDeUsuarioTF() {
+        return nombreDeUsuarioTF;
+    }
+
+    public JTextField getNombreTF() {
+        return nombreTF;
+    }
+
+    public JComboBox getRolCB() {
+        return rolCB;
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,9 +60,6 @@ public class CrearUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSupP = new javax.swing.JPanel();
-        crearUsuarioL = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         dniL = new javax.swing.JLabel();
         nombreL = new javax.swing.JLabel();
         nombreTF = new javax.swing.JTextField();
@@ -46,16 +77,6 @@ public class CrearUsuario extends javax.swing.JPanel {
         cancelarB = new javax.swing.JButton();
         crearUuarioB = new javax.swing.JButton();
 
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        crearUsuarioL.setText("SIAC - Crear usuario");
-        panelSupP.add(crearUsuarioL);
-        crearUsuarioL.setBounds(6, 7, 130, 16);
-
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
         dniL.setText("DNI:");
 
         nombreL.setText("Nombre:");
@@ -70,24 +91,26 @@ public class CrearUsuario extends javax.swing.JPanel {
 
         rolL.setText("Rol:");
 
-        contrasenaPF.setText("jPasswordField1");
-
-        confirmarContrasenaPF.setText("jPasswordField2");
-
-        rolCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Consulta", "Otro rol" }));
+        rolCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Consulta", "Otro" }));
 
         cancelarB.setText("Cancelar");
+        cancelarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBActionPerformed(evt);
+            }
+        });
 
         crearUuarioB.setText("Crear usuario");
+        crearUuarioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUuarioBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 442, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 0, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -121,8 +144,7 @@ public class CrearUsuario extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(dniL)
                     .add(dniTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -154,10 +176,17 @@ public class CrearUsuario extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cancelarB)
                     .add(crearUuarioB))
-                .add(18, 18, Short.MAX_VALUE)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void crearUuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUuarioBActionPerformed
+        CrearUsuarioController.crearUsuario();
+    }//GEN-LAST:event_crearUuarioBActionPerformed
+
+    private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
+        CrearUsuarioController.cancelar();
+    }//GEN-LAST:event_cancelarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarB;
@@ -167,7 +196,6 @@ public class CrearUsuario extends javax.swing.JPanel {
     private javax.swing.JPasswordField contrasenaPF;
     private javax.swing.JLabel correoL;
     private javax.swing.JTextField correoTF;
-    private javax.swing.JLabel crearUsuarioL;
     private javax.swing.JButton crearUuarioB;
     private javax.swing.JLabel dniL;
     private javax.swing.JTextField dniTF;
@@ -175,8 +203,6 @@ public class CrearUsuario extends javax.swing.JPanel {
     private javax.swing.JTextField nombreDeUsuarioTF;
     private javax.swing.JLabel nombreL;
     private javax.swing.JTextField nombreTF;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JComboBox rolCB;
     private javax.swing.JLabel rolL;
     // End of variables declaration//GEN-END:variables

@@ -6,8 +6,6 @@ package controller;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JViewport;
 import javax.swing.table.DefaultTableModel;
 import model.service.ServiceFactory;
 import model.vo.UsuarioVO;
@@ -39,14 +37,6 @@ public class ConsultarUsuarioController {
                 ServiceFactory.getInstance().getEmpresaService().find(usuarioVO.getEmpresasNIT()).getNombre()};
             model.addRow(datos);
         }
-    }
-
-    public static void cambiarPanel(JViewport contenedor, JPanel panel) {
-        contenedor.setVisible(false);
-        contenedor.removeAll();
-        contenedor.add(panel);
-        contenedor.setSize(panel.getPreferredSize());
-        contenedor.setVisible(true);
     }
 
     public void consultarUsuario() {
