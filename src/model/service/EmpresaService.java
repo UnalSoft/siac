@@ -188,16 +188,16 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
         if (vo.getNivel() == null) {
             throw new RequiredAttributeException("El atributo Nivel es requerido");
         }
-//        if (vo.getDireccion() != null && !vo.getDireccion().isEmpty()) {
-//            if (!vo.getDireccion().matches("[\\w]*")) {
-//                throw new InvalidAttributeException("El atributo Direccion contiene caracteres inválidos");
-//            }
-//        }
-//        if (vo.getTelefono() != null && !vo.getTelefono().isEmpty()) {
-//            if (!vo.getTelefono().matches("([0-9]\\s+)*+[0-9]{3,}//s[0-9]{4,}")) {
-//                throw new InvalidAttributeException("El atributo Telefono contiene caracteres inválidos");
-//            }
-//        }
+        if (vo.getDireccion() != null && !vo.getDireccion().isEmpty()) {
+            if (!vo.getDireccion().matches("[\\w\\s-#]*")) {
+                throw new InvalidAttributeException("El atributo Direccion contiene caracteres inválidos");
+            }
+        }
+        if (vo.getTelefono() != null && !vo.getTelefono().isEmpty()) {
+            if (!vo.getTelefono().matches("([0-9-\\s])*")) {
+                throw new InvalidAttributeException("El atributo Telefono contiene caracteres inválidos");
+            }
+        }
         return true;
     }
 
