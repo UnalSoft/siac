@@ -182,7 +182,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
         } else if (vo.getNombre().length() < MIN_LENGTH_NAME || vo.getNombre().length() > MAX_LENGTH_NAME) {
             throw new InvalidAttributeException("La longitud del atributo Nombre no está en el rango permitido ("
                     + MIN_LENGTH_NAME + " - " + MAX_LENGTH_NAME + ")");
-        } else if (!vo.getNombre().matches("([_A-Za-záéíóúAÉÍÓÚÑñ-]*(\\s[_A-Za-záéíóúAÉÍÓÚÑñ-]+)*)")) {
+        } else if (!vo.getNombre().matches("([_A-Za-záéíóúAÉÍÓÚÑñ-]*((\\s)*[_A-Za-záéíóúAÉÍÓÚÑñ-](\\.)*+)*)")) {
             throw new InvalidAttributeException("El atributo Nombre contiene caracteres inválidos");
         }
         if (vo.getNivel() == null) {
@@ -210,10 +210,18 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
     private boolean havePermissions(EmpresaVO vo) {
         UsuarioVO usuarioActivo = LoginController.usuarioActivo;
         Empresa empresaUsuarioActivo = DAOFactory.getInstance().getEmpresaDAO().find(usuarioActivo.getEmpresasNIT());
-        return ((usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getNivel().equals(Nivel.DISTRIBUIDORA))
+        return ((usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI))
+                ||(usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getNivel().equals(Nivel.DISTRIBUIDORA))
                 || (usuarioActivo.getRol().equals(Rol.PRIMER_ADMINISTRADOR)
                 && ((empresaUsuarioActivo.getNivel().equals(Nivel.DISTRIBUIDORA) && vo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
                 || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && vo.getNivel().equals(Nivel.CANAL))
                 || (empresaUsuarioActivo.getNivel().equals(Nivel.CANAL) && vo.getNivel().equals(Nivel.PUNTO_DE_VENTA)))));
+    }
+
+    @Override
+    public void removeAll() throws NonexistentEntityException {
+        for (Empresa empresa : DAOFactory.getInstance().getEmpresaDAO().getList()){
+            DAOFactory.getInstance().getEmpresaDAO().delete(empresa.getNit());
+        }
     }
 }

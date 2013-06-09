@@ -82,11 +82,21 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
         crearCopiaDeSeguridadB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Backup.png"))); // NOI18N
         crearCopiaDeSeguridadB.setText("Crear copia de seguridad");
         crearCopiaDeSeguridadB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        crearCopiaDeSeguridadB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearCopiaDeSeguridadBActionPerformed(evt);
+            }
+        });
 
         restablecerCopiaDeSeguridadB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         restablecerCopiaDeSeguridadB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Resaturar.png"))); // NOI18N
         restablecerCopiaDeSeguridadB.setText("Restablecer copia de seguridad");
         restablecerCopiaDeSeguridadB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        restablecerCopiaDeSeguridadB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restablecerCopiaDeSeguridadBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout mantenimientoPLayout = new org.jdesktop.layout.GroupLayout(mantenimientoP);
         mantenimientoP.setLayout(mantenimientoPLayout);
@@ -365,6 +375,14 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
     private void cerrarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBActionPerformed
         LoginController.cerrarSesion();
     }//GEN-LAST:event_cerrarSesionBActionPerformed
+
+    private void crearCopiaDeSeguridadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearCopiaDeSeguridadBActionPerformed
+        controller.crearCopiaDeSeguridad();
+    }//GEN-LAST:event_crearCopiaDeSeguridadBActionPerformed
+
+    private void restablecerCopiaDeSeguridadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerCopiaDeSeguridadBActionPerformed
+        controller.restablecerCopiaDeSeguridad();
+    }//GEN-LAST:event_restablecerCopiaDeSeguridadBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;

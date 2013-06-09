@@ -26,7 +26,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     private static UsuarioService instance;
     private final static int MIN_LENGTH_NAME = 3;
     private final static int MAX_LENGTH_NAME = 80;
-    private final static int MIN_LENGTH_PASSWD = 7;
+    private final static int MIN_LENGTH_PASSWD = 5;
     private final static int MAX_LENGTH_PASSWD = 20;
     private final static int MAX_LENGTH_USERNAME = 20;
     private final static long MIN_DNI = 100000;
@@ -138,6 +138,10 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
                 entity.setNombre(vo.getNombre());
                 entity.setNombreDeUsuario(vo.getNombreDeUsuario());
                 entity.setRol(vo.getRol());
+                //Esto es solo para la recuperacion de la copia de seguridad
+                if (vo.getClave() != null){
+                    entity.setClave(vo.getClave());
+                }
                 DAOFactory.getInstance().getUsuarioDAO().update(entity);
             } else {
                 throw new InsufficientPermissionsException("El Usuario no posee los permisos suficientes para realizar la operación");
@@ -204,7 +208,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             throw new RequiredAttributeException("El atributo Nombre de Usuario es requerido");
         } else if (vo.getNombreDeUsuario().length() > MAX_LENGTH_USERNAME) {
             throw new InvalidAttributeException("El atributo Nombre de Usuario debe tener una longitud menor a " + MAX_LENGTH_USERNAME);
-        } else if (!vo.getNombreDeUsuario().matches("[_A-Za-z0-9-.]*")) {
+        } else if (!vo.getNombreDeUsuario().matches("[_A-Za-z0-9-]*")) {
             throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos"); 
         }
         //Validar Clave
@@ -277,7 +281,8 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         UsuarioVO usuarioActivo = LoginController.usuarioActivo;
         Empresa empresaUsuarioActivo = DAOFactory.getInstance().getEmpresaDAO().find(LoginController.usuarioActivo.getEmpresasNIT());
         Empresa empresaVo = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
-        return ((usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
+        return ((usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI))
+                ||(usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
                 || ((usuarioActivo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && (vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR)))
                 && ((empresaUsuarioActivo.getNivel().equals(Nivel.DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
                 || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.CANAL))
@@ -287,5 +292,12 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
                 || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
                 || (empresaUsuarioActivo.getNivel().equals(Nivel.CANAL) && empresaVo.getNivel().equals(Nivel.CANAL))
                 || (empresaUsuarioActivo.getNivel().equals(Nivel.PUNTO_DE_VENTA) && empresaVo.getNivel().equals(Nivel.PUNTO_DE_VENTA)))));
+    }
+
+    @Override
+    public void removeAll() throws NonexistentEntityException {
+        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList()){
+            DAOFactory.getInstance().getUsuarioDAO().delete(usuario.getDni());
+        }
     }
 }

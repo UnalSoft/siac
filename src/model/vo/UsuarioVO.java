@@ -4,6 +4,7 @@
  */
 package model.vo;
 
+import java.io.Serializable;
 import java.util.List;
 import model.entity.Rol;
 
@@ -11,7 +12,9 @@ import model.entity.Rol;
  *
  * @author Zergio
  */
-public class UsuarioVO implements IValueObject {
+public class UsuarioVO implements IValueObject, Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
     //Atributos Nativos
     private Long dni;

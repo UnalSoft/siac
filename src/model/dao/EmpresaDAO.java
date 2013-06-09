@@ -129,7 +129,7 @@ public class EmpresaDAO implements ICrudDAO<Empresa, Integer> {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer id) throws NonexistentEntityException{
         EntityManager entityManager = null;
         try {
             entityManager = getEntityManager();

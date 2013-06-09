@@ -4,6 +4,7 @@
  */
 package model.vo;
 
+import java.io.Serializable;
 import java.util.List;
 import model.entity.Nivel;
 
@@ -11,7 +12,9 @@ import model.entity.Nivel;
  *
  * @author Zergio
  */
-public class EmpresaVO implements IValueObject {
+public class EmpresaVO implements IValueObject, Serializable {
+    
+    private static final long serialVersionUID = 1L;
     //Atributos nativos
 
     private Integer nit;

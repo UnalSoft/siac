@@ -184,6 +184,9 @@
             <Property name="text" type="java.lang.String" value="Crear copia de seguridad"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearCopiaDeSeguridadBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="restablecerCopiaDeSeguridadB">
           <Properties>
@@ -196,6 +199,9 @@
             <Property name="text" type="java.lang.String" value="Restablecer copia de seguridad"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="restablecerCopiaDeSeguridadBActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -85,4 +85,11 @@ public class ErrorService implements IService<ErrorVO, Integer> {
         });
         return list;
     }
+
+    @Override
+    public void removeAll() throws NonexistentEntityException {
+        for (Error error : DAOFactory.getInstance().getErrorDAO().getList()){
+            DAOFactory.getInstance().getErrorDAO().delete(error.getId());
+        }
+    }
 }

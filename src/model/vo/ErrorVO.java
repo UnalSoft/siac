@@ -4,11 +4,15 @@
  */
 package model.vo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Zergio
  */
-public class ErrorVO implements IValueObject {
+public class ErrorVO implements IValueObject, Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
     //Atributos nativos
     private Integer id;

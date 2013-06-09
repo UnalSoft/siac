@@ -6,6 +6,7 @@ package model.service;
 
 import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
+import model.dao.exceptions.NonexistentEntityException;
 import model.entity.Version;
 import model.vo.VersionVO;
 
@@ -35,5 +36,15 @@ public class VersionService {
         } else {
             return null;
         }
+    }
+
+    public void create(VersionVO vo) {
+        Version entity = new Version();
+        entity.setVersion(vo.getVersion());
+        DAOFactory.getInstance().getVersionDAO().create(entity);
+    }
+
+    public void removeAll() throws NonexistentEntityException {
+        DAOFactory.getInstance().getVersionDAO().removeAll();
     }
 }

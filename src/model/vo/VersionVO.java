@@ -4,11 +4,16 @@
  */
 package model.vo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Felipe
  */
-public class VersionVO {
+public class VersionVO implements IValueObject, Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     //Atributos Nativos
     private String version;
 

@@ -28,4 +28,6 @@ public interface IService<VO, ID extends Serializable> {
     void delete(ID id) throws NonexistentEntityException, InsufficientPermissionsException;
 
     List<VO> getList();
+    
+    void removeAll() throws NonexistentEntityException;
 }
