@@ -38,9 +38,9 @@ public class ErrorServiceTest {
         error = new ErrorVO();
 
         error.setError("Descripción error");
-        error.setUsuariosDNI(new Long("0"));
+        error.setUsuariosDNI(new Long("9999999"));
         error.setInterfaz("Interfaz de incidencia");
-        error.setId(1);
+        error.setId(9999);
 
 
     }

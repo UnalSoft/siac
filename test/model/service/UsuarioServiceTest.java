@@ -18,6 +18,8 @@ import static org.junit.Assert.*;
 public class UsuarioServiceTest {
 
     UsuarioVO usuario;
+    UsuarioVO pruebasPersistencia;
+    EmpresaVO empresa;
     //sizes
     int MAXPASS = 255;
     int MAXMAIL = 30;
@@ -56,6 +58,8 @@ public class UsuarioServiceTest {
             System.out.println(LoginController.usuarioActivo);
 
         }
+
+
     }
 
     @AfterClass
@@ -70,7 +74,7 @@ public class UsuarioServiceTest {
 
         System.out.println(LoginController.usuarioActivo);
 
-        EmpresaVO empresa = new EmpresaVO();
+        empresa = new EmpresaVO();
         empresa.setDireccion("Esta es la dirección");
 
         empresa.setNit(404);
@@ -82,7 +86,7 @@ public class UsuarioServiceTest {
 
             try {
                 ServiceFactory.getInstance().getEmpresaService().create(empresa);
-            } catch (    PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException | InvalidAttributeException ex) {
+            } catch (PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException | InvalidAttributeException ex) {
                 Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -100,11 +104,19 @@ public class UsuarioServiceTest {
 
             try {
                 ServiceFactory.getInstance().getUsuarioService().create(usuario);
-            } catch (    PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException | InvalidAttributeException ex) {
+            } catch (PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException | InvalidAttributeException ex) {
                 Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
+        pruebasPersistencia = new UsuarioVO();
+        pruebasPersistencia.setNombre("Rogelio");
+        pruebasPersistencia.setRol(Rol.PRIMER_ADMINISTRADOR);
+        pruebasPersistencia.setCorreo("rogelio@bayer.com");
+        pruebasPersistencia.setDni(new Long("405"));
+        pruebasPersistencia.setNombreDeUsuario("rogelio");
+        pruebasPersistencia.setClave("vidriolo");
+        pruebasPersistencia.setEmpresasNIT(404);
     }
 
     @After
@@ -122,6 +134,8 @@ public class UsuarioServiceTest {
         }
 
         usuario = null;
+        pruebasPersistencia = null;
+        empresa = null;
 
     }
 
@@ -203,7 +217,7 @@ public class UsuarioServiceTest {
         boolean result = ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testValidarCamposNullRequieredFieldDni() {
         System.out.println("validarCamposNullRequieredFieldDni");
@@ -218,7 +232,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposNullRequieredFieldPass() {
         System.out.println("validarCamposNullRequieredFieldPass");
@@ -233,7 +247,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposNullRequieredFieldMail() {
         System.out.println("validarCamposNullRequieredFieldMail");
@@ -248,7 +262,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposNullRequieredFieldName() {
         System.out.println("validarCamposNullRequieredFieldName");
@@ -263,13 +277,13 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposNullRequieredFieldUserName() {
         System.out.println("validarCamposNullRequieredFieldUserName");
 
         usuario.setNombreDeUsuario(null);
-        
+
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
             fail();
@@ -278,7 +292,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidCharactersInPass() {
         System.out.println("validarCamposInvalidCharactersInPass");
@@ -293,7 +307,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidCharactersInName() {
         System.out.println("validarCamposInvalidCharactersInName");
@@ -308,7 +322,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidCharactersInUserName() {
         System.out.println("validarCamposInvalidCharactersInUserName");
@@ -323,7 +337,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidCharactersInMail() {
         System.out.println("validarCamposInvalidCharactersInMail");
@@ -338,8 +352,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
-    
+
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInPass() {
         System.out.println("validarCamposInvalidNumberOfCharactersInPass");
@@ -364,7 +377,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInMail() {
         System.out.println("validarCamposInvalidNumberOfCharactersInMail");
@@ -389,7 +402,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInName() {
         System.out.println("validarCamposInvalidNumberOfCharactersInName");
@@ -414,7 +427,7 @@ public class UsuarioServiceTest {
         }
 
     }
-    
+
     @Test
     public void testValidarCamposInvalidNumberOfCharactersInUserName() {
         System.out.println("validarCamposInvalidNumberOfCharactersInUserName");
@@ -439,41 +452,60 @@ public class UsuarioServiceTest {
         }
 
     }
-    
-    
+
     @Test
-    public void testCreateUsuarioExpectedFunctionality(){
-        
+    public void testCreateUsuarioExpectedFunctionality() {
+        try {
+            ServiceFactory.getInstance().getUsuarioService().create(pruebasPersistencia);
+        } catch (Exception ex) {
+            Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            fail();
+        }
     }
-    
+
     @Test
-    public void testFindUsuarioExpectedFunctionality(){
-        
+    public void testFindUsuarioExpectedFunctionality() {
+        assertEquals(ServiceFactory.getInstance().getUsuarioService().find(pruebasPersistencia.getDni()), pruebasPersistencia);
     }
-    
+
     @Test
-    public void testFindByEnterpriseUsuarioExpectedFunctionality(){
-        
+    public void testFindByEnterpriseUsuarioExpectedFunctionality() {
+        assertEquals(ServiceFactory.getInstance().getUsuarioService().findByEnterprise(pruebasPersistencia.getEmpresasNIT()), pruebasPersistencia);
     }
-    
+
     @Test
-    public void testFindByNameAndEnterpriseUsuarioExpectedFunctionality(){
-        
+    public void testFindByNameAndEnterpriseUsuarioExpectedFunctionality() {
+        assertEquals(ServiceFactory.getInstance().getUsuarioService().findByNameAndEnterprise(pruebasPersistencia.getNombre(), empresa.getEmpresasnit()), pruebasPersistencia);
     }
-    
+
     @Test
-    public void testFindByDNIAndEnterpriseUsuarioExpectedFunctionality(){
-        
+    public void testFindByDNIAndEnterpriseUsuarioExpectedFunctionality() {
+        assertEquals(ServiceFactory.getInstance().getUsuarioService().findByDNIAndEnterprise(pruebasPersistencia.getDni(), empresa.getNit()), pruebasPersistencia);
     }
-    
+
     @Test
-    public void testUpdateUsuarioExpectedFunctionality(){
-        
+    public void testUpdateUsuarioExpectedFunctionality() {
+
+        UsuarioVO tempUsuario = ServiceFactory.getInstance().getUsuarioService().find(pruebasPersistencia.getDni());
+        tempUsuario.setNombre("Cambio en usuario");
+        try {
+            ServiceFactory.getInstance().getUsuarioService().update(tempUsuario);
+        } catch (Exception ex) {
+            Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            fail();
+        }
+
+        assertEquals(ServiceFactory.getInstance().getUsuarioService().find(pruebasPersistencia.getDni()).getNombre(), "Cambio en usuario");
+
     }
-    
+
     @Test
-    public void testDeleteUsuarioExpectedFunctionality(){
-        
+    public void testDeleteUsuarioExpectedFunctionality() {
+        try {
+            ServiceFactory.getInstance().getUsuarioService().delete(pruebasPersistencia.getDni());
+        } catch (Exception ex) {
+            Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            fail();
+        }
     }
-    
 }
