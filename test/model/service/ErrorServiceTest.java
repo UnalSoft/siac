@@ -4,12 +4,15 @@
  */
 package model.service;
 
+import controller.LoginController;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.vo.ErrorVO;
+import model.vo.UsuarioVO;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -26,10 +29,32 @@ public class ErrorServiceTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+         UsuarioVO usuario = new UsuarioVO();
+        String nombreUsuario = "FirstAdministrator";
+        String clave = "FirstAdministrator";
+
+        usuario.setNombreDeUsuario(nombreUsuario);
+        usuario.setClave(clave);
+
+        UsuarioVO usuarioLogin;
+        try {
+            usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
+            System.out.println("login");
+        } catch (DataBaseException ex) {
+            usuarioLogin = null;
+        }
+
+        if (usuarioLogin != null) {
+
+            LoginController.usuarioActivo = usuarioLogin;
+            System.out.println(LoginController.usuarioActivo);
+
+        }
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        LoginController.usuarioActivo = null;
     }
 
     @Before

@@ -38,8 +38,8 @@ public class UsuarioServiceTest {
 
 
         UsuarioVO usuario = new UsuarioVO();
-        String nombreUsuario = "admin";
-        String clave = "admin";
+        String nombreUsuario = "FirstAdministrator";
+        String clave = "FirstAdministrator";
 
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);
@@ -75,7 +75,7 @@ public class UsuarioServiceTest {
         System.out.println(LoginController.usuarioActivo);
 
         empresa = new EmpresaVO();
-        empresa.setDireccion("Esta es la dirección");
+        empresa.setDireccion("Esta es la direccion");
 
         empresa.setNit(404);
         empresa.setNivel(Nivel.DISTRIBUIDORA);

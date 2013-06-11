@@ -28,6 +28,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
     private static EmpresaService instance;
     private final static int MIN_LENGTH_NAME = 3;
     private final static int MAX_LENGTH_NAME = 80;
+    
 
     private EmpresaService() {
     }

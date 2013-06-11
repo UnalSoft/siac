@@ -4,12 +4,15 @@
  */
 package model.service;
 
+import controller.LoginController;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.RequiredAttributeException;
 import model.entity.Nivel;
 import model.vo.EmpresaVO;
+import model.vo.UsuarioVO;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -33,22 +36,48 @@ public class EmpresaServiceTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        
+        UsuarioVO usuario = new UsuarioVO();
+        String nombreUsuario = "FirstAdministrator";
+        String clave = "FirstAdministrator";
+
+        usuario.setNombreDeUsuario(nombreUsuario);
+        usuario.setClave(clave);
+
+        UsuarioVO usuarioLogin;
+        try {
+            usuarioLogin = ServiceFactory.getInstance().getUsuarioService().login(usuario);
+            System.out.println("login");
+        } catch (DataBaseException ex) {
+            usuarioLogin = null;
+        }
+
+        if (usuarioLogin != null) {
+
+            LoginController.usuarioActivo = usuarioLogin;
+            System.out.println(LoginController.usuarioActivo);
+
+        }
+
+        
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        
+        LoginController.usuarioActivo = null;
     }
 
     @Before
     public void setUp() {
         empresa = new EmpresaVO();
-        empresa.setDireccion("Diagonal 3 # 6-50");
+        empresa.setDireccion("Diagonal 3 6 50");
         //requerido
         empresa.setNit(99999999);
         //requerido
         empresa.setNivel(Nivel.ADMINISTRADORA);
         //requerido
-        empresa.setNombre("Fabrica de pollos mecanicos La casi-22");
+        empresa.setNombre("Fabrica de pollos mecanicos La casi");
         empresa.setTelefono("9999999");
         empresa.setEmpresasnit(999999);
 
@@ -124,7 +153,7 @@ public class EmpresaServiceTest {
 
 
 
-        for (int i = 1; i <= MAXADDRESS; i++) {
+        for (int i = 1; i <= MAXADDRESS + 1; i++) {
             address = address + dummy;
         }
 
@@ -150,7 +179,7 @@ public class EmpresaServiceTest {
 
 
 
-        for (int i = 0; i < MAXNIT; i++) {
+        for (int i = 0; i < MAXNIT + 1; i++) {
             nit = nit + (dummy ^ i);
         }
 
@@ -186,7 +215,7 @@ public class EmpresaServiceTest {
     public void testValidarCamposInvalidNumberOfCharactersInName() {
         System.out.println("validarCamposInvalidNumberOfCharactersInName");
 
-        char dummy = '0';
+        char dummy = 'S';
         String name = new String();
 
 
@@ -217,7 +246,7 @@ public class EmpresaServiceTest {
 
 
 
-        for (int i = 1; i <= MAXPHONE; i++) {
+        for (int i = 1; i <= MAXPHONE + 1; i++) {
             number = number + dummy;
         }
 
