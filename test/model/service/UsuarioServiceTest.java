@@ -38,8 +38,8 @@ public class UsuarioServiceTest {
 
 
         UsuarioVO usuario = new UsuarioVO();
-        String nombreUsuario = "FirstAdministrator";
-        String clave = "FirstAdministrator";
+        String nombreUsuario = "Provider";
+        String clave = "Provider";
 
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);

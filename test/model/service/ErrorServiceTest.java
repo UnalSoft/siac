@@ -30,8 +30,8 @@ public class ErrorServiceTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
          UsuarioVO usuario = new UsuarioVO();
-        String nombreUsuario = "FirstAdministrator";
-        String clave = "FirstAdministrator";
+        String nombreUsuario = "Provider";
+        String clave = "Provider";
 
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);
@@ -65,7 +65,7 @@ public class ErrorServiceTest {
         error.setError("Descripción error");
         error.setUsuariosDNI(new Long("9999999"));
         error.setInterfaz("Interfaz de incidencia");
-        error.setId(9999);
+        
 
 
     }

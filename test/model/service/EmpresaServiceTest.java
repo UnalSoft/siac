@@ -8,8 +8,7 @@ import controller.LoginController;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.dao.exceptions.DataBaseException;
-import model.dao.exceptions.RequiredAttributeException;
+import model.dao.exceptions.*;
 import model.entity.Nivel;
 import model.vo.EmpresaVO;
 import model.vo.UsuarioVO;
@@ -23,6 +22,7 @@ import static org.junit.Assert.*;
 public class EmpresaServiceTest {
 
     EmpresaVO empresa;
+    EmpresaVO empresaFind;
     String VALID_CHARACTERS_ENTERPRISE = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-*/.,;:`´¨¿¡'?!#$%&";
     String VALID_CHARACTERS_ADDRESS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.,:`´¨'#&";
     String VALID_CHARACTERS_PHONENUMBER = "0123456789:()+";
@@ -38,8 +38,8 @@ public class EmpresaServiceTest {
     public static void setUpClass() throws Exception {
         
         UsuarioVO usuario = new UsuarioVO();
-        String nombreUsuario = "FirstAdministrator";
-        String clave = "FirstAdministrator";
+        String nombreUsuario = "Provider";
+        String clave = "Provider";
 
         usuario.setNombreDeUsuario(nombreUsuario);
         usuario.setClave(clave);
@@ -79,7 +79,24 @@ public class EmpresaServiceTest {
         //requerido
         empresa.setNombre("Fabrica de pollos mecanicos La casi");
         empresa.setTelefono("9999999");
-        empresa.setEmpresasnit(999999);
+        
+        empresaFind = empresa;
+        
+        empresaFind.setNit(99999998);
+        try {
+            ServiceFactory.getInstance().getEmpresaService().create(empresaFind);
+        } catch (PreexistingEntityException ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RequiredAttributeException ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InsufficientPermissionsException ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidAttributeException ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 
     }
 
@@ -87,6 +104,13 @@ public class EmpresaServiceTest {
     public void tearDown() {
 
         empresa = null;
+        try {
+            ServiceFactory.getInstance().getEmpresaService().delete(empresaFind.getNit());
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InsufficientPermissionsException ex) {
+            Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -220,7 +244,7 @@ public class EmpresaServiceTest {
 
 
 
-        for (int i = 1; i <= MAXNAME; i++) {
+        for (int i = 1; i <= MAXNAME + 1; i++) {
             name = name + dummy;
         }
 
@@ -266,6 +290,7 @@ public class EmpresaServiceTest {
     @Test
     public void testCreateEmpresaExpectedFunctionality(){
         try {
+            System.out.println(empresa.getNombre());
             ServiceFactory.getInstance().getEmpresaService().create(empresa);
         } catch (Exception ex) {
             Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -276,25 +301,25 @@ public class EmpresaServiceTest {
     @Test
     public void testFindEmpresaExpectedFunctionality(){
         
-        assertEquals(ServiceFactory.getInstance().getEmpresaService().find(empresa.getNit()), empresa);
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().find(empresaFind.getNit()), empresaFind);
         
     }
     
     @Test
     public void testFindByEnterpriseEmpresaExpectedFunctionality(){
-        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByEnterprise(empresa.getEmpresasnit()), empresa);
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByEnterprise(empresaFind.getEmpresasnit()), empresaFind);
         
     }
     
     @Test
     public void testFindByNameAndEnterpriseEmpresaExpectedFunctionality(){
-        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByNameAndEnterprise(empresa.getNombre(), empresa.getEmpresasnit()), empresa);
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByNameAndEnterprise(empresaFind.getNombre(), empresaFind.getEmpresasnit()), empresaFind);
         
     }
     
     @Test
     public void testFindByNitAndEnterpriseEmpresaExpectedFunctionality(){
-        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByNitAndEnterprise(empresa.getNit(), empresa.getNit()), empresa);
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByNitAndEnterprise(empresaFind.getNit(), empresa.getNit()), empresaFind);
         
     }
     
