@@ -50,6 +50,7 @@ public class EmpresaServiceTest {
         //requerido
         empresa.setNombre("Fabrica de pollos mecanicos La casi-22");
         empresa.setTelefono("9999999");
+        empresa.setEmpresasnit(999999);
 
     }
 
@@ -235,43 +236,68 @@ public class EmpresaServiceTest {
     
     @Test
     public void testCreateEmpresaExpectedFunctionality(){
-        
+        try {
+            ServiceFactory.getInstance().getEmpresaService().create(empresa);
+        } catch (Exception ex) {
+            Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            fail();
+        }
     }
     
     @Test
     public void testFindEmpresaExpectedFunctionality(){
         
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().find(empresa.getNit()), empresa);
+        
     }
     
     @Test
     public void testFindByEnterpriseEmpresaExpectedFunctionality(){
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByEnterprise(empresa.getEmpresasnit()), empresa);
         
     }
     
     @Test
     public void testFindByNameAndEnterpriseEmpresaExpectedFunctionality(){
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByNameAndEnterprise(empresa.getNombre(), empresa.getEmpresasnit()), empresa);
         
     }
     
     @Test
     public void testFindByNitAndEnterpriseEmpresaExpectedFunctionality(){
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().findByNitAndEnterprise(empresa.getNit(), empresa.getNit()), empresa);
         
     }
     
     @Test
     public void testUpdateEmpresaExpectedFunctionality(){
         
+        EmpresaVO tempEmpresa = ServiceFactory.getInstance().getEmpresaService().find(empresa.getNit());
+        tempEmpresa.setNombre("Cambio en usuario");
+        try {
+            ServiceFactory.getInstance().getEmpresaService().update(tempEmpresa);
+        } catch (Exception ex) {
+            Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            fail();
+        }
+
+        assertEquals(ServiceFactory.getInstance().getEmpresaService().find(empresa.getNit()).getNombre(), "Cambio en usuario");
+
+        
     }
     
     @Test
     public void testDeleteEmpresaExpectedFunctionality(){
+         try {
+            ServiceFactory.getInstance().getEmpresaService().delete(empresa.getNit());
+        } catch (Exception ex) {
+            Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            fail();
+        }
         
     }
     
-    @Test
-    public void testRemoveAllEmpresaExpectedFunctionality(){
-        
-    }
+  
     
     
 }
