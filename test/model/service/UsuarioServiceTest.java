@@ -440,4 +440,40 @@ public class UsuarioServiceTest {
 
     }
     
+    
+    @Test
+    public void testCreateUsuarioExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindUsuarioExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindByEnterpriseUsuarioExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindByNameAndEnterpriseUsuarioExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindByDNIAndEnterpriseUsuarioExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testUpdateUsuarioExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testDeleteUsuarioExpectedFunctionality(){
+        
+    }
+    
 }

@@ -232,4 +232,46 @@ public class EmpresaServiceTest {
         }
 
     }
+    
+    @Test
+    public void testCreateEmpresaExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindEmpresaExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindByEnterpriseEmpresaExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindByNameAndEnterpriseEmpresaExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindByNitAndEnterpriseEmpresaExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testUpdateEmpresaExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testDeleteEmpresaExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testRemoveAllEmpresaExpectedFunctionality(){
+        
+    }
+    
+    
 }

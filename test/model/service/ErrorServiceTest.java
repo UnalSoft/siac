@@ -34,5 +34,31 @@ public class ErrorServiceTest {
     public void tearDown() {
     }
 
-   
+   @Test
+    public void testCreateErrorExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testFindErrorExpectedFunctionality(){
+        
+    }
+    
+        
+    @Test
+    public void testUpdateErrorExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testDeleteErrorExpectedFunctionality(){
+        
+    }
+    
+    @Test
+    public void testRemoveAllErrorExpectedFunctionality(){
+        
+    }
+    
+    
 }
