@@ -4,6 +4,12 @@
  */
 package view;
 
+import controller.ModificarEmpresaController;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Felipe
@@ -17,6 +23,42 @@ public class ModificarEmpresa extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTable getEmpresaT() {
+        return empresaT;
+    }
+
+    public JTextField getBuscarTF() {
+        return buscarTF;
+    }
+
+    public JRadioButton getNitRB() {
+        return nitRB;
+    }
+
+    public JTextField getDireccionTF() {
+        return direccionTF;
+    }
+
+    public JTextField getNitTF() {
+        return nitTF;
+    }
+
+    public JTextField getNivelTF() {
+        return nivelTF;
+    }
+
+    public JTextField getNombreEmpresaTF() {
+        return nombreEmpresaTF;
+    }
+
+    public JTextField getTelefonoTF() {
+        return telefonoTF;
+    }
+
+    public JPanel getModificarEmpresaP() {
+        return modificarEmpresaP;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,150 +69,130 @@ public class ModificarEmpresa extends javax.swing.JPanel {
     private void initComponents() {
 
         busquedaBG = new javax.swing.ButtonGroup();
-        ModificarF = new javax.swing.JFrame();
-        panelSupP2 = new javax.swing.JPanel();
-        crearEmpresaL1 = new javax.swing.JLabel();
-        panelInfP2 = new javax.swing.JPanel();
-        cancelarB2 = new javax.swing.JButton();
-        modificarUsuarioB = new javax.swing.JButton();
-        nitL1 = new javax.swing.JLabel();
-        nombreEmpresaL1 = new javax.swing.JLabel();
-        nivelL1 = new javax.swing.JLabel();
-        direccionL1 = new javax.swing.JLabel();
-        telefonoL1 = new javax.swing.JLabel();
-        nitTF1 = new javax.swing.JTextField();
-        nombreEmpresaTF1 = new javax.swing.JTextField();
-        nivelTF1 = new javax.swing.JTextField();
-        direccionTF1 = new javax.swing.JTextField();
-        telefonoTF1 = new javax.swing.JTextField();
-        empresaL1 = new javax.swing.JLabel();
-        panelSupP = new javax.swing.JPanel();
-        modificarEmpresaL = new javax.swing.JLabel();
+        modificarEmpresaP = new javax.swing.JPanel();
+        nivelL = new javax.swing.JLabel();
+        direccionL = new javax.swing.JLabel();
+        telefonoL = new javax.swing.JLabel();
+        nivelTF = new javax.swing.JTextField();
+        cancelarB1 = new javax.swing.JButton();
+        direccionTF = new javax.swing.JTextField();
+        modificarEmpresaB = new javax.swing.JButton();
+        nitTF = new javax.swing.JTextField();
+        nitL = new javax.swing.JLabel();
+        nombreEmpresaTF = new javax.swing.JTextField();
+        nombreEmpresaL = new javax.swing.JLabel();
+        telefonoTF = new javax.swing.JTextField();
+        empresaL = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         nitRB = new javax.swing.JRadioButton();
         nombreRB = new javax.swing.JRadioButton();
         buscarTF = new javax.swing.JTextField();
-        buscarB = new javax.swing.JToggleButton();
         empresaSP = new javax.swing.JScrollPane();
         empresaT = new javax.swing.JTable();
         cancelarB = new javax.swing.JButton();
         modificarB = new javax.swing.JButton();
+        buscarB = new javax.swing.JButton();
 
-        panelSupP2.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP2.setLayout(null);
+        nivelL.setText("Nivel:");
 
-        crearEmpresaL1.setText("SIAC - Modificar Empresa");
-        panelSupP2.add(crearEmpresaL1);
-        crearEmpresaL1.setBounds(6, 7, 170, 16);
+        direccionL.setText("Dirección:");
 
-        panelInfP2.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP2.setLayout(null);
+        telefonoL.setText("Teléfono:");
 
-        cancelarB2.setText("Cancelar");
+        nivelTF.setEditable(false);
+        nivelTF.setText("Nivel");
 
-        modificarUsuarioB.setText("Modificar Usuario");
+        cancelarB1.setText("Cancelar");
+        cancelarB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarB1ActionPerformed(evt);
+            }
+        });
 
-        nitL1.setText("NIT: ");
+        modificarEmpresaB.setText("Modificar Empresa");
+        modificarEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEmpresaBActionPerformed(evt);
+            }
+        });
 
-        nombreEmpresaL1.setText("Nombre:");
+        nitTF.setEditable(false);
 
-        nivelL1.setText("Nivel:");
+        nitL.setText("NIT: ");
 
-        direccionL1.setText("Dirección:");
+        nombreEmpresaL.setText("Nombre:");
 
-        telefonoL1.setText("Teléfono:");
+        empresaL.setText("Empresa:");
 
-        nivelTF1.setText("Nivel");
-        nivelTF1.setEnabled(false);
-
-        empresaL1.setText("Empresa:");
-
-        org.jdesktop.layout.GroupLayout ModificarFLayout = new org.jdesktop.layout.GroupLayout(ModificarF.getContentPane());
-        ModificarF.getContentPane().setLayout(ModificarFLayout);
-        ModificarFLayout.setHorizontalGroup(
-            ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelInfP2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(panelSupP2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(ModificarFLayout.createSequentialGroup()
+        org.jdesktop.layout.GroupLayout modificarEmpresaPLayout = new org.jdesktop.layout.GroupLayout(modificarEmpresaP);
+        modificarEmpresaP.setLayout(modificarEmpresaPLayout);
+        modificarEmpresaPLayout.setHorizontalGroup(
+            modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(modificarEmpresaPLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(ModificarFLayout.createSequentialGroup()
+                .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(modificarEmpresaPLayout.createSequentialGroup()
                         .add(6, 6, 6)
-                        .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(telefonoL1)
-                            .add(nombreEmpresaL1)
-                            .add(nitL1)
-                            .add(nivelL1)
-                            .add(direccionL1))
+                        .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(telefonoL)
+                            .add(nombreEmpresaL)
+                            .add(nitL)
+                            .add(nivelL)
+                            .add(direccionL))
                         .add(27, 27, 27)
-                        .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(nombreEmpresaTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(nitTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(nivelTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(direccionTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(telefonoTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(empresaL1))
-                .addContainerGap(11, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, ModificarFLayout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(cancelarB2)
-                .add(18, 18, 18)
-                .add(modificarUsuarioB)
-                .add(25, 25, 25))
+                        .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(nombreEmpresaTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(nitTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(nivelTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(direccionTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(telefonoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 226, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(empresaL)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, modificarEmpresaPLayout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(cancelarB1)
+                        .add(18, 18, 18)
+                        .add(modificarEmpresaB)
+                        .add(14, 14, 14)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        ModificarFLayout.setVerticalGroup(
-            ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(ModificarFLayout.createSequentialGroup()
-                .add(panelSupP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 12, Short.MAX_VALUE)
-                .add(empresaL1)
+        modificarEmpresaPLayout.setVerticalGroup(
+            modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(modificarEmpresaPLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(empresaL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(nitL1)
-                    .add(nitTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(nombreEmpresaL1)
-                    .add(nombreEmpresaTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(nivelL1)
-                    .add(nivelTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(direccionL1)
-                    .add(direccionTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(telefonoL1)
-                    .add(telefonoTF1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(27, 27, 27)
-                .add(ModificarFLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cancelarB2)
-                    .add(modificarUsuarioB))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 18, Short.MAX_VALUE)
-                .add(panelInfP2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nitL)
+                    .add(nitTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nombreEmpresaL)
+                    .add(nombreEmpresaTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nivelL)
+                    .add(nivelTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(direccionL)
+                    .add(direccionTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(telefonoL)
+                    .add(telefonoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(modificarEmpresaPLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(cancelarB1)
+                    .add(modificarEmpresaB))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        modificarEmpresaL.setText("SIAC - Modificar Empresa");
-        panelSupP.add(modificarEmpresaL);
-        modificarEmpresaL.setBounds(6, 7, 170, 16);
 
         bienvenidoL.setText("Buscar por:");
 
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
+        busquedaBG.add(nitRB);
+        nitRB.setSelected(true);
         nitRB.setText("NIT");
 
         busquedaBG.add(nombreRB);
         nombreRB.setText("Nombre");
 
         buscarTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
-        buscarB.setText("Buscar");
 
         empresaT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,42 +223,58 @@ public class ModificarEmpresa extends javax.swing.JPanel {
         empresaSP.setViewportView(empresaT);
 
         cancelarB.setText("Cancelar");
+        cancelarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBActionPerformed(evt);
+            }
+        });
 
         modificarB.setText("Modificar");
+        modificarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarBActionPerformed(evt);
+            }
+        });
+
+        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
+        buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                .add(16, 16, 16)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(cancelarB)
+                        .add(modificarB)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(modificarB))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(16, 16, 16)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createSequentialGroup()
-                                .add(nitRB)
-                                .add(18, 18, 18)
-                                .add(nombreRB))
-                            .add(bienvenidoL)
-                            .add(layout.createSequentialGroup()
-                                .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(empresaSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                        .add(cancelarB))
+                    .add(bienvenidoL)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(layout.createSequentialGroup()
+                                    .add(nitRB)
+                                    .add(18, 18, 18)
+                                    .add(nombreRB)
+                                    .add(0, 0, Short.MAX_VALUE))
+                                .add(buscarTF))
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(buscarB))
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, empresaSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .add(0, 15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addContainerGap()
                 .add(bienvenidoL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -247,46 +285,59 @@ public class ModificarEmpresa extends javax.swing.JPanel {
                     .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(buscarB))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(empresaSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(empresaSP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cancelarB)
                     .add(modificarB))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(16, 16, 16))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cancelarB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarB1ActionPerformed
+        new ModificarEmpresaController().listarEmpresa();
+    }//GEN-LAST:event_cancelarB1ActionPerformed
+
+    private void modificarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBActionPerformed
+        new ModificarEmpresaController().mostrarEmpresaEditable();
+    }//GEN-LAST:event_modificarBActionPerformed
+
+    private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
+        new ModificarEmpresaController().cancelar();
+    }//GEN-LAST:event_cancelarBActionPerformed
+
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        new ModificarEmpresaController().buscar();
+    }//GEN-LAST:event_buscarBActionPerformed
+
+    private void modificarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpresaBActionPerformed
+        new ModificarEmpresaController().modificarEmpresa();
+    }//GEN-LAST:event_modificarEmpresaBActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame ModificarF;
     private javax.swing.JLabel bienvenidoL;
-    private javax.swing.JToggleButton buscarB;
+    private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
-    private javax.swing.JButton cancelarB2;
-    private javax.swing.JLabel crearEmpresaL1;
-    private javax.swing.JLabel direccionL1;
-    private javax.swing.JTextField direccionTF1;
-    private javax.swing.JLabel empresaL1;
+    private javax.swing.JButton cancelarB1;
+    private javax.swing.JLabel direccionL;
+    private javax.swing.JTextField direccionTF;
+    private javax.swing.JLabel empresaL;
     private javax.swing.JScrollPane empresaSP;
     private javax.swing.JTable empresaT;
     private javax.swing.JButton modificarB;
-    private javax.swing.JLabel modificarEmpresaL;
-    private javax.swing.JButton modificarUsuarioB;
-    private javax.swing.JLabel nitL1;
+    private javax.swing.JButton modificarEmpresaB;
+    private javax.swing.JPanel modificarEmpresaP;
+    private javax.swing.JLabel nitL;
     private javax.swing.JRadioButton nitRB;
-    private javax.swing.JTextField nitTF1;
-    private javax.swing.JLabel nivelL1;
-    private javax.swing.JTextField nivelTF1;
-    private javax.swing.JLabel nombreEmpresaL1;
-    private javax.swing.JTextField nombreEmpresaTF1;
+    private javax.swing.JTextField nitTF;
+    private javax.swing.JLabel nivelL;
+    private javax.swing.JTextField nivelTF;
+    private javax.swing.JLabel nombreEmpresaL;
+    private javax.swing.JTextField nombreEmpresaTF;
     private javax.swing.JRadioButton nombreRB;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelInfP2;
-    private javax.swing.JPanel panelSupP;
-    private javax.swing.JPanel panelSupP2;
-    private javax.swing.JLabel telefonoL1;
-    private javax.swing.JTextField telefonoTF1;
+    private javax.swing.JLabel telefonoL;
+    private javax.swing.JTextField telefonoTF;
     // End of variables declaration//GEN-END:variables
 }

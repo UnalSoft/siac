@@ -24,13 +24,13 @@ public class ConsultarEmpresaController {
     
    
     public void llenarTabla() {
-        List<EmpresaVO> usuariosList = ServiceFactory.getInstance()
+        List<EmpresaVO> empresasList = ServiceFactory.getInstance()
                 .getEmpresaService().find(LoginController.usuarioActivo
                 .getEmpresasNIT()).getEmpresaList();
         model = (DefaultTableModel) consultarEmpresa.getEmpresaT().getModel();
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
-        for (EmpresaVO empresaVO : usuariosList) {
+        for (EmpresaVO empresaVO : empresasList) {
             Object[] datos = {empresaVO.getNit(), empresaVO.getNombre(),
                 empresaVO.getNivel().getText(), empresaVO.getDireccion(),
                 empresaVO.getDireccion()};

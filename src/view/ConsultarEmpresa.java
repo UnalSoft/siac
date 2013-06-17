@@ -90,7 +90,7 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
         empresaT = new javax.swing.JTable();
         cancelarB = new javax.swing.JButton();
         verInformacionB = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buscarB = new javax.swing.JButton();
 
         nitTF.setText("000000000");
 
@@ -234,12 +234,12 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
+        buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarBActionPerformed(evt);
             }
         });
 
@@ -268,7 +268,7 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
                                     .add(bienvenidoL)
                                     .add(336, 336, 336)))
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                            .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .add(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -283,7 +283,7 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton1))
+                    .add(buscarB))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(empresaSP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -306,13 +306,14 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
        new ConsultarEmpresaController().consultarEmpresa();
     }//GEN-LAST:event_atrasBActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
         new ConsultarEmpresaController().buscar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buscarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrasB;
     private javax.swing.JLabel bienvenidoL;
+    private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
@@ -321,7 +322,6 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
     private javax.swing.JLabel empresaL;
     private javax.swing.JScrollPane empresaSP;
     private javax.swing.JTable empresaT;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel mostrarEmpresaP;
     private javax.swing.JLabel nitL;
     private javax.swing.JRadioButton nitRB;

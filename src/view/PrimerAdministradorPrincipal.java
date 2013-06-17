@@ -11,6 +11,7 @@ import controller.CrearEmpresaController;
 import controller.CrearUsuarioController;
 import controller.EliminarUsuarioController;
 import controller.LoginController;
+import controller.ModificarEmpresaController;
 import controller.ModificarUsuarioController;
 import javax.swing.JLabel;
 
@@ -225,6 +226,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         modificarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
         modificarEmpresaB.setText("Modificar");
         modificarEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        modificarEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEmpresaBActionPerformed(evt);
+            }
+        });
 
         eliminarEmpresaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         eliminarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Eliminar.png"))); // NOI18N
@@ -388,6 +394,10 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private void consultarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarPrimerAdminBActionPerformed
         new ConsultarAdministradorController().consultarUsuario();
     }//GEN-LAST:event_consultarPrimerAdminBActionPerformed
+
+    private void modificarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpresaBActionPerformed
+        new ModificarEmpresaController().listarEmpresa();
+    }//GEN-LAST:event_modificarEmpresaBActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

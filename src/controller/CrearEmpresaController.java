@@ -94,15 +94,15 @@ public class CrearEmpresaController {
         EmpresaVO empresaVO= ServiceFactory.getInstance().getEmpresaService()
                 .find(LoginController.usuarioActivo.getEmpresasNIT());
         if (empresaVO.getNivel().equals(Nivel.ADMINISTRADORA)){
-            return Nivel.CANAL.getText();
-        }
-        if (empresaVO.getNivel().equals(Nivel.CANAL)){
             return Nivel.DISTRIBUIDORA.getText();
         }
         if (empresaVO.getNivel().equals(Nivel.DISTRIBUIDORA)){
             return Nivel.SUB_DISTRIBUIDORA.getText();
         }
         if (empresaVO.getNivel().equals(Nivel.SUB_DISTRIBUIDORA)){
+            return Nivel.CANAL.getText();
+        }
+        if (empresaVO.getNivel().equals(Nivel.CANAL)){
             return Nivel.PUNTO_DE_VENTA.getText();
         }
         else{
