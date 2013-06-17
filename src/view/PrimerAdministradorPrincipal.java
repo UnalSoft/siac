@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ConsultarAdministradorController;
 import controller.ConsultarEmpresaController;
 import controller.ConsultarUsuarioController;
 import controller.CrearEmpresaController;
@@ -155,6 +156,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         consultarPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarPrimerAdminB.setText("Consultar");
         consultarPrimerAdminB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        consultarPrimerAdminB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarPrimerAdminBActionPerformed(evt);
+            }
+        });
 
         modificarPrimerAdminB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         modificarPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
@@ -378,6 +384,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private void consultarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmpresaBActionPerformed
         new ConsultarEmpresaController().consultarEmpresa();
     }//GEN-LAST:event_consultarEmpresaBActionPerformed
+
+    private void consultarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarPrimerAdminBActionPerformed
+        new ConsultarAdministradorController().consultarUsuario();
+    }//GEN-LAST:event_consultarPrimerAdminBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;

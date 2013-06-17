@@ -12,6 +12,7 @@ import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.entity.Empresa;
+import model.entity.Rol;
 import model.entity.Usuario;
 
 /**
@@ -244,7 +245,7 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
             return usuarios;
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay usuarios con nombre: " + name 
+            throw new EntityNotFoundException("No hay usuarios con nombre: " + name
                     + " asociados a la empresa con nit: " + nit.toString());
         } finally {
             if (entityManager != null) {
@@ -269,7 +270,88 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
             return usuarios;
         } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay usuarios con dni: " + dni.toString() 
+            throw new EntityNotFoundException("No hay usuarios con dni: " + dni.toString()
+                    + " asociados a la empresa con nit: " + nit.toString());
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
+
+    public Iterable<Usuario> findByRolAndEnterprise(Rol rol, Integer nit) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Usuario> usuarios;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.rol LIKE :rol "
+                    + "AND u.empresasNIT.nit LIKE :nit")
+                    .setParameter("rol", rol.toString())
+                    .setParameter("nit", nit.toString());
+
+            usuarios = q.getResultList();
+
+            return usuarios;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay usuarios con rol: " + rol.toString()
+                    + " asociados a la empresa con nit: " + nit.toString());
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
+
+    public Iterable<Usuario> findByNameAndEnterpriseAndRol(String name, Integer nit, Rol rol) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Usuario> usuarios;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.nombre LIKE :name "
+                    + "AND u.empresasNIT.nit LIKE :nit "
+                    + "AND u.rol LIKE :rol")
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("nit", nit.toString())
+                    .setParameter("rol", rol.toString());
+
+            usuarios = q.getResultList();
+
+            return usuarios;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay usuarios con nombre: " + name
+                    + " y rol " + rol.toString()
+                    + " asociados a la empresa con nit: " + nit.toString());
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
+
+    public List<Usuario> findByDNIAndEnterpriseAndRol(Long dni, Integer nit, Rol rol) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            List<Usuario> usuarios;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.dni LIKE :dni "
+                    + "AND u.empresasNIT.nit LIKE :nit "
+                    + "AND u.rol LIKE :rol")
+                    .setParameter("dni", "%" + dni.toString() + "%")
+                    .setParameter("nit", nit.toString())
+                    .setParameter("rol", rol.toString());
+
+            usuarios = q.getResultList();
+
+            return usuarios;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay usuarios con dni: " + dni.toString()
+                    + " y rol " + rol.toString()
                     + " asociados a la empresa con nit: " + nit.toString());
         } finally {
             if (entityManager != null) {
