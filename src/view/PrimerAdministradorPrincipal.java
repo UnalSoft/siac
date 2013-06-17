@@ -4,7 +4,9 @@
  */
 package view;
 
+import controller.ConsultarEmpresaController;
 import controller.ConsultarUsuarioController;
+import controller.CrearEmpresaController;
 import controller.CrearUsuarioController;
 import controller.EliminarUsuarioController;
 import controller.LoginController;
@@ -197,11 +199,21 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         crearEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Crear.png"))); // NOI18N
         crearEmpresaB.setText("Crear");
         crearEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        crearEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearEmpresaBActionPerformed(evt);
+            }
+        });
 
         consultarEmpresaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         consultarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarEmpresaB.setText("Consultar");
         consultarEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        consultarEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarEmpresaBActionPerformed(evt);
+            }
+        });
 
         modificarEmpresaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         modificarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
@@ -278,7 +290,7 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 337, Short.MAX_VALUE)
                 .add(18, 18, 18)
                 .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 320, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -344,11 +356,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_cerrarSesionBActionPerformed
 
     private void crearUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioBActionPerformed
-        new ConsultarUsuarioController().consultarUsuario();
+        new CrearUsuarioController().mostrarCrearUsuario();        
     }//GEN-LAST:event_crearUsuarioBActionPerformed
 
     private void consultarUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarUsuarioBActionPerformed
-        new CrearUsuarioController().mostrarCrearUsuario();
+        new ConsultarUsuarioController().consultarUsuario();
     }//GEN-LAST:event_consultarUsuarioBActionPerformed
 
     private void modificarUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioBActionPerformed
@@ -358,6 +370,14 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private void eliminarUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioBActionPerformed
         new EliminarUsuarioController().listarUsuarios();
     }//GEN-LAST:event_eliminarUsuarioBActionPerformed
+
+    private void crearEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEmpresaBActionPerformed
+        new CrearEmpresaController().mostrarCrearEmpresa();
+    }//GEN-LAST:event_crearEmpresaBActionPerformed
+
+    private void consultarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmpresaBActionPerformed
+        new ConsultarEmpresaController().consultarEmpresa();
+    }//GEN-LAST:event_consultarEmpresaBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;

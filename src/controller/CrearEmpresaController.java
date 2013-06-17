@@ -12,7 +12,9 @@ import model.entity.Rol;
 import model.service.ServiceFactory;
 import model.vo.EmpresaVO;
 import model.vo.UsuarioVO;
+import util.DibujarPanel;
 import view.CrearEmpresa;
+import view.Secundario;
 
 /**
  *
@@ -20,10 +22,10 @@ import view.CrearEmpresa;
  */
 public class CrearEmpresaController {
 
-    private static CrearEmpresa crearEmpresa;
+    private static Secundario secundario= new Secundario();
+    private static CrearEmpresa crearEmpresa = new CrearEmpresa();
 
-    public static void crearEmpresa(CrearEmpresa crearEmpresa) {
-        CrearEmpresaController.crearEmpresa = crearEmpresa;
+    public static void crearEmpresa() {
         if (clavesIguales()) {
             EmpresaVO empresaVo = new EmpresaVO();
             empresaVo.setDireccion(crearEmpresa.getDireccionTF().getText());
@@ -64,14 +66,47 @@ public class CrearEmpresaController {
                 return;
             }
             JOptionPane.showMessageDialog(crearEmpresa, "Empresa y Primer Administrador creados satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
-            crearEmpresa.getFrame().dispose();
+            secundario.setVisible(false);
+            secundario = new Secundario();
         } else {
             JOptionPane.showMessageDialog(crearEmpresa, "Las contraseñas no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }
+    
+    public static void cancelar() {
+        secundario.setVisible(false);
+        secundario = new Secundario();
+    }
 
     private static boolean clavesIguales() {
         return (Arrays.equals(crearEmpresa.getContrasenaPF().getPassword(), crearEmpresa.getConfirmarContrasenaPF().getPassword()));
+    }
+
+    public void mostrarCrearEmpresa() {     
+        crearEmpresa.getNivelTF().setText(siguienteNivel());
+        secundario.setVisible(true);
+        secundario.setTitle("Crear Usuario");
+        DibujarPanel.dibujarPanel(secundario, secundario.getViewport(), crearEmpresa); 
+    }
+    
+    String siguienteNivel(){
+        EmpresaVO empresaVO= ServiceFactory.getInstance().getEmpresaService()
+                .find(LoginController.usuarioActivo.getEmpresasNIT());
+        if (empresaVO.getNivel().equals(Nivel.ADMINISTRADORA)){
+            return Nivel.CANAL.getText();
+        }
+        if (empresaVO.getNivel().equals(Nivel.CANAL)){
+            return Nivel.DISTRIBUIDORA.getText();
+        }
+        if (empresaVO.getNivel().equals(Nivel.DISTRIBUIDORA)){
+            return Nivel.SUB_DISTRIBUIDORA.getText();
+        }
+        if (empresaVO.getNivel().equals(Nivel.SUB_DISTRIBUIDORA)){
+            return Nivel.PUNTO_DE_VENTA.getText();
+        }
+        else{
+            return "";
+        }
     }
 }

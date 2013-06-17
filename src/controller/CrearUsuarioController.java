@@ -4,7 +4,6 @@
  */
 package controller;
 
-import static controller.ModificarUsuarioController.secundario;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import model.dao.exceptions.InsufficientPermissionsException;

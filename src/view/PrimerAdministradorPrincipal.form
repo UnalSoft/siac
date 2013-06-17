@@ -366,6 +366,9 @@
             <Property name="text" type="java.lang.String" value="Crear"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearEmpresaBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="consultarEmpresaB">
           <Properties>
@@ -378,6 +381,9 @@
             <Property name="text" type="java.lang.String" value="Consultar"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarEmpresaBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="modificarEmpresaB">
           <Properties>
