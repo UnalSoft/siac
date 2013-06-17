@@ -5,6 +5,7 @@
 package view;
 
 import controller.ConsultarAdministradorController;
+import controller.EliminarAdministradorController;
 import controller.LoginController;
 import controller.ModificarAdministradorController;
 import controller.ProveedorTIPrincipalController;
@@ -371,7 +372,7 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_modificarPrimerAdminBActionPerformed
 
     private void eliminarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrimerAdminBActionPerformed
-        //controller.eliminarAdministrador();
+        new EliminarAdministradorController().listarUsuarios();
     }//GEN-LAST:event_eliminarPrimerAdminBActionPerformed
 
     private void cerrarSesionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionBActionPerformed

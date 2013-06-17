@@ -1,9 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
+import controller.EliminarAdministradorController;
 import controller.EliminarUsuarioController;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -14,12 +11,12 @@ import javax.swing.JTextField;
  *
  * @author Felipe
  */
-public class EliminarUsuario extends javax.swing.JPanel {
+public class EliminarAdministrador extends javax.swing.JPanel {
 
     /**
      * Creates new form AdministradorPrincipal
      */
-    public EliminarUsuario() {
+    public EliminarAdministrador() {
         initComponents();
     }
 
@@ -170,15 +167,15 @@ public class EliminarUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
-        new EliminarUsuarioController().buscar();
+        new EliminarAdministradorController().buscar();
     }//GEN-LAST:event_buscarBActionPerformed
 
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
-        new EliminarUsuarioController().cancelar();
+        new EliminarAdministradorController().cancelar();
     }//GEN-LAST:event_cancelarBActionPerformed
 
     private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
-        new EliminarUsuarioController().eliminarUsuario();
+        new EliminarAdministradorController().eliminarUsuario();
     }//GEN-LAST:event_eliminarBActionPerformed
 
     public JTextField getBuscarTF() {

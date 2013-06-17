@@ -7,6 +7,7 @@ package view;
 import controller.ConsultarAdministradorController;
 import controller.ConsultarUsuarioController;
 import controller.CrearUsuarioController;
+import controller.EliminarAdministradorController;
 import controller.EliminarUsuarioController;
 import controller.LoginController;
 import controller.ModificarAdministradorController;
@@ -175,6 +176,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         eliminarPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Eliminar.png"))); // NOI18N
         eliminarPrimerAdminB.setText("Eliminar");
         eliminarPrimerAdminB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        eliminarPrimerAdminB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPrimerAdminBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout administrarPrimerAdminPLayout = new org.jdesktop.layout.GroupLayout(administrarPrimerAdminP);
         administrarPrimerAdminP.setLayout(administrarPrimerAdminPLayout);
@@ -378,6 +384,10 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private void modificarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPrimerAdminBActionPerformed
         new ModificarAdministradorController().listarUsuarios();
     }//GEN-LAST:event_modificarPrimerAdminBActionPerformed
+
+    private void eliminarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrimerAdminBActionPerformed
+        new EliminarAdministradorController().listarUsuarios();
+    }//GEN-LAST:event_eliminarPrimerAdminBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;

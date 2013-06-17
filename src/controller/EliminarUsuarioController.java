@@ -47,7 +47,7 @@ public class EliminarUsuarioController {
 
     public void listarUsuarios() {
         secundario.setVisible(true);
-        secundario.setTitle("Modificar Usuario");
+        secundario.setTitle("Eliminar Usuario");
         DibujarPanel.dibujarPanel(secundario, secundario.getViewport(), eliminarUsuario);
         llenarTabla();
     }
