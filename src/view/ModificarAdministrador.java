@@ -4,7 +4,7 @@
  */
 package view;
 
-import controller.ModificarUsuarioController;
+import controller.ModificarAdministradorController;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -15,12 +15,12 @@ import javax.swing.JTextField;
  *
  * @author Felipe
  */
-public class ModificarUsuario extends javax.swing.JPanel {
+public class ModificarAdministrador extends javax.swing.JPanel {
 
     /**
      * Creates new form AdministradorPrincipal
      */
-    public ModificarUsuario() {
+    public ModificarAdministrador() {
         initComponents();
     }
 
@@ -51,11 +51,11 @@ public class ModificarUsuario extends javax.swing.JPanel {
         dniRB = new javax.swing.JRadioButton();
         nombreRB = new javax.swing.JRadioButton();
         buscarTF = new javax.swing.JTextField();
-        buscarB = new javax.swing.JToggleButton();
         usuarioSP = new javax.swing.JScrollPane();
         usuarioT = new javax.swing.JTable();
         cancelarB = new javax.swing.JButton();
         modificarB = new javax.swing.JButton();
+        buscarB = new javax.swing.JButton();
 
         dniL.setText("DNI:");
 
@@ -69,7 +69,8 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
         rolL.setText("Rol:");
 
-        rolCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Consulta", "Otro" }));
+        rolCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primer Administrador" }));
+        rolCB.setEnabled(false);
 
         cancelarB1.setText("Cancelar");
         cancelarB1.addActionListener(new java.awt.event.ActionListener() {
@@ -157,15 +158,6 @@ public class ModificarUsuario extends javax.swing.JPanel {
 
         buscarTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
-        buscarB.setText("Buscar");
-        buscarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarBActionPerformed(evt);
-            }
-        });
-
         usuarioT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -208,29 +200,40 @@ public class ModificarUsuario extends javax.swing.JPanel {
             }
         });
 
+        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
+        buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(15, 15, 15)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
-                        .add(modificarB)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cancelarB))
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                            .add(dniRB)
-                            .add(18, 18, 18)
-                            .add(nombreRB))
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
-                        .add(layout.createSequentialGroup()
-                            .add(buscarTF)
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                            .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(modificarB)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(cancelarB))
+                            .add(layout.createSequentialGroup()
+                                .add(dniRB)
+                                .add(18, 18, 18)
+                                .add(nombreRB))
+                            .add(bienvenidoL)
+                            .add(usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(0, 6, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(buscarTF)
+                        .add(11, 11, 11)
+                        .add(buscarB)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -255,25 +258,25 @@ public class ModificarUsuario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
-        new ModificarUsuarioController().buscar();
-    }//GEN-LAST:event_buscarBActionPerformed
-
     private void modificarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBActionPerformed
-        new ModificarUsuarioController().mostrarUsuarioEditable();
+        new ModificarAdministradorController().mostrarUsuarioEditable();
     }//GEN-LAST:event_modificarBActionPerformed
 
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
-        new ModificarUsuarioController().cancelar();
+        new ModificarAdministradorController().cancelar();
     }//GEN-LAST:event_cancelarBActionPerformed
 
     private void cancelarB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarB1ActionPerformed
-        new ModificarUsuarioController().listarUsuarios();
+        new ModificarAdministradorController().listarUsuarios();
     }//GEN-LAST:event_cancelarB1ActionPerformed
 
     private void modificarB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarB1ActionPerformed
-        new ModificarUsuarioController().modificarUsuario();
+        new ModificarAdministradorController().modificarUsuario();
     }//GEN-LAST:event_modificarB1ActionPerformed
+
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        new ModificarAdministradorController().buscar();
+    }//GEN-LAST:event_buscarBActionPerformed
 
     public JTable getUsuarioT() {
         return usuarioT;
@@ -313,7 +316,7 @@ public class ModificarUsuario extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenidoL;
-    private javax.swing.JToggleButton buscarB;
+    private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
