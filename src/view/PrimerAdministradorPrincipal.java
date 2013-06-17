@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ConsultarAdministradorController;
 import controller.ConsultarUsuarioController;
 import controller.CrearUsuarioController;
 import controller.EliminarUsuarioController;
@@ -153,6 +154,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         consultarPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
         consultarPrimerAdminB.setText("Consultar");
         consultarPrimerAdminB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        consultarPrimerAdminB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarPrimerAdminBActionPerformed(evt);
+            }
+        });
 
         modificarPrimerAdminB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         modificarPrimerAdminB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Modificar.png"))); // NOI18N
@@ -278,7 +284,7 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .add(administrarNivelP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 337, Short.MAX_VALUE)
                 .add(18, 18, 18)
                 .add(administrarPrimerAdminP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 320, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -358,6 +364,10 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private void eliminarUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarUsuarioBActionPerformed
         new EliminarUsuarioController().listarUsuarios();
     }//GEN-LAST:event_eliminarUsuarioBActionPerformed
+
+    private void consultarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarPrimerAdminBActionPerformed
+        new ConsultarAdministradorController().consultarUsuario();
+    }//GEN-LAST:event_consultarPrimerAdminBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;

@@ -1,28 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import controller.ConsultarUsuarioController;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import controller.ConsultarAdministradorController;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.JViewport;
 
 /**
  *
  * @author Felipe
  */
-public class ConsultarUsuario extends javax.swing.JPanel {
+public class ConsultarAdministrador extends javax.swing.JPanel {
 
     /**
      * Creates new form AdministradorPrincipal
      */
-    public ConsultarUsuario() {
+    public ConsultarAdministrador() {
         initComponents();
     }
 
@@ -259,19 +252,19 @@ public class ConsultarUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
-        new ConsultarUsuarioController().buscar();
+        new ConsultarAdministradorController().buscar();
     }//GEN-LAST:event_buscarBActionPerformed
 
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
-        new ConsultarUsuarioController().cancelar();
+        new ConsultarAdministradorController().cancelar();
     }//GEN-LAST:event_cancelarBActionPerformed
 
     private void verInformacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verInformacionBActionPerformed
-        new ConsultarUsuarioController().mostrarUsuario();
+        new ConsultarAdministradorController().mostrarUsuario();
     }//GEN-LAST:event_verInformacionBActionPerformed
 
     private void atrasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBActionPerformed
-        new ConsultarUsuarioController().consultarUsuario();
+        new ConsultarAdministradorController().consultarUsuario();
     }//GEN-LAST:event_atrasBActionPerformed
 
     public JTextField getBuscarTF() {

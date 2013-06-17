@@ -1,5 +1,6 @@
 package controller;
 
+import static controller.ConsultarUsuarioController.secundario;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import model.vo.EmpresaVO;
 import model.vo.ErrorVO;
 import model.vo.UsuarioVO;
 import model.vo.VersionVO;
+import util.DibujarPanel;
 import view.ConsultarEmpresa;
 import view.ConsultarUsuario;
 import view.CrearEmpresa;
@@ -83,33 +85,6 @@ public class ProveedorTIPrincipalController {
         secundario.setSize(eliminarEmpresa.getPreferredSize());
         secundario.setVisible(true);
         cambiarPanel(secundario.getViewport(), eliminarEmpresa);
-    }
-
-    public void consultarAdministrador() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
-        ConsultarUsuario consultarUsuario = new ConsultarUsuario();
-        secundario.setSize(consultarUsuario.getPreferredSize());
-        secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), consultarUsuario);
-    }
-
-    public void modificarAdministrador() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
-        ModificarUsuario modificarUsuario = new ModificarUsuario();
-        secundario.setSize(modificarUsuario.getPreferredSize());
-        secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), modificarUsuario);
-    }
-
-    public void eliminarAdministrador() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
-        EliminarUsuario eliminarUsuario = new EliminarUsuario();
-        secundario.setSize(eliminarUsuario.getPreferredSize());
-        secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), eliminarUsuario);
     }
 
     public void crearCopiaDeSeguridad() {
