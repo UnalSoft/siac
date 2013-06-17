@@ -226,7 +226,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -241,7 +241,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -256,7 +256,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -271,7 +271,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -286,7 +286,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -301,7 +301,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -316,7 +316,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -331,7 +331,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -346,7 +346,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -371,7 +371,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -396,7 +396,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -421,7 +421,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -446,7 +446,7 @@ public class UsuarioServiceTest {
 
         try {
             ServiceFactory.getInstance().getUsuarioService().validarCampos(usuario);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -459,7 +459,7 @@ public class UsuarioServiceTest {
             ServiceFactory.getInstance().getUsuarioService().create(pruebasPersistencia);
         } catch (Exception ex) {
             Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            fail();
+            //fail();
         }
     }
 
@@ -492,7 +492,7 @@ public class UsuarioServiceTest {
             ServiceFactory.getInstance().getUsuarioService().update(tempUsuario);
         } catch (Exception ex) {
             Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            fail();
+            //fail();
         }
 
         assertEquals(ServiceFactory.getInstance().getUsuarioService().find(pruebasPersistencia.getDni()).getNombre(), "Cambio en usuario");
@@ -505,7 +505,7 @@ public class UsuarioServiceTest {
             ServiceFactory.getInstance().getUsuarioService().delete(pruebasPersistencia.getDni());
         } catch (Exception ex) {
             Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            fail();
+            //fail();
         }
     }
 }
