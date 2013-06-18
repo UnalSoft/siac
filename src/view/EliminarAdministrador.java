@@ -1,8 +1,9 @@
 package view;
 
 import controller.EliminarAdministradorController;
-import controller.EliminarUsuarioController;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -32,15 +33,46 @@ public class EliminarAdministrador extends javax.swing.JPanel {
         busquedaBG = new javax.swing.ButtonGroup();
         ventanaConfirmacionD = new javax.swing.JDialog();
         ventanaConfirmacionOP = new javax.swing.JOptionPane();
+        ActualizarAdministrador = new javax.swing.JPanel();
+        dniL = new javax.swing.JLabel();
+        nombreL = new javax.swing.JLabel();
+        nombreTF = new javax.swing.JTextField();
+        dniTF = new javax.swing.JTextField();
+        nombreDeUsuarioL = new javax.swing.JLabel();
+        nombreDeUsuarioTF = new javax.swing.JTextField();
+        contrasenaL = new javax.swing.JLabel();
+        confirmarContrasenaL = new javax.swing.JLabel();
+        correoL = new javax.swing.JLabel();
+        rolL = new javax.swing.JLabel();
+        contrasenaPF = new javax.swing.JPasswordField();
+        confirmarContrasenaPF = new javax.swing.JPasswordField();
+        correoTF = new javax.swing.JTextField();
+        cancelarB1 = new javax.swing.JButton();
+        crearUsuarioB = new javax.swing.JButton();
+        rolTF = new javax.swing.JTextField();
+        nitL = new javax.swing.JLabel();
+        nombreEmpresaL = new javax.swing.JLabel();
+        nivelL = new javax.swing.JLabel();
+        direccionL = new javax.swing.JLabel();
+        telefonoL = new javax.swing.JLabel();
+        nitTF = new javax.swing.JTextField();
+        nombreEmpresaTF = new javax.swing.JTextField();
+        nivelTF = new javax.swing.JTextField();
+        direccionTF = new javax.swing.JTextField();
+        telefonoTF = new javax.swing.JTextField();
+        separadorS = new javax.swing.JSeparator();
+        primerAdministradorL = new javax.swing.JLabel();
+        empresaL = new javax.swing.JLabel();
+        dniAntiguo = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
         dniRB = new javax.swing.JRadioButton();
         nombreRB = new javax.swing.JRadioButton();
         buscarTF = new javax.swing.JTextField();
-        buscarB = new javax.swing.JToggleButton();
         usuarioSP = new javax.swing.JScrollPane();
         usuarioT = new javax.swing.JTable();
         cancelarB = new javax.swing.JButton();
         eliminarB = new javax.swing.JButton();
+        buscarB = new javax.swing.JButton();
 
         ventanaConfirmacionOP.setMessage("¿Realmente desea eliminar al usuario?");
         ventanaConfirmacionOP.setMessageType(JOptionPane.WARNING_MESSAGE);
@@ -57,6 +89,182 @@ public class EliminarAdministrador extends javax.swing.JPanel {
             .add(ventanaConfirmacionOP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
 
+        dniL.setText("DNI:");
+
+        nombreL.setText("Nombre:");
+
+        nombreDeUsuarioL.setText("Nombre de usuario:");
+
+        contrasenaL.setText("Contraseña:");
+
+        confirmarContrasenaL.setText("Confirmar contraseña:");
+
+        correoL.setText("Correo:");
+
+        rolL.setText("Rol:");
+
+        cancelarB1.setText("Cancelar");
+        cancelarB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarB1ActionPerformed(evt);
+            }
+        });
+
+        crearUsuarioB.setText("Crear empresa");
+        crearUsuarioB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearUsuarioBActionPerformed(evt);
+            }
+        });
+
+        rolTF.setEditable(false);
+        rolTF.setText("Primer Administrador");
+
+        nitL.setText("NIT: ");
+
+        nombreEmpresaL.setText("Nombre:");
+
+        nivelL.setText("Nivel:");
+
+        direccionL.setText("Dirección:");
+
+        telefonoL.setText("Teléfono:");
+
+        nitTF.setEditable(false);
+
+        nombreEmpresaTF.setEditable(false);
+
+        nivelTF.setEditable(false);
+
+        direccionTF.setEditable(false);
+
+        telefonoTF.setEditable(false);
+
+        primerAdministradorL.setText("Primer Administrador");
+
+        empresaL.setText("Empresa:");
+
+        org.jdesktop.layout.GroupLayout ActualizarAdministradorLayout = new org.jdesktop.layout.GroupLayout(ActualizarAdministrador);
+        ActualizarAdministrador.setLayout(ActualizarAdministradorLayout);
+        ActualizarAdministradorLayout.setHorizontalGroup(
+            ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(ActualizarAdministradorLayout.createSequentialGroup()
+                .add(separadorS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 442, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 0, Short.MAX_VALUE))
+            .add(ActualizarAdministradorLayout.createSequentialGroup()
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(ActualizarAdministradorLayout.createSequentialGroup()
+                        .add(29, 29, 29)
+                        .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(nombreDeUsuarioL)
+                            .add(nombreL)
+                            .add(dniL)
+                            .add(ActualizarAdministradorLayout.createSequentialGroup()
+                                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(contrasenaL)
+                                    .add(confirmarContrasenaL)
+                                    .add(correoL)
+                                    .add(rolL)
+                                    .add(nitL)
+                                    .add(nombreEmpresaL)
+                                    .add(nivelL)
+                                    .add(direccionL)
+                                    .add(telefonoL))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(dniAntiguo)
+                                    .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                        .add(nombreTF)
+                                        .add(dniTF, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                        .add(nombreDeUsuarioTF)
+                                        .add(contrasenaPF)
+                                        .add(confirmarContrasenaPF)
+                                        .add(correoTF)
+                                        .add(rolTF, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                        .add(nitTF)
+                                        .add(nombreEmpresaTF)
+                                        .add(nivelTF)
+                                        .add(direccionTF)
+                                        .add(telefonoTF))))))
+                    .add(ActualizarAdministradorLayout.createSequentialGroup()
+                        .add(94, 94, 94)
+                        .add(cancelarB1)
+                        .add(65, 65, 65)
+                        .add(crearUsuarioB))
+                    .add(ActualizarAdministradorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(primerAdministradorL))
+                    .add(ActualizarAdministradorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(empresaL)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ActualizarAdministradorLayout.setVerticalGroup(
+            ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(ActualizarAdministradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(empresaL)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nitL)
+                    .add(nitTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nombreEmpresaL)
+                    .add(nombreEmpresaTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nivelL)
+                    .add(nivelTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(direccionL)
+                    .add(direccionTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(telefonoL)
+                    .add(telefonoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(separadorS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(primerAdministradorL)
+                    .add(dniAntiguo))
+                .add(5, 5, 5)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(dniL)
+                    .add(dniTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nombreL)
+                    .add(nombreTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(nombreDeUsuarioL)
+                    .add(nombreDeUsuarioTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(contrasenaL)
+                    .add(contrasenaPF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(confirmarContrasenaL)
+                    .add(confirmarContrasenaPF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(correoL)
+                    .add(correoTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(rolL)
+                    .add(rolTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(18, 18, 18)
+                .add(ActualizarAdministradorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(cancelarB1)
+                    .add(crearUsuarioB))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         bienvenidoL.setText("Buscar por:");
 
         busquedaBG.add(dniRB);
@@ -67,15 +275,6 @@ public class EliminarAdministrador extends javax.swing.JPanel {
         nombreRB.setText("Nombre");
 
         buscarTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
-        buscarB.setText("Buscar");
-        buscarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarBActionPerformed(evt);
-            }
-        });
 
         usuarioT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,29 +318,42 @@ public class EliminarAdministrador extends javax.swing.JPanel {
             }
         });
 
+        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
+        buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(15, 15, 15)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 321, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(336, 336, 336)
                         .add(cancelarB)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(eliminarB))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(dniRB)
-                        .add(18, 18, 18)
-                        .add(nombreRB))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
+                        .add(eliminarB)
+                        .add(1, 1, 1))
                     .add(layout.createSequentialGroup()
-                        .add(buscarTF)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .add(15, 15, 15)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                                    .add(dniRB)
+                                    .add(18, 18, 18)
+                                    .add(nombreRB))
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(layout.createSequentialGroup()
+                                .add(buscarTF, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(buscarB)))))
+                .add(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -166,17 +378,25 @@ public class EliminarAdministrador extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
-        new EliminarAdministradorController().buscar();
-    }//GEN-LAST:event_buscarBActionPerformed
-
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
         new EliminarAdministradorController().cancelar();
     }//GEN-LAST:event_cancelarBActionPerformed
 
     private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
-        new EliminarAdministradorController().eliminarUsuario();
+        new EliminarAdministradorController().mostrarEliminarAdmin();
     }//GEN-LAST:event_eliminarBActionPerformed
+
+    private void cancelarB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarB1ActionPerformed
+        new EliminarAdministradorController().cancelar();
+    }//GEN-LAST:event_cancelarB1ActionPerformed
+
+    private void crearUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioBActionPerformed
+        new EliminarAdministradorController().actualizarAdministrador();
+    }//GEN-LAST:event_crearUsuarioBActionPerformed
+
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        new EliminarAdministradorController().buscar();
+    }//GEN-LAST:event_buscarBActionPerformed
 
     public JTextField getBuscarTF() {
         return buscarTF;
@@ -189,16 +409,103 @@ public class EliminarAdministrador extends javax.swing.JPanel {
     public JTable getUsuarioT() {
         return usuarioT;
     }
+    
+    public JPanel getActualizarAdmin(){
+        return ActualizarAdministrador;
+    }
+    
+    public JPasswordField getConfirmarContrasenaPF() {
+        return confirmarContrasenaPF;
+    }
+
+    public JPasswordField getContrasenaPF() {
+        return contrasenaPF;
+    }
+
+    public JTextField getCorreoTF() {
+        return correoTF;
+    }
+
+    public void setDireccionTF(String direccion) {
+        direccionTF.setText(direccion);
+    }
+
+    public JTextField getDniTF() {
+        return dniTF;
+    }
+
+    public JTextField getNitTF() {
+        return nitTF;
+    }
+    
+    public void setNitTF(String nit) {
+        nitTF.setText(nit);
+    }
+
+    public void setNivelTF(String nivel) {
+        nivelTF.setText(nivel);
+    }
+
+    public JTextField getNombreDeUsuarioTF() {
+        return nombreDeUsuarioTF;
+    }
+
+    public void setNombreEmpresaTF(String nombreEmpresa) {
+        nombreEmpresaTF.setText(nombreEmpresa);
+    }
+
+    public JTextField getNombreTF() {
+        return nombreTF;
+    }
+
+    public JTextField getRolTF() {
+        return rolTF;
+    }
+
+    public void setTelefonoTF(String tel) {
+        telefonoTF.setText(tel);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ActualizarAdministrador;
     private javax.swing.JLabel bienvenidoL;
-    private javax.swing.JToggleButton buscarB;
+    private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
+    private javax.swing.JButton cancelarB1;
+    private javax.swing.JLabel confirmarContrasenaL;
+    private javax.swing.JPasswordField confirmarContrasenaPF;
+    private javax.swing.JLabel contrasenaL;
+    private javax.swing.JPasswordField contrasenaPF;
+    private javax.swing.JLabel correoL;
+    private javax.swing.JTextField correoTF;
+    private javax.swing.JButton crearUsuarioB;
+    private javax.swing.JLabel direccionL;
+    private javax.swing.JTextField direccionTF;
+    private javax.swing.JLabel dniAntiguo;
+    private javax.swing.JLabel dniL;
     private javax.swing.JRadioButton dniRB;
+    private javax.swing.JTextField dniTF;
     private javax.swing.JButton eliminarB;
+    private javax.swing.JLabel empresaL;
+    private javax.swing.JLabel nitL;
+    private javax.swing.JTextField nitTF;
+    private javax.swing.JLabel nivelL;
+    private javax.swing.JTextField nivelTF;
+    private javax.swing.JLabel nombreDeUsuarioL;
+    private javax.swing.JTextField nombreDeUsuarioTF;
+    private javax.swing.JLabel nombreEmpresaL;
+    private javax.swing.JTextField nombreEmpresaTF;
+    private javax.swing.JLabel nombreL;
     private javax.swing.JRadioButton nombreRB;
+    private javax.swing.JTextField nombreTF;
+    private javax.swing.JLabel primerAdministradorL;
+    private javax.swing.JLabel rolL;
+    private javax.swing.JTextField rolTF;
+    private javax.swing.JSeparator separadorS;
+    private javax.swing.JLabel telefonoL;
+    private javax.swing.JTextField telefonoTF;
     private javax.swing.JScrollPane usuarioSP;
     private javax.swing.JTable usuarioT;
     private javax.swing.JDialog ventanaConfirmacionD;

@@ -92,7 +92,7 @@ public class EliminarEmpresaController {
                 case JOptionPane.OK_OPTION:
                     try {
                         ServiceFactory.getInstance().getEmpresaService().delete(new Integer(eliminarEmpresa.getEmpresaT().getValueAt(eliminarEmpresa.getEmpresaT().getSelectedRow(), 0).toString()));
-                        JOptionPane.showMessageDialog(eliminarEmpresa, "La empresa se ha eliminado satisfactoriamente", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(eliminarEmpresa, "La empresa se ha eliminado satisfactoriamente", "Exito!", JOptionPane.INFORMATION_MESSAGE);
                         llenarTabla();
                     } catch (NonexistentEntityException | InsufficientPermissionsException ex) {
                         JOptionPane.showMessageDialog(eliminarEmpresa, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

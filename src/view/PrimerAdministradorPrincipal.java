@@ -16,7 +16,6 @@ import controller.LoginController;
 import controller.ModificarAdministradorController;
 import controller.ModificarEmpresaController;
 import controller.ModificarUsuarioController;
-import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 /**

@@ -1,6 +1,5 @@
 package controller;
 
-import static controller.ConsultarUsuarioController.secundario;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,21 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JViewport;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.dao.exceptions.NonexistentEntityException;
-import model.entity.Nivel;
-import model.entity.Rol;
 import model.service.ServiceFactory;
 import model.vo.EmpresaVO;
 import model.vo.ErrorVO;
 import model.vo.UsuarioVO;
 import model.vo.VersionVO;
-import util.DibujarPanel;
-import view.ConsultarEmpresa;
-import view.ConsultarUsuario;
-import view.CrearEmpresa;
-import view.EliminarEmpresa;
-import view.EliminarUsuario;
-import view.ModificarEmpresa;
-import view.ModificarUsuario;
 import view.Principal;
 import view.Secundario;
 
@@ -47,44 +36,6 @@ public class ProveedorTIPrincipalController {
         contenedor.add(panel);
         contenedor.setSize(panel.getPreferredSize());
         contenedor.setVisible(true);
-    }
-
-    public void crearEmpresa() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
-        CrearEmpresa crearEmpresa = new CrearEmpresa();
-        crearEmpresa.getNivelTF().setText(Nivel.DISTRIBUIDORA.getText());
-        crearEmpresa.getRolTF().setText(Rol.PRIMER_ADMINISTRADOR.getLabel());
-        secundario.setSize(crearEmpresa.getPreferredSize());
-        secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), crearEmpresa);
-    }
-
-    public void consultarEmpresa() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
-        ConsultarEmpresa consultarEmpresa = new ConsultarEmpresa();
-        secundario.setSize(consultarEmpresa.getPreferredSize());
-        secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), consultarEmpresa);
-    }
-
-    public void modificarEmpresa() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
-        ModificarEmpresa modificarEmpresa = new ModificarEmpresa();
-        secundario.setSize(modificarEmpresa.getPreferredSize());
-        secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), modificarEmpresa);
-    }
-
-    public void eliminarEmpresa() {
-        secundario = new Secundario();
-        secundario.setLocationRelativeTo(principal);
-        EliminarEmpresa eliminarEmpresa = new EliminarEmpresa();
-        secundario.setSize(eliminarEmpresa.getPreferredSize());
-        secundario.setVisible(true);
-        cambiarPanel(secundario.getViewport(), eliminarEmpresa);
     }
 
     public void crearCopiaDeSeguridad() {

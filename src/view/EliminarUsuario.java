@@ -39,11 +39,11 @@ public class EliminarUsuario extends javax.swing.JPanel {
         dniRB = new javax.swing.JRadioButton();
         nombreRB = new javax.swing.JRadioButton();
         buscarTF = new javax.swing.JTextField();
-        buscarB = new javax.swing.JToggleButton();
         usuarioSP = new javax.swing.JScrollPane();
         usuarioT = new javax.swing.JTable();
         cancelarB = new javax.swing.JButton();
         eliminarB = new javax.swing.JButton();
+        buscarB = new javax.swing.JButton();
 
         ventanaConfirmacionOP.setMessage("¿Realmente desea eliminar al usuario?");
         ventanaConfirmacionOP.setMessageType(JOptionPane.WARNING_MESSAGE);
@@ -70,15 +70,6 @@ public class EliminarUsuario extends javax.swing.JPanel {
         nombreRB.setText("Nombre");
 
         buscarTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
-        buscarB.setText("Buscar");
-        buscarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarBActionPerformed(evt);
-            }
-        });
 
         usuarioT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,29 +113,42 @@ public class EliminarUsuario extends javax.swing.JPanel {
             }
         });
 
+        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
+        buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(15, 15, 15)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 321, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(336, 336, 336)
                         .add(cancelarB)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(eliminarB))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(dniRB)
-                        .add(18, 18, 18)
-                        .add(nombreRB))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
+                        .add(eliminarB)
+                        .add(5, 5, 5))
                     .add(layout.createSequentialGroup()
-                        .add(buscarTF)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .add(15, 15, 15)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                                    .add(dniRB)
+                                    .add(18, 18, 18)
+                                    .add(nombreRB))
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, bienvenidoL)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, usuarioSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(layout.createSequentialGroup()
+                                .add(buscarTF, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(buscarB)))))
+                .add(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -169,10 +173,6 @@ public class EliminarUsuario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
-        new EliminarUsuarioController().buscar();
-    }//GEN-LAST:event_buscarBActionPerformed
-
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
         new EliminarUsuarioController().cancelar();
     }//GEN-LAST:event_cancelarBActionPerformed
@@ -180,6 +180,10 @@ public class EliminarUsuario extends javax.swing.JPanel {
     private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
         new EliminarUsuarioController().eliminarUsuario();
     }//GEN-LAST:event_eliminarBActionPerformed
+
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        new EliminarUsuarioController().buscar();
+    }//GEN-LAST:event_buscarBActionPerformed
 
     public JTextField getBuscarTF() {
         return buscarTF;
@@ -195,7 +199,7 @@ public class EliminarUsuario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenidoL;
-    private javax.swing.JToggleButton buscarB;
+    private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
