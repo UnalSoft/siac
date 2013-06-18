@@ -4,8 +4,6 @@
  */
 package controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.NonexistentEntityException;
@@ -85,6 +83,10 @@ public class LoginController {
                         ServiceFactory.getInstance().getErrorService().create(error);
                     } catch (    PreexistingEntityException | NonexistentEntityException ex1) {
                         JOptionPane.showMessageDialog(login, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    } catch (Exception e){
+                        JOptionPane.showMessageDialog(login, e.getMessage() + "\n" + e.getCause().getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
                     break;
                 case JOptionPane.CANCEL_OPTION:

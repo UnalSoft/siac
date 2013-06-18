@@ -1,16 +1,19 @@
 package controller;
 
+import static controller.LoginController.login;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JViewport;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.dao.exceptions.PreexistingEntityException;
 import model.service.ServiceFactory;
@@ -79,8 +82,27 @@ public class ProveedorTIPrincipalController {
 
                 JOptionPane.showMessageDialog(principal, "Copia de seguridad guardada con éxito!", "Copia Exitosa", JOptionPane.INFORMATION_MESSAGE, null);
 
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(principal, "Falló el proceso de copia de seguridad\n\n" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE, null);
+            } catch (IOException | EntityNotFoundException | DataBaseException ex) {
+                int opcion = JOptionPane.showOptionDialog(principal, "Falló el proceso de copia de seguridad\n\n" + ex.getMessage(), "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, new String[]{"Reportar Error", "Cancelar"}, "Cancelar");
+                switch (opcion) {
+                    case JOptionPane.OK_OPTION:
+                        ErrorVO error = new ErrorVO();
+                        error.setError("Recuperación de copia de seguridad Fallida\n" + ex.getMessage());
+                        error.setInterfaz("Login");
+                        error.setUsuariosDNI(LoginController.usuarioActivo.getDni());
+                        try {
+                            ServiceFactory.getInstance().getErrorService().create(error);
+                        } catch (PreexistingEntityException | NonexistentEntityException ex1) {
+                            JOptionPane.showMessageDialog(principal, ex1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(login, e.getMessage() + "\n" + e.getCause().getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                        break;
+                    case JOptionPane.CANCEL_OPTION:
+                        break;
+                }
             }
         } else {
             JOptionPane.showMessageDialog(principal, "Nombre de archivo inválido", "Error", JOptionPane.ERROR_MESSAGE, null);
@@ -116,6 +138,10 @@ public class ProveedorTIPrincipalController {
                                 ServiceFactory.getInstance().getErrorService().create(error);
                             } catch (PreexistingEntityException | NonexistentEntityException ex1) {
                                 JOptionPane.showMessageDialog(principal, ex1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(login, e.getMessage() + "\n" + e.getCause().getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                                return;
                             }
                             break;
                         case JOptionPane.CANCEL_OPTION:
@@ -161,6 +187,10 @@ public class ProveedorTIPrincipalController {
                                 ServiceFactory.getInstance().getErrorService().create(error);
                             } catch (PreexistingEntityException | NonexistentEntityException ex1) {
                                 JOptionPane.showMessageDialog(principal, ex1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(login, e.getMessage() + "\n" + e.getCause().getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                                return;
                             }
                             break;
                         case JOptionPane.CANCEL_OPTION:

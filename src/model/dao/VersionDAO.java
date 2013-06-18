@@ -11,6 +11,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
+import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.entity.Version;
 
@@ -33,7 +34,7 @@ public class VersionDAO implements Serializable {
         return entityManagerFactory.createEntityManager();
     }
 
-    public Version getList() {
+    public Version getList() throws DataBaseException {
         EntityManager entityManager = null;
         try {
             entityManager = getEntityManager();
@@ -41,7 +42,9 @@ public class VersionDAO implements Serializable {
             cq.select(cq.from(Version.class));
             Query q = entityManager.createQuery(cq);
             return (Version)q.getResultList().get(0);
-        } finally {
+        } catch (Exception e) {
+            throw new DataBaseException("Error de Conexion a la Base de Datos", e);
+        }finally {
             if (entityManager != null) {
                 entityManager.clear();
                 entityManager.close();

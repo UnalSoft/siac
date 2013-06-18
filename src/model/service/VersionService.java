@@ -6,6 +6,7 @@ package model.service;
 
 import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
+import model.dao.exceptions.DataBaseException;
 import model.dao.exceptions.NonexistentEntityException;
 import model.entity.Version;
 import model.vo.VersionVO;
@@ -28,7 +29,7 @@ public class VersionService {
         return instance;
     }
     
-    public VersionVO getVersion() throws EntityNotFoundException {
+    public VersionVO getVersion() throws EntityNotFoundException, DataBaseException {
         //TODO obtener la version del programa 
         Version version = DAOFactory.getInstance().getVersionDAO().getList();
         if (version != null) {
