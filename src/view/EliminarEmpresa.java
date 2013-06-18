@@ -4,7 +4,11 @@
  */
 package view;
 
+import controller.EliminarEmpresaController;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -19,6 +23,18 @@ public class EliminarEmpresa extends javax.swing.JPanel {
         initComponents();
     }
 
+    public JTextField getBuscarTF() {
+        return buscarTF;
+    }
+
+    public JTable getEmpresaT() {
+        return empresaT;
+    }
+
+    public JRadioButton getNitRB() {
+        return nitRB;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,18 +47,15 @@ public class EliminarEmpresa extends javax.swing.JPanel {
         busquedaBG = new javax.swing.ButtonGroup();
         ventanaConfirmacionD = new javax.swing.JDialog();
         ventanaConfirmacionOP = new javax.swing.JOptionPane();
-        panelSupP = new javax.swing.JPanel();
-        AdministradorL = new javax.swing.JLabel();
         bienvenidoL = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         nitRB = new javax.swing.JRadioButton();
         nombreRB = new javax.swing.JRadioButton();
         buscarTF = new javax.swing.JTextField();
-        buscarB = new javax.swing.JToggleButton();
         empresaSP = new javax.swing.JScrollPane();
         empresaT = new javax.swing.JTable();
         cancelarB = new javax.swing.JButton();
         eliminarB = new javax.swing.JButton();
+        buscarB = new javax.swing.JButton();
 
         ventanaConfirmacionOP.setMessage("¿Realmente desea eliminar a la empresa?");
         ventanaConfirmacionOP.setMessageType(JOptionPane.WARNING_MESSAGE);
@@ -59,28 +72,16 @@ public class EliminarEmpresa extends javax.swing.JPanel {
             .add(ventanaConfirmacionOP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 112, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
 
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        AdministradorL.setText("SIAC - Empresa");
-        panelSupP.add(AdministradorL);
-        AdministradorL.setBounds(6, 7, 100, 16);
-
         bienvenidoL.setText("Buscar por:");
 
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
+        busquedaBG.add(nitRB);
+        nitRB.setSelected(true);
         nitRB.setText("NIT");
 
         busquedaBG.add(nombreRB);
         nombreRB.setText("Nombre");
 
         buscarTF.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-
-        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
-        buscarB.setText("Buscar");
 
         empresaT.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,15 +112,32 @@ public class EliminarEmpresa extends javax.swing.JPanel {
         empresaSP.setViewportView(empresaT);
 
         cancelarB.setText("Cancelar");
+        cancelarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarBActionPerformed(evt);
+            }
+        });
 
         eliminarB.setText("Eliminar");
+        eliminarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBActionPerformed(evt);
+            }
+        });
+
+        buscarB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Consultar.png"))); // NOI18N
+        buscarB.setText("Buscar");
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                     .add(layout.createSequentialGroup()
@@ -130,23 +148,24 @@ public class EliminarEmpresa extends javax.swing.JPanel {
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(16, 16, 16)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createSequentialGroup()
-                                .add(nitRB)
-                                .add(18, 18, 18)
-                                .add(nombreRB))
                             .add(bienvenidoL)
-                            .add(layout.createSequentialGroup()
-                                .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(empresaSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, empresaSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 520, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(layout.createSequentialGroup()
+                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(buscarTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 277, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(layout.createSequentialGroup()
+                                            .add(nitRB)
+                                            .add(18, 18, 18)
+                                            .add(nombreRB)))
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(buscarB, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))))
                 .add(0, 15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addContainerGap()
                 .add(bienvenidoL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -158,19 +177,30 @@ public class EliminarEmpresa extends javax.swing.JPanel {
                     .add(buscarB))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(empresaSP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 28, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cancelarB)
                     .add(eliminarB))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        new EliminarEmpresaController().buscar();
+    }//GEN-LAST:event_buscarBActionPerformed
+
+    private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
+        new EliminarEmpresaController().cancelar();
+    }//GEN-LAST:event_cancelarBActionPerformed
+
+    private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
+        new EliminarEmpresaController().eliminarEmpresa();
+    }//GEN-LAST:event_eliminarBActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AdministradorL;
     private javax.swing.JLabel bienvenidoL;
-    private javax.swing.JToggleButton buscarB;
+    private javax.swing.JButton buscarB;
     private javax.swing.JTextField buscarTF;
     private javax.swing.ButtonGroup busquedaBG;
     private javax.swing.JButton cancelarB;
@@ -179,8 +209,6 @@ public class EliminarEmpresa extends javax.swing.JPanel {
     private javax.swing.JTable empresaT;
     private javax.swing.JRadioButton nitRB;
     private javax.swing.JRadioButton nombreRB;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JDialog ventanaConfirmacionD;
     private javax.swing.JOptionPane ventanaConfirmacionOP;
     // End of variables declaration//GEN-END:variables
