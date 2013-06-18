@@ -9,11 +9,13 @@ import controller.ConsultarEmpresaController;
 import controller.ConsultarUsuarioController;
 import controller.CrearEmpresaController;
 import controller.CrearUsuarioController;
-import controller.EliminarAdministradorController;
+import controller.EliminarEmpresaController;
 import controller.EliminarUsuarioController;
 import controller.LoginController;
 import controller.ModificarAdministradorController;
+import controller.ModificarEmpresaController;
 import controller.ModificarUsuarioController;
+import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 /**
@@ -247,6 +249,11 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         eliminarEmpresaB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Eliminar.png"))); // NOI18N
         eliminarEmpresaB.setText("Eliminar");
         eliminarEmpresaB.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        eliminarEmpresaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarEmpresaBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout administrarNivelPLayout = new org.jdesktop.layout.GroupLayout(administrarNivelP);
         administrarNivelP.setLayout(administrarNivelPLayout);
@@ -410,10 +417,15 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
         new ModificarAdministradorController().listarUsuarios();
     }//GEN-LAST:event_modificarPrimerAdminBActionPerformed
 
-    private void eliminarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrimerAdminBActionPerformed
-        new EliminarAdministradorController().listarUsuarios();
-    }//GEN-LAST:event_eliminarPrimerAdminBActionPerformed
+    private void modificarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpresaBActionPerformed
+        new ModificarEmpresaController().listarEmpresa();
+    }//GEN-LAST:event_modificarEmpresaBActionPerformed
 
+    private void eliminarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpresaBActionPerformed
+        new EliminarEmpresaController().listarEmpresa();
+    }//GEN-LAST:event_eliminarEmpresaBActionPerformed
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accionesL;
     private javax.swing.JPanel administrarNivelP;
