@@ -9,6 +9,7 @@ import controller.ConsultarEmpresaController;
 import controller.ConsultarUsuarioController;
 import controller.CrearEmpresaController;
 import controller.CrearUsuarioController;
+import controller.EliminarAdministradorController;
 import controller.EliminarEmpresaController;
 import controller.EliminarUsuarioController;
 import controller.LoginController;
@@ -424,6 +425,10 @@ public class PrimerAdministradorPrincipal extends javax.swing.JPanel {
     private void eliminarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpresaBActionPerformed
         new EliminarEmpresaController().listarEmpresa();
     }//GEN-LAST:event_eliminarEmpresaBActionPerformed
+
+    private void eliminarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPrimerAdminBActionPerformed
+        new EliminarAdministradorController().listarUsuarios();
+    }//GEN-LAST:event_eliminarPrimerAdminBActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
