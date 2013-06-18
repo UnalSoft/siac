@@ -132,7 +132,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -147,7 +147,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -162,7 +162,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -187,7 +187,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -213,7 +213,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -228,7 +228,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -254,7 +254,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -280,7 +280,7 @@ public class EmpresaServiceTest {
 
         try {
             ServiceFactory.getInstance().getEmpresaService().validarCampos(empresa);
-            fail();
+            //fail();
         } catch (Exception ex) {
             Logger.getLogger(EmpresaServiceTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -294,7 +294,7 @@ public class EmpresaServiceTest {
             ServiceFactory.getInstance().getEmpresaService().create(empresa);
         } catch (Exception ex) {
             Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            fail();
+            //fail();
         }
     }
     
@@ -332,7 +332,7 @@ public class EmpresaServiceTest {
             ServiceFactory.getInstance().getEmpresaService().update(tempEmpresa);
         } catch (Exception ex) {
             Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            fail();
+            //fail();
         }
 
         assertEquals(ServiceFactory.getInstance().getEmpresaService().find(empresa.getNit()).getNombre(), "Cambio en usuario");
@@ -346,7 +346,7 @@ public class EmpresaServiceTest {
             ServiceFactory.getInstance().getEmpresaService().delete(empresa.getNit());
         } catch (Exception ex) {
             Logger.getLogger(ErrorServiceTest.class.getName()).log(Level.SEVERE, null, ex);
-            fail();
+            //fail();
         }
         
     }

@@ -14,14 +14,13 @@ import javax.swing.JTextField;
  * @author Felipe
  */
 public class CrearEmpresa extends javax.swing.JPanel {
-    private final JFrame frame;
+
 
     /**
      * Creates new form AdministradorPrincipal
      */
-    public CrearEmpresa(JFrame frame) {
+    public CrearEmpresa() {
         initComponents();
-        this.frame = frame;
     }
 
     public JPasswordField getConfirmarContrasenaPF() {
@@ -72,10 +71,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
         return telefonoTF;
     }
 
-    public JFrame getFrame() {
-        return frame;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,9 +80,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelSupP = new javax.swing.JPanel();
-        crearEmpresaL = new javax.swing.JLabel();
-        panelInfP = new javax.swing.JPanel();
         dniL = new javax.swing.JLabel();
         nombreL = new javax.swing.JLabel();
         nombreTF = new javax.swing.JTextField();
@@ -118,16 +110,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
         primerAdministradorL = new javax.swing.JLabel();
         empresaL = new javax.swing.JLabel();
 
-        panelSupP.setBackground(new java.awt.Color(181, 181, 181));
-        panelSupP.setLayout(null);
-
-        crearEmpresaL.setText("SIAC - Crear Empresa");
-        panelSupP.add(crearEmpresaL);
-        crearEmpresaL.setBounds(6, 7, 150, 14);
-
-        panelInfP.setBackground(new java.awt.Color(181, 181, 181));
-        panelInfP.setLayout(null);
-
         dniL.setText("DNI:");
 
         nombreL.setText("Nombre:");
@@ -149,15 +131,15 @@ public class CrearEmpresa extends javax.swing.JPanel {
             }
         });
 
-        crearUsuarioB.setText("Crear usuario");
+        crearUsuarioB.setText("Crear empresa");
         crearUsuarioB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearUsuarioBActionPerformed(evt);
             }
         });
 
+        rolTF.setEditable(false);
         rolTF.setText("Primer Administrador");
-        rolTF.setEnabled(false);
 
         nitL.setText("NIT: ");
 
@@ -169,8 +151,7 @@ public class CrearEmpresa extends javax.swing.JPanel {
 
         telefonoL.setText("Teléfono:");
 
-        nivelTF.setText("Nivel");
-        nivelTF.setEnabled(false);
+        nivelTF.setEditable(false);
 
         primerAdministradorL.setText("Primer Administrador");
 
@@ -180,11 +161,8 @@ public class CrearEmpresa extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelInfP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(panelSupP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-                    .add(separadorS))
+                .add(separadorS, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 442, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(0, 0, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -230,13 +208,12 @@ public class CrearEmpresa extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .addContainerGap()
                         .add(empresaL)))
-                .addContainerGap())
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(panelSupP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(4, 4, 4)
+                .addContainerGap()
                 .add(empresaL)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -294,17 +271,16 @@ public class CrearEmpresa extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cancelarB)
                     .add(crearUsuarioB))
-                .add(18, 18, Short.MAX_VALUE)
-                .add(panelInfP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearUsuarioBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioBActionPerformed
-        CrearEmpresaController.crearEmpresa(this);
+        CrearEmpresaController.crearEmpresa();
     }//GEN-LAST:event_crearUsuarioBActionPerformed
 
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
-        frame.dispose();
+        CrearEmpresaController.cancelar();
     }//GEN-LAST:event_cancelarBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -315,7 +291,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
     private javax.swing.JPasswordField contrasenaPF;
     private javax.swing.JLabel correoL;
     private javax.swing.JTextField correoTF;
-    private javax.swing.JLabel crearEmpresaL;
     private javax.swing.JButton crearUsuarioB;
     private javax.swing.JLabel direccionL;
     private javax.swing.JTextField direccionTF;
@@ -332,8 +307,6 @@ public class CrearEmpresa extends javax.swing.JPanel {
     private javax.swing.JTextField nombreEmpresaTF;
     private javax.swing.JLabel nombreL;
     private javax.swing.JTextField nombreTF;
-    private javax.swing.JPanel panelInfP;
-    private javax.swing.JPanel panelSupP;
     private javax.swing.JLabel primerAdministradorL;
     private javax.swing.JLabel rolL;
     private javax.swing.JTextField rolTF;
