@@ -39,6 +39,7 @@ public class CrearEmpresaController {
             empresaVo.setNivel(Nivel.fromText(crearEmpresa.getNivelTF().getText()));
             empresaVo.setNombre(crearEmpresa.getNombreEmpresaTF().getText());
             empresaVo.setTelefono(crearEmpresa.getTelefonoTF().getText());
+            empresaVo.setEmpresasnit(LoginController.usuarioActivo.getEmpresasNIT());
 
             UsuarioVO usuarioVo = new UsuarioVO();
             usuarioVo.setClave(new String(crearEmpresa.getContrasenaPF().getPassword()));

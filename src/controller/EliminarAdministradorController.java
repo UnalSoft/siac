@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.dao.exceptions.InsufficientPermissionsException;
-import model.dao.exceptions.NonexistentEntityException;
 import model.entity.Rol;
 import model.service.ServiceFactory;
 import model.vo.EmpresaVO;
@@ -40,12 +38,10 @@ public class EliminarAdministradorController {
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         for (UsuarioVO usuarioVO : usuariosList) {
-            if(!usuarioVO.getRol().equals(Rol.PRIMER_ADMINISTRADOR)){
-                Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
-                    usuarioVO.getCorreo(), usuarioVO.getRol(),
-                    ServiceFactory.getInstance().getEmpresaService().find(usuarioVO.getEmpresasNIT()).getNombre()};
-                model.addRow(datos);
-            }
+            Object[] datos = {usuarioVO.getDni(), usuarioVO.getNombre(),
+                usuarioVO.getCorreo(), usuarioVO.getRol(),
+                ServiceFactory.getInstance().getEmpresaService().find(usuarioVO.getEmpresasNIT()).getNombre()};
+            model.addRow(datos);
         }
     }
 
