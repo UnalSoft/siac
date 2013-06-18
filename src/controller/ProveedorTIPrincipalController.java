@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JViewport;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.dao.exceptions.NonexistentEntityException;
+import model.dao.exceptions.PreexistingEntityException;
 import model.service.ServiceFactory;
 import model.vo.EmpresaVO;
 import model.vo.ErrorVO;
@@ -64,16 +65,16 @@ public class ProveedorTIPrincipalController {
 
                 for (EmpresaVO e : empresas) {
                     e.setUsuarioList(null);
-                    oos.writeObject(e);                    
+                    oos.writeObject(e);
                 }
                 for (UsuarioVO u : usuarios) {
-                    oos.writeObject(u);                    
+                    oos.writeObject(u);
                 }
                 for (ErrorVO e : errores) {
                     oos.writeObject(e);
                 }
                 oos.writeObject(ServiceFactory.getInstance().getVersionService().getVersion());
-                
+
                 oos.close();
 
                 JOptionPane.showMessageDialog(principal, "Copia de seguridad guardada con éxito!", "Copia Exitosa", JOptionPane.INFORMATION_MESSAGE, null);
@@ -104,7 +105,22 @@ public class ProveedorTIPrincipalController {
                     ServiceFactory.getInstance().getUsuarioService().removeAll();
                     ServiceFactory.getInstance().getEmpresaService().removeAll();
                 } catch (NonexistentEntityException ex) {
-                    JOptionPane.showMessageDialog(principal, "Recuperación de copia de seguridad Fallida\n" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE, null);
+                    int opcion = JOptionPane.showOptionDialog(principal, "Recuperación de copia de seguridad Fallida\n" + ex.getMessage(), "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, new String[]{"Reportar Error", "Cancelar"}, "Cancelar");
+                    switch (opcion) {
+                        case JOptionPane.OK_OPTION:
+                            ErrorVO error = new ErrorVO();
+                            error.setError("Recuperación de copia de seguridad Fallida\n" + ex.getMessage());
+                            error.setInterfaz("Login");
+                            error.setUsuariosDNI(LoginController.usuarioActivo.getDni());
+                            try {
+                                ServiceFactory.getInstance().getErrorService().create(error);
+                            } catch (PreexistingEntityException | NonexistentEntityException ex1) {
+                                JOptionPane.showMessageDialog(principal, ex1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                            break;
+                        case JOptionPane.CANCEL_OPTION:
+                            break;
+                    }
                     return;
                 }
 
@@ -128,14 +144,28 @@ public class ProveedorTIPrincipalController {
                             ServiceFactory.getInstance().getVersionService().create((VersionVO) readObject);
                         }
                     }
-                    
+
                     ois.close();
-                    
+
                     JOptionPane.showMessageDialog(principal, "Copia de seguridad recuperada con éxito!", "Recuperación Exitosa", JOptionPane.INFORMATION_MESSAGE, null);
 
                 } catch (Exception exc) {
-                    exc.printStackTrace();
-                    JOptionPane.showMessageDialog(principal, "Recuperación de copia de seguridad Fallida\n" + exc.getMessage(), "Error", JOptionPane.ERROR_MESSAGE, null);
+                    int opcion = JOptionPane.showOptionDialog(principal, "Recuperación de copia de seguridad Fallida\n" + exc.getMessage(), "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, new String[]{"Reportar Error", "Cancelar"}, "Cancelar");
+                    switch (opcion) {
+                        case JOptionPane.OK_OPTION:
+                            ErrorVO error = new ErrorVO();
+                            error.setError("Recuperación de copia de seguridad Fallida\n" + exc.getMessage());
+                            error.setInterfaz("Login");
+                            error.setUsuariosDNI(LoginController.usuarioActivo.getDni());
+                            try {
+                                ServiceFactory.getInstance().getErrorService().create(error);
+                            } catch (PreexistingEntityException | NonexistentEntityException ex1) {
+                                JOptionPane.showMessageDialog(principal, ex1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                            break;
+                        case JOptionPane.CANCEL_OPTION:
+                            break;
+                    }
                 }
 
             }

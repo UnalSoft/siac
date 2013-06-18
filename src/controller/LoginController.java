@@ -4,9 +4,14 @@
  */
 package controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.dao.exceptions.DataBaseException;
+import model.dao.exceptions.NonexistentEntityException;
+import model.dao.exceptions.PreexistingEntityException;
 import model.service.ServiceFactory;
+import model.vo.ErrorVO;
 import model.vo.UsuarioVO;
 import util.DibujarPanel;
 import view.AdministradorPrincipal;
@@ -38,8 +43,6 @@ public class LoginController {
         LoginController.usuarioActivo = usuarioLogin;
     }
 
-    
-    
     public static void mostrarLogin() {
         principal = new Principal();
         principal.setLocationRelativeTo(null);
@@ -74,7 +77,15 @@ public class LoginController {
             int opcion = JOptionPane.showOptionDialog(login, ex.getMessage() + "\n" + ex.getCause().getMessage(), "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, new String[]{"Reportar Error", "Cancelar"}, "Cancelar");
             switch (opcion) {
                 case JOptionPane.OK_OPTION:
-                    //TODO Reportar Error
+                    ErrorVO error = new ErrorVO();
+                    error.setError(ex.getMessage() + "\n" + ex.getCause().getMessage());
+                    error.setInterfaz("Login");
+                    error.setUsuariosDNI(usuarioActivo.getDni());
+                    try {
+                        ServiceFactory.getInstance().getErrorService().create(error);
+                    } catch (    PreexistingEntityException | NonexistentEntityException ex1) {
+                        JOptionPane.showMessageDialog(login, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                     break;
                 case JOptionPane.CANCEL_OPTION:
                     break;
@@ -127,11 +138,11 @@ public class LoginController {
             JOptionPane.showMessageDialog(login, "El usuario o la contraseña son incorrectos", "Error", JOptionPane.ERROR_MESSAGE, null);
         }
     }
-    
+
     public static void cerrarSesion() {
         usuarioActivo = null;
         login = new Login();
         principal.setLocationRelativeTo(null);
-        DibujarPanel.dibujarPanel(principal, principal.getViewport(), login);        
+        DibujarPanel.dibujarPanel(principal, principal.getViewport(), login);
     }
 }
