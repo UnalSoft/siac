@@ -92,12 +92,16 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
         verInformacionB = new javax.swing.JButton();
         buscarB = new javax.swing.JButton();
 
+        nitTF.setEditable(false);
         nitTF.setText("000000000");
 
+        nombreEmpresaTF.setEditable(false);
         nombreEmpresaTF.setText("Nombre");
 
+        nivelTF.setEditable(false);
         nivelTF.setText("Nivel");
 
+        direccionTF.setEditable(false);
         direccionTF.setText("Calle Falsa 123");
 
         nombreEmpresaL.setText("Nombre:");
@@ -116,6 +120,8 @@ public class ConsultarEmpresa extends javax.swing.JPanel {
                 atrasBActionPerformed(evt);
             }
         });
+
+        telefonoTF.setEditable(false);
 
         empresaL.setText("Empresa:");
 
