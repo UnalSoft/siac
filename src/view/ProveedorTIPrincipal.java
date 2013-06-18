@@ -5,9 +5,13 @@
 package view;
 
 import controller.ConsultarAdministradorController;
+import controller.ConsultarEmpresaController;
+import controller.CrearEmpresaController;
 import controller.EliminarAdministradorController;
+import controller.EliminarEmpresaController;
 import controller.LoginController;
 import controller.ModificarAdministradorController;
+import controller.ModificarEmpresaController;
 import controller.ProveedorTIPrincipalController;
 import javax.swing.JLabel;
 
@@ -348,19 +352,19 @@ public class ProveedorTIPrincipal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEmpresaBActionPerformed
-        controller.crearEmpresa();
+        new CrearEmpresaController().mostrarCrearEmpresa();
     }//GEN-LAST:event_crearEmpresaBActionPerformed
 
     private void consultarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarEmpresaBActionPerformed
-        controller.consultarEmpresa();
+        new ConsultarEmpresaController().consultarEmpresa();
     }//GEN-LAST:event_consultarEmpresaBActionPerformed
 
     private void modificarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpresaBActionPerformed
-        controller.modificarEmpresa();
+        new ModificarEmpresaController().listarEmpresa();
     }//GEN-LAST:event_modificarEmpresaBActionPerformed
 
     private void eliminarEmpresaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEmpresaBActionPerformed
-        controller.eliminarEmpresa();
+        new EliminarEmpresaController().listarEmpresa();
     }//GEN-LAST:event_eliminarEmpresaBActionPerformed
 
     private void consultarPrimerAdminBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarPrimerAdminBActionPerformed
