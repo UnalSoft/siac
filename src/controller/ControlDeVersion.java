@@ -13,9 +13,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import javax.persistence.EntityNotFoundException;
 import model.dao.exceptions.DataBaseException;
-import model.dao.exceptions.NonexistentEntityException;
-import model.dao.exceptions.PreexistingEntityException;
-import model.vo.ErrorVO;
 
 /**
  *
@@ -33,28 +30,12 @@ public class ControlDeVersion {
                     .getVersion().getVersion();
         } catch (EntityNotFoundException ex) {
             JOptionPane.showMessageDialog(login, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         } catch (DataBaseException ex) {
-            int opcion = JOptionPane.showOptionDialog(login, ex.getMessage() + "\n" + ex.getCause().getMessage(), "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, new String[]{"Reportar Error", "Cancelar"}, "Cancelar");
-            switch (opcion) {
-                case JOptionPane.OK_OPTION:
-                    ErrorVO error = new ErrorVO();
-                    error.setError(ex.getMessage() + "\n" + ex.getCause().getMessage());
-                    error.setInterfaz("Login");
-//                    error.setUsuariosDNI(usuarioActivo.getDni());
-                    try {
-                        ServiceFactory.getInstance().getErrorService().create(error);
-                    } catch (    PreexistingEntityException | NonexistentEntityException ex1) {
-                        JOptionPane.showMessageDialog(login, ex1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                        System.exit(0);
-                    } catch (Exception e){
-                        JOptionPane.showMessageDialog(login, e.getMessage() + "\n" + e.getCause().getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                        System.exit(0);
-                    }
-                    break;
-                case JOptionPane.CANCEL_OPTION:
-                    break;
-            }
-            return;
+            JOptionPane.showMessageDialog(login, ex.getMessage() + "\n\n"
+                    + "Para acceder a la aplicación debe estar conectado a internet y a una red que no utilice un servidor proxy.\n\n"
+                    + "Por favor conectese a internet usando una red que no utilice proxy y vuelva a intentarlo.", "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
         if (!ultimaVersion.equals(VERSIONACTUAL)) {
             int opcion = JOptionPane.showOptionDialog(login, "Existe una nueva versión disponible (" + ultimaVersion + ") debe actualizar el programa para continuar con su ejecución, version actual: " + VERSIONACTUAL, "Error", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, new String[]{"Descargar", "Cancelar"}, "Descargar");
@@ -62,7 +43,7 @@ public class ControlDeVersion {
                 case JOptionPane.OK_OPTION:
                     try {
                         Desktop.getDesktop().browse(new URI(URLULTIMAVERSION));
-                    } catch (    IOException | URISyntaxException ex) {
+                    } catch (IOException | URISyntaxException ex) {
                         JOptionPane.showMessageDialog(login, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     System.exit(0);
