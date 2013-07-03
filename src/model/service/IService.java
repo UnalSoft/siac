@@ -19,7 +19,7 @@ import model.dao.exceptions.RequiredAttributeException;
  */
 public interface IService<VO, ID extends Serializable> {
 
-    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InvalidAttributeException, InsufficientPermissionsException;
+    void create(VO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InvalidAttributeException, InsufficientPermissionsException, Exception;
 
     VO find(ID id) throws EntityNotFoundException, InsufficientPermissionsException;
 

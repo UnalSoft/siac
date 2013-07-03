@@ -37,6 +37,7 @@ public class CrearUsuarioController {
     public static void cancelar() {
         secundario.setVisible(false);
         secundario = new Secundario();
+        crearUsuario = new CrearUsuario();
     }
     
     public static void crearUsuario() {
@@ -63,10 +64,14 @@ public class CrearUsuarioController {
                     | InvalidAttributeException | InsufficientPermissionsException ex) {
                 JOptionPane.showMessageDialog(crearUsuario, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 return;
+            } catch (Exception ex){
+                JOptionPane.showMessageDialog(crearUsuario, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
             JOptionPane.showMessageDialog(crearUsuario, "Usuario creado satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             secundario.setVisible(false);
             secundario = new Secundario();
+            crearUsuario = new CrearUsuario();
         } else {
             JOptionPane.showMessageDialog(crearUsuario, "Las contraseñas no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
         }

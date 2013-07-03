@@ -34,7 +34,7 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
     }
 
     @Override
-    public void create(Usuario entity) throws PreexistingEntityException, NonexistentEntityException {
+    public void create(Usuario entity) throws PreexistingEntityException, NonexistentEntityException, Exception {
         EntityManager entityManager = null;
         try {
             entityManager = getEntityManager();
@@ -360,4 +360,27 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
             }
         }
     }
+    
+    public Usuario findByUserName (String userName) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            Usuario usuario;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.nombreDeUsuario LIKE :userName")
+                    .setParameter("userName", userName);
+
+            usuario = (Usuario) q.getSingleResult();
+
+            return usuario;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No hay usuarios con nombre de usuario: " + userName);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
+    
 }

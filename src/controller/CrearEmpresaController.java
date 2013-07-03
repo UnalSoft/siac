@@ -27,6 +27,7 @@ public class CrearEmpresaController {
 
     public static void crearEmpresa() {
         if (clavesIguales()) {
+            crearEmpresa = new CrearEmpresa();
             EmpresaVO empresaVo = new EmpresaVO();
             empresaVo.setDireccion(crearEmpresa.getDireccionTF().getText());
             try {
@@ -65,6 +66,9 @@ public class CrearEmpresaController {
                     | InvalidAttributeException | InsufficientPermissionsException ex) {
                 JOptionPane.showMessageDialog(crearEmpresa, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 return;
+            } catch (Exception ex){
+                JOptionPane.showMessageDialog(crearEmpresa, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
             JOptionPane.showMessageDialog(crearEmpresa, "Empresa y Primer Administrador creados satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             secundario.setVisible(false);
@@ -78,6 +82,7 @@ public class CrearEmpresaController {
     public static void cancelar() {
         secundario.setVisible(false);
         secundario = new Secundario();
+        crearEmpresa = new CrearEmpresa();
     }
 
     private static boolean clavesIguales() {

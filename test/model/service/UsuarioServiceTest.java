@@ -106,6 +106,8 @@ public class UsuarioServiceTest {
                 ServiceFactory.getInstance().getUsuarioService().create(usuario);
             } catch (PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InsufficientPermissionsException | InvalidAttributeException ex) {
                 Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(UsuarioServiceTest.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

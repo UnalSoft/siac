@@ -55,8 +55,10 @@ public class LoginController {
 
     public static void mostrarRecuperarContrasena() {
         secundario = new Secundario();
+        secundario.setTitle("Recuperación de Contraseña");
         secundario.setLocationRelativeTo(principal);
         RecuperarContrasena recuperarContrasena = new RecuperarContrasena();
+        secundario.setVisible(true);
         DibujarPanel.dibujarPanel(secundario, secundario.getViewport(), recuperarContrasena);
     }
 

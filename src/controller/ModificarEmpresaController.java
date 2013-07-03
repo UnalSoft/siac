@@ -55,6 +55,7 @@ public class ModificarEmpresaController {
     public void cancelar() {
         secundario.setVisible(false);
         secundario = new Secundario();
+        modificarEmpresa= new ModificarEmpresa();
     }
 
     public void buscar() {

@@ -51,7 +51,7 @@ public class Usuario implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
-    @Column(name = "nombreDeUsuario")
+    @Column(name = "nombreDeUsuario", unique=true)
     private String nombreDeUsuario;
     @Basic(optional = false)
     @Column(name = "clave")

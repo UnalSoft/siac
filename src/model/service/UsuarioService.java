@@ -43,7 +43,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void create(UsuarioVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
+    public void create(UsuarioVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException, Exception {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Usuario entity = new Usuario();
@@ -196,7 +196,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     }
 
-    public boolean validarCampos(UsuarioVO vo) throws RequiredAttributeException, InvalidAttributeException {
+    public boolean validarCampos(UsuarioVO vo) throws RequiredAttributeException, InvalidAttributeException, Exception {
         //Validar DNI
         if (vo.getDni() == null) {
             throw new RequiredAttributeException("El atributo DNI es requerido");
@@ -219,6 +219,8 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             throw new InvalidAttributeException("El atributo Nombre de Usuario debe tener una longitud menor a " + MAX_LENGTH_USERNAME);
         } else if (!vo.getNombreDeUsuario().matches("[_A-Za-z0-9-]*")) {
             throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos"); 
+        } else if (DAOFactory.getInstance().getUsuarioDAO().findByUserName(vo.getNombreDeUsuario()) != null){
+            throw new Exception("El nombre de usuario ya existe. Ingrese uno diferente");
         }
         //Validar Clave
         if (vo.getClave() == null || vo.getClave().isEmpty()) {

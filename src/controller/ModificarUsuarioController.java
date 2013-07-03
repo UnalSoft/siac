@@ -55,6 +55,7 @@ public class ModificarUsuarioController {
     public void cancelar() {
         secundario.setVisible(false);
         secundario = new Secundario();
+        modificarUsuario= new ModificarUsuario();
     }
 
     public void buscar() {

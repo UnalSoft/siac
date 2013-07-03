@@ -57,6 +57,11 @@ public class RecuperarContrasena extends javax.swing.JPanel {
 
         restablecerContrasenaB.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         restablecerContrasenaB.setText("Restablecer Contraseña");
+        restablecerContrasenaB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restablecerContrasenaBActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -73,12 +78,12 @@ public class RecuperarContrasena extends javax.swing.JPanel {
                         .add(emailL)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 291, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
+                .addContainerGap(89, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(emailTF, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(emailL))
@@ -93,6 +98,10 @@ public class RecuperarContrasena extends javax.swing.JPanel {
     private void cancelarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBActionPerformed
         RecuperarContrasenaController.mostrarLogin();
     }//GEN-LAST:event_cancelarBActionPerformed
+
+    private void restablecerContrasenaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerContrasenaBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restablecerContrasenaBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarB;

@@ -110,7 +110,7 @@ public class EliminarAdministrador extends javax.swing.JPanel {
             }
         });
 
-        crearUsuarioB.setText("Crear empresa");
+        crearUsuarioB.setText("Actualizar Administrador");
         crearUsuarioB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearUsuarioBActionPerformed(evt);

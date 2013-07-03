@@ -62,6 +62,7 @@ public class ModificarAdministradorController {
     public void cancelar() {
         secundario.setVisible(false);
         secundario = new Secundario();
+        modificarAdministrador = new ModificarAdministrador();
     }
 
     public void buscar() {

@@ -62,6 +62,7 @@ public class EliminarAdministradorController {
     public void cancelar() {
         secundario.setVisible(false);
         secundario = new Secundario();
+        eliminarAdministrador = new EliminarAdministrador();
     }
 
     public void buscar() {
@@ -148,11 +149,15 @@ public class EliminarAdministradorController {
             } catch (PreexistingEntityException | NonexistentEntityException | RequiredAttributeException | InvalidAttributeException | InsufficientPermissionsException ex) {
                 JOptionPane.showMessageDialog(eliminarAdministrador, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 return;
+            }catch (Exception ex){
+                JOptionPane.showMessageDialog(eliminarAdministrador, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                return;
             }
 
             JOptionPane.showMessageDialog(secundario, "Primer Administrador Eliminado y nuevo Primer Administrador asignado satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             secundario.setVisible(false);
             secundario = new Secundario();
+            eliminarAdministrador = new EliminarAdministrador();
         } else {
             JOptionPane.showMessageDialog(secundario, "Las contraseñas no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
         }

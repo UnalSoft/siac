@@ -7,9 +7,9 @@
     <class>model.entity.Usuario</class>
     <class>model.entity.Version</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@168.176.36.14:1521:UNBDS7"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://168.176.36.26:1433;databaseName=dbd_3"/>
       <property name="javax.persistence.jdbc.password" value="s02258009"/>
-      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
       <property name="javax.persistence.jdbc.user" value="earojasc"/>
     </properties>
   </persistence-unit>
