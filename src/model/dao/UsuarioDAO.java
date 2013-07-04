@@ -373,8 +373,8 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
             usuario = (Usuario) q.getSingleResult();
 
             return usuario;
-        } catch (EntityNotFoundException e) {
-            throw new EntityNotFoundException("No hay usuarios con nombre de usuario: " + userName);
+        } catch (Exception e) {
+            return null;
         } finally {
             if (entityManager != null) {
                 entityManager.clear();
@@ -396,7 +396,7 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
 
             return usuario;
         } catch (Exception e) {
-            throw new EntityNotFoundException("No existe un usuario con correo: " + correo);
+            return null;
         } finally {
             if (entityManager != null) {
                 entityManager.clear();

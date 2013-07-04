@@ -42,7 +42,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
     }
 
     @Override
-    public void create(EmpresaVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
+    public void create(EmpresaVO vo) throws PreexistingEntityException, NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException, Exception {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Empresa entity = new Empresa();
@@ -131,7 +131,7 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
     }
 
     @Override
-    public void update(EmpresaVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
+    public void update(EmpresaVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException, Exception {
         if (validarCampos(vo)) {
             if (havePermissions(vo)) {
                 Empresa entity = DAOFactory.getInstance().getEmpresaDAO().find(vo.getNit());
@@ -174,9 +174,16 @@ public class EmpresaService implements IService<EmpresaVO, Integer> {
         return list;
     }
 
-    public boolean validarCampos(EmpresaVO vo) throws RequiredAttributeException, InvalidAttributeException {
+    public boolean validarCampos(EmpresaVO vo) throws RequiredAttributeException, InvalidAttributeException, Exception {
         if (vo.getNit() == null) {
             throw new RequiredAttributeException("El atributo Nit es requerido");
+        } else {
+            try {
+                if (DAOFactory.getInstance().getEmpresaDAO().find(vo.getNit()) != null) {
+                    throw new Exception("La empresa con nit: " + vo.getNit() + " ya existe. Ingrese uno diferente");
+                }
+            } catch (EntityNotFoundException ex) {
+            }
         }
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre es requerido");

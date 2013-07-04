@@ -27,7 +27,6 @@ public class CrearEmpresaController {
 
     public static void crearEmpresa() {
         if (clavesIguales()) {
-            crearEmpresa = new CrearEmpresa();
             EmpresaVO empresaVo = new EmpresaVO();
             empresaVo.setDireccion(crearEmpresa.getDireccionTF().getText());
             try {
@@ -73,6 +72,7 @@ public class CrearEmpresaController {
             JOptionPane.showMessageDialog(crearEmpresa, "Empresa y Primer Administrador creados satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
             secundario.setVisible(false);
             secundario = new Secundario();
+            crearEmpresa = new CrearEmpresa();
         } else {
             JOptionPane.showMessageDialog(crearEmpresa, "Las contraseñas no coinciden!", "Error", JOptionPane.ERROR_MESSAGE);
         }

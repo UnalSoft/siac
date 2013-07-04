@@ -2,8 +2,6 @@ package model.service;
 
 import controller.LoginController;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -210,6 +208,13 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             throw new RequiredAttributeException("El atributo DNI es requerido");
         } else if (vo.getDni() < MIN_DNI || vo.getDni() > MAX_DNI) {
             throw new InvalidAttributeException("El atributo DNI no está en el rango permitido");
+        } else {
+            try {
+                if (DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni()) != null) {
+                    throw new Exception("El usuario con dni " + vo.getDni() + " ya existe. Ingrese uno diferente");
+                }
+            } catch (EntityNotFoundException ex) {
+            }
         }
         //Validar Nombre
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
@@ -260,7 +265,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             throw new RequiredAttributeException("El atributo DNI es requerido");
         } else if (vo.getDni() < MIN_DNI || vo.getDni() > MAX_DNI) {
             throw new InvalidAttributeException("El atributo DNI no está en el rango permitido");
-        }
+        } 
         //Validar Nombre
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre es requerido");
