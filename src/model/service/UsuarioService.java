@@ -265,7 +265,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             throw new RequiredAttributeException("El atributo DNI es requerido");
         } else if (vo.getDni() < MIN_DNI || vo.getDni() > MAX_DNI) {
             throw new InvalidAttributeException("El atributo DNI no está en el rango permitido");
-        } 
+        }
         //Validar Nombre
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre es requerido");
@@ -282,17 +282,13 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             throw new InvalidAttributeException("El atributo Nombre de Usuario debe tener una longitud menor a " + MAX_LENGTH_USERNAME);
         } else if (!vo.getNombreDeUsuario().matches("[_A-Za-z0-9-.]*")) {
             throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos");
-        } else if (DAOFactory.getInstance().getUsuarioDAO().findByUserName(vo.getNombreDeUsuario()) != null) {
-            throw new Exception("El nombre de usuario ya existe. Ingrese uno diferente");
-        }
+        } 
         //Validar Correo
         if (vo.getCorreo() == null || vo.getCorreo().isEmpty()) {
             throw new RequiredAttributeException("El atributo Correo es requerido");
         } else if (!isValidEmail(vo.getCorreo())) {
             throw new InvalidAttributeException("El atributo Correo no tiene un formato válido");
-        } else if (DAOFactory.getInstance().getUsuarioDAO().findByEmail(vo.getCorreo()) != null) {
-            throw new Exception("Ya existe un usuario con este correo. Ingrese uno diferente");
-        }
+        } 
         //Validar Rol
         if (vo.getRol() == null) {
             throw new RequiredAttributeException("El atributo Rol es requerido");
@@ -407,6 +403,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
             // Close
             t.close();
         } catch (MessagingException ex) {
+            ex.printStackTrace();
             throw new Exception("Error al enviar el correo", ex);
         }
     }
