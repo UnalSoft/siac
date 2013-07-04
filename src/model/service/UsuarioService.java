@@ -343,8 +343,9 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         } else {
             Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().findByEmail(email);
             if (usuario != null) {
-                usuario.setClave(generateRandomPassword());
+                usuario.setClave(Hash.hashMD5(generateRandomPassword()));
                 sendEmailConfirmation(usuario);
+                DAOFactory.getInstance().getUsuarioDAO().update(usuario);
             } else {
                 throw new EntityNotFoundException("No existe un usuario con correo: " + email);
             }

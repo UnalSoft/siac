@@ -29,7 +29,7 @@ public class RecuperarContrasenaController {
         } catch (InvalidAttributeException | EntityNotFoundException ex) {
             JOptionPane.showMessageDialog(LoginController.secundario, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(LoginController.secundario, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(LoginController.secundario, ex.getMessage() + "\n" + ex.getCause(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
