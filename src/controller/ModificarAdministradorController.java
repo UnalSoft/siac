@@ -137,6 +137,9 @@ public class ModificarAdministradorController {
         } catch (NonexistentEntityException | RequiredAttributeException | InvalidAttributeException | InsufficientPermissionsException ex) {
             JOptionPane.showMessageDialog(modificarAdministrador, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(modificarAdministrador, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         JOptionPane.showMessageDialog(modificarAdministrador, "Usuario modificado satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
         secundario.setVisible(false);

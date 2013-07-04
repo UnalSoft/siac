@@ -382,5 +382,27 @@ public class UsuarioDAO implements ICrudDAO<Usuario, Long> {
             }
         }
     }
+
+    public Usuario findByEmail(String correo) {
+        EntityManager entityManager = null;
+        try {
+            entityManager = getEntityManager();
+            Usuario usuario;
+            Query q = entityManager.createQuery("SELECT u FROM Usuario u "
+                    + "WHERE u.correo LIKE :email")
+                    .setParameter("email", correo);
+
+            usuario = (Usuario) q.getSingleResult();
+
+            return usuario;
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("No existe un usuario con correo: " + correo);
+        } finally {
+            if (entityManager != null) {
+                entityManager.clear();
+                entityManager.close();
+            }
+        }
+    }
     
 }

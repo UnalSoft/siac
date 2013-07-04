@@ -125,6 +125,9 @@ public class ModificarUsuarioController {
         } catch (NonexistentEntityException | RequiredAttributeException | InvalidAttributeException | InsufficientPermissionsException ex) {
             JOptionPane.showMessageDialog(modificarUsuario, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(modificarUsuario, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         JOptionPane.showMessageDialog(modificarUsuario, "Usuario modificado satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
         secundario.setVisible(false);

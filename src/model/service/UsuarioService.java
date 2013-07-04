@@ -2,6 +2,14 @@ package model.service;
 
 import controller.LoginController;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityNotFoundException;
 import model.dao.DAOFactory;
 import model.dao.exceptions.DataBaseException;
@@ -87,7 +95,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         Collections.sort(list, getComparatorUsuario());
         return list;
     }
-    
+
     public List<UsuarioVO> findByRolAndEnterprise(Rol rol, Integer nit) throws EntityNotFoundException {
         //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<>();
@@ -107,7 +115,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         Collections.sort(list, getComparatorUsuario());
         return list;
     }
-    
+
     public List<UsuarioVO> findByNameAndEnterpriseAndRol(String name, Integer nit, Rol rol) throws EntityNotFoundException {
         //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<>();
@@ -127,7 +135,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         Collections.sort(list, getComparatorUsuario());
         return list;
     }
-    
+
     public List<UsuarioVO> findByDNIAndEnterpriseAndRol(Long dni, Integer nit, Rol rol) throws EntityNotFoundException {
         //TODO validar permisos
         List<UsuarioVO> list = new ArrayList<>();
@@ -139,7 +147,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
     }
 
     @Override
-    public void update(UsuarioVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException {
+    public void update(UsuarioVO vo) throws NonexistentEntityException, RequiredAttributeException, InsufficientPermissionsException, InvalidAttributeException, Exception {
         if (validarCamposModificar(vo)) {
             if (havePermissions(vo)) {
                 Usuario entity = DAOFactory.getInstance().getUsuarioDAO().find(vo.getDni());
@@ -148,7 +156,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
                 entity.setNombreDeUsuario(vo.getNombreDeUsuario());
                 entity.setRol(vo.getRol());
                 //Esto es solo para la recuperacion de la copia de seguridad
-                if (vo.getClave() != null){
+                if (vo.getClave() != null) {
                     entity.setClave(vo.getClave());
                 }
                 DAOFactory.getInstance().getUsuarioDAO().update(entity);
@@ -207,10 +215,10 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre es requerido");
         } else if (vo.getNombre().length() < MIN_LENGTH_NAME || vo.getNombre().length() > MAX_LENGTH_NAME) {
-            throw new InvalidAttributeException("La longitud del atributo Nombre no está en el rango permitido (" 
+            throw new InvalidAttributeException("La longitud del atributo Nombre no está en el rango permitido ("
                     + MIN_LENGTH_NAME + " - " + MAX_LENGTH_NAME + ")");
         } else if (!vo.getNombre().matches("([_A-Za-záéíóúAÉÍÓÚÑñ-]*(\\s[_A-Za-záéíóúAÉÍÓÚÑñ-]+)*)")) {
-            throw new InvalidAttributeException("El atributo Nombre contiene caracteres inválidos"); 
+            throw new InvalidAttributeException("El atributo Nombre contiene caracteres inválidos");
         }
         //Validar Nombre de Usuario
         if (vo.getNombreDeUsuario() == null || vo.getNombreDeUsuario().isEmpty()) {
@@ -218,24 +226,26 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         } else if (vo.getNombreDeUsuario().length() > MAX_LENGTH_USERNAME) {
             throw new InvalidAttributeException("El atributo Nombre de Usuario debe tener una longitud menor a " + MAX_LENGTH_USERNAME);
         } else if (!vo.getNombreDeUsuario().matches("[_A-Za-z0-9-]*")) {
-            throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos"); 
-        } else if (DAOFactory.getInstance().getUsuarioDAO().findByUserName(vo.getNombreDeUsuario()) != null){
+            throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos");
+        } else if (DAOFactory.getInstance().getUsuarioDAO().findByUserName(vo.getNombreDeUsuario()) != null) {
             throw new Exception("El nombre de usuario ya existe. Ingrese uno diferente");
         }
         //Validar Clave
         if (vo.getClave() == null || vo.getClave().isEmpty()) {
             throw new RequiredAttributeException("El atributo Contraseña es requerido");
         } else if (vo.getClave().length() < MIN_LENGTH_PASSWD || vo.getClave().length() > MAX_LENGTH_PASSWD) {
-            throw new InvalidAttributeException("La longitud del atributo Contraseña no está en el rango permitido (" 
+            throw new InvalidAttributeException("La longitud del atributo Contraseña no está en el rango permitido ("
                     + MIN_LENGTH_PASSWD + " - " + MAX_LENGTH_PASSWD + ")");
         } else if (!vo.getClave().matches("[_A-Za-z0-9-]*")) {
-            throw new InvalidAttributeException("El atributo Contraseña contiene caracteres inválidos"); 
+            throw new InvalidAttributeException("El atributo Contraseña contiene caracteres inválidos");
         }
         //Validar Correo
         if (vo.getCorreo() == null || vo.getCorreo().isEmpty()) {
             throw new RequiredAttributeException("El atributo Correo es requerido");
         } else if (!isValidEmail(vo.getCorreo())) {
             throw new InvalidAttributeException("El atributo Correo no tiene un formato válido");
+        } else if (DAOFactory.getInstance().getUsuarioDAO().findByEmail(vo.getCorreo()) != null) {
+            throw new Exception("Ya existe un usuario con este correo. Ingrese uno diferente");
         }
         //Validar Rol
         if (vo.getRol() == null) {
@@ -243,8 +253,8 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         }
         return true;
     }
-    
-    public boolean validarCamposModificar(UsuarioVO vo) throws RequiredAttributeException, InvalidAttributeException {
+
+    public boolean validarCamposModificar(UsuarioVO vo) throws RequiredAttributeException, InvalidAttributeException, Exception {
         //Validar DNI
         if (vo.getDni() == null) {
             throw new RequiredAttributeException("El atributo DNI es requerido");
@@ -255,10 +265,10 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         if (vo.getNombre() == null || vo.getNombre().isEmpty()) {
             throw new RequiredAttributeException("El atributo Nombre es requerido");
         } else if (vo.getNombre().length() < MIN_LENGTH_NAME || vo.getNombre().length() > MAX_LENGTH_NAME) {
-            throw new InvalidAttributeException("La longitud del atributo Nombre no está en el rango permitido (" 
+            throw new InvalidAttributeException("La longitud del atributo Nombre no está en el rango permitido ("
                     + MIN_LENGTH_NAME + " - " + MAX_LENGTH_NAME + ")");
         } else if (!vo.getNombre().matches("([_A-Za-záéíóúAÉÍÓÚÑñ-]*(\\s[_A-Za-záéíóúAÉÍÓÚÑñ-]+)*)")) {
-            throw new InvalidAttributeException("El atributo Nombre contiene caracteres inválidos"); 
+            throw new InvalidAttributeException("El atributo Nombre contiene caracteres inválidos");
         }
         //Validar Nombre de Usuario
         if (vo.getNombreDeUsuario() == null || vo.getNombreDeUsuario().isEmpty()) {
@@ -266,13 +276,17 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         } else if (vo.getNombreDeUsuario().length() > MAX_LENGTH_USERNAME) {
             throw new InvalidAttributeException("El atributo Nombre de Usuario debe tener una longitud menor a " + MAX_LENGTH_USERNAME);
         } else if (!vo.getNombreDeUsuario().matches("[_A-Za-z0-9-.]*")) {
-            throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos"); 
+            throw new InvalidAttributeException("El atributo Nombre de Usuario contiene caracteres inválidos");
+        } else if (DAOFactory.getInstance().getUsuarioDAO().findByUserName(vo.getNombreDeUsuario()) != null) {
+            throw new Exception("El nombre de usuario ya existe. Ingrese uno diferente");
         }
         //Validar Correo
         if (vo.getCorreo() == null || vo.getCorreo().isEmpty()) {
             throw new RequiredAttributeException("El atributo Correo es requerido");
         } else if (!isValidEmail(vo.getCorreo())) {
             throw new InvalidAttributeException("El atributo Correo no tiene un formato válido");
+        } else if (DAOFactory.getInstance().getUsuarioDAO().findByEmail(vo.getCorreo()) != null) {
+            throw new Exception("Ya existe un usuario con este correo. Ingrese uno diferente");
         }
         //Validar Rol
         if (vo.getRol() == null) {
@@ -280,8 +294,8 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         }
         return true;
     }
-    
-    private boolean isValidEmail(String mail) {      
+
+    private boolean isValidEmail(String mail) {
         if (mail.matches("([_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,}))")) {
             return true;
         }
@@ -293,7 +307,7 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
         Empresa empresaUsuarioActivo = DAOFactory.getInstance().getEmpresaDAO().find(LoginController.usuarioActivo.getEmpresasNIT());
         Empresa empresaVo = DAOFactory.getInstance().getEmpresaDAO().find(vo.getEmpresasNIT());
         return ((usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI))
-                ||(usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
+                || (usuarioActivo.getRol().equals(Rol.PROVEEDOR_DE_TI) && vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && empresaVo.getNivel().equals(Nivel.DISTRIBUIDORA))
                 || ((usuarioActivo.getRol().equals(Rol.PRIMER_ADMINISTRADOR) && (vo.getRol().equals(Rol.PRIMER_ADMINISTRADOR)))
                 && ((empresaUsuarioActivo.getNivel().equals(Nivel.DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA))
                 || (empresaUsuarioActivo.getNivel().equals(Nivel.SUB_DISTRIBUIDORA) && empresaVo.getNivel().equals(Nivel.CANAL))
@@ -307,12 +321,12 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
 
     @Override
     public void removeAll() throws NonexistentEntityException {
-        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList()){
+        for (Usuario usuario : DAOFactory.getInstance().getUsuarioDAO().getList()) {
             DAOFactory.getInstance().getUsuarioDAO().delete(usuario.getDni());
         }
     }
-    
-    private Comparator getComparatorUsuario(){
+
+    private Comparator getComparatorUsuario() {
         return new Comparator() {
             @Override
             public int compare(Object o1, Object o2) {
@@ -321,5 +335,73 @@ public class UsuarioService implements IService<UsuarioVO, Long> {
                 return p1.getDni().compareTo(p2.getDni());
             }
         };
+    }
+
+    public void passwordRecovery(String email) throws InvalidAttributeException, EntityNotFoundException, Exception {
+        if (!isValidEmail(email)) {
+            throw new InvalidAttributeException("El Correo no tiene un formato válido");
+        } else {
+            Usuario usuario = DAOFactory.getInstance().getUsuarioDAO().findByEmail(email);
+            if (usuario != null) {
+                usuario.setClave(generateRandomPassword());
+                sendEmailConfirmation(usuario);
+            } else {
+                throw new EntityNotFoundException("No existe un usuario con correo: " + email);
+            }
+        }
+    }
+
+    private String generateRandomPassword() {
+        String[] cadena = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+            "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        Random r = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            int index = Math.abs(r.nextInt() % cadena.length);
+            sb.append(cadena[index]);
+        }
+        return sb.toString();
+    }
+
+    private void sendEmailConfirmation(Usuario usuario) throws Exception {
+        try {
+            // Conection Properties
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.user", usuario.getCorreo());
+            props.setProperty("mail.smtp.auth", "true");
+
+            // Prepare session
+            Session session = Session.getDefaultInstance(props);
+
+            // Build Message
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("siac.soporte@gmail.com"));
+            message.addRecipient(
+                    Message.RecipientType.TO,
+                    new InternetAddress(usuario.getCorreo()));
+            message.setSubject("SIAC - Cambio de Contraseña");
+            message.setText(
+                    "<p>Hola " + usuario.getNombre() + ",</p>\n\n"
+                    + "        <p>Usted ha solicitado un cambio de contraseña para acceder a la aplicación SIAC.\n"
+                    + "            A partir de este momento puede acceder a la aplicacion con los siguientes datos:</p>\n"
+                    + "        <p>\n\n"
+                    + "        Nombre de Usuario: \t" + usuario.getNombreDeUsuario() + "</p>"
+                    + "        <p>Contraseña: \t" + usuario.getClave() + "</p>",
+                    "ISO-8859-1",
+                    "html");
+
+            // Send Message
+            Transport t = session.getTransport("smtp");
+            t.connect("siac.soporte@gmail.com", "unalsoft");
+            t.sendMessage(message, message.getAllRecipients());
+
+            // Close
+            t.close();
+        } catch (MessagingException ex) {
+            throw new Exception("Error al enviar el correo", ex);
+        }
     }
 }

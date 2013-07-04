@@ -33,8 +33,8 @@ public class ControlDeVersion {
             System.exit(0);
         } catch (DataBaseException ex) {
             JOptionPane.showMessageDialog(login, ex.getMessage() + "\n\n"
-                    + "Para acceder a la aplicación debe estar conectado a internet y a una red que no utilice un servidor proxy.\n\n"
-                    + "Por favor conectese a internet usando una red que no utilice proxy y vuelva a intentarlo.", "Error", JOptionPane.ERROR_MESSAGE);
+                    + "Imposible comunicarse con la Base de Datos.\n\n"
+                    + "Para funcionar, la aplicación necesita acceso a internet. Compruebe su conexion a internet e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
         if (!ultimaVersion.equals(VERSIONACTUAL)) {

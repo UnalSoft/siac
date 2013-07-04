@@ -100,7 +100,7 @@ public class RecuperarContrasena extends javax.swing.JPanel {
     }//GEN-LAST:event_cancelarBActionPerformed
 
     private void restablecerContrasenaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecerContrasenaBActionPerformed
-        // TODO add your handling code here:
+        RecuperarContrasenaController.restablecerContrasena(emailTF.getText());
     }//GEN-LAST:event_restablecerContrasenaBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -23,7 +23,7 @@ public interface IService<VO, ID extends Serializable> {
 
     VO find(ID id) throws EntityNotFoundException, InsufficientPermissionsException;
 
-    void update(VO vo) throws NonexistentEntityException, RequiredAttributeException, InvalidAttributeException, InsufficientPermissionsException;
+    void update(VO vo) throws NonexistentEntityException, RequiredAttributeException, InvalidAttributeException, InsufficientPermissionsException, Exception;
 
     void delete(ID id) throws NonexistentEntityException, InsufficientPermissionsException;
 
