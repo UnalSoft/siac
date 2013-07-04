@@ -5,6 +5,8 @@
 package controller;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.dao.exceptions.InsufficientPermissionsException;
@@ -125,6 +127,8 @@ public class ModificarEmpresaController {
         } catch (NonexistentEntityException | RequiredAttributeException | InvalidAttributeException | InsufficientPermissionsException ex) {
             JOptionPane.showMessageDialog(modificarEmpresa, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             return;
+        }  catch (Exception ex) {
+            JOptionPane.showMessageDialog(modificarEmpresa, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         JOptionPane.showMessageDialog(modificarEmpresa, "Empresa modificada satisfactoriamente!", "Exito!", JOptionPane.INFORMATION_MESSAGE);
         secundario.setVisible(false);
